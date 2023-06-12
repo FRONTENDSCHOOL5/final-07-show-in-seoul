@@ -66,7 +66,7 @@ export default function Profile() {
       <GlobalStyle />
       {/* 프로필 컨테이너 */}
       <ProfileSection>
-        {/* 프로필 이미지,이름,아이다 */}
+        {/* 프로필 이미지,이름,아이디 */}
         <ProfileImg src="./src/assets/logo.png"></ProfileImg>
         <ProfileName>찰리 채플린의 초콜릿 공장</ProfileName>
         <ProfileId>@ char_chocolate</ProfileId>
