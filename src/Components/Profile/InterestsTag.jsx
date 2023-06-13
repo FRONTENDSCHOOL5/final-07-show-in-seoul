@@ -11,6 +11,11 @@ const TagList = constants.category.map(el => {
 const InterestsTag = () => {
   return (
     <SInterests>
+      <div>
+        <div>
+          <div></div>
+        </div>
+      </div>
       <div className="interest-tag-wrap">{TagList}</div>
     </SInterests>
   );
@@ -22,9 +27,14 @@ const SInterests = styled.div`
   .interest-tag-wrap {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 15px;
-    width: 345px;
+    gap: 10px;
+    width: 350px;
     margin: 0 auto;
-    /* justify-content: space-between; */
+    justify-content: flex-start;
+  }
+
+  .interest-tag-wrap .tags {
+    padding: 5px 18px;
+    width: auto;
   }
 `;

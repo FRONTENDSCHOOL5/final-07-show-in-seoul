@@ -22,8 +22,9 @@ const SArea = styled.div`
   .area-tag-wrap {
     display: flex;
     column-gap: 15px;
+    row-gap: 10px;
     flex-wrap: wrap;
-    width: 345px;
+    width: 350px;
     margin: 0 auto;
     justify-content: space-between;
   }
