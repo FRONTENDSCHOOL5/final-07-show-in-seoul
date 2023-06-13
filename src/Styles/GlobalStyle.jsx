@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'style-components';
+import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
