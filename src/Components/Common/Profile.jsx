@@ -63,7 +63,6 @@ const ProfileBtn = styled.button`
 const Profile = () => {
   return (
     <>
-      <GlobalStyle />
       {/* 프로필 컨테이너 */}
       <ProfileSection>
         {/* 프로필 이미지,이름,아이디 */}
