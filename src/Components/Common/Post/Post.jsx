@@ -1,9 +1,31 @@
 import React from 'react';
-import GlobalStyle from '../../../Styles/GlobalStyle';
 import styled, { css } from 'styled-components';
 import PostHeader from './PostHeader';
 import PostContentButtons from './PostContentButtons';
 import PostContent from './PostContent';
+
+const Post = () => {
+  return (
+    <>
+      {/* 게시물 전체 컨테이너  */}
+      <PostSection>
+        {/* 게시물 헤더 */}
+        <PostHeader />
+        {/* 게시물 컨텐트 전체 Div */}
+        <PostContentDiv>
+          {/* 게시물 내용물(텍스트와 사진) */}
+          <PostContent />
+          {/* 게시물 밑, 좋아요와 댓글 버튼 */}
+          <PostContentButtons />
+          {/* 게시물 맨 밑, 날짜 표시 */}
+          <PostContentDate>2020년 10월 21일</PostContentDate>
+        </PostContentDiv>
+      </PostSection>
+    </>
+  );
+};
+
+export default Post;
 
 // 게시물 컨테이너
 const PostSection = styled.section`
@@ -24,25 +46,3 @@ const PostContentDate = styled.p`
   margin-top: 5px;
   cursor: pointer;
 `;
-
-export default function Post() {
-  return (
-    <>
-      <GlobalStyle />
-      {/* 게시물 전체 컨테이너  */}
-      <PostSection>
-        {/* 게시물 헤더 */}
-        <PostHeader />
-        {/* 게시물 컨텐트 전체 Div */}
-        <PostContentDiv>
-          {/* 게시물 내용물(텍스트와 사진) */}
-          <PostContent />
-          {/* 게시물 밑, 좋아요와 댓글 버튼 */}
-          <PostContentButtons />
-          {/* 게시물 맨 밑, 날짜 표시 */}
-          <PostContentDate>2020년 10월 21일</PostContentDate>
-        </PostContentDiv>
-      </PostSection>
-    </>
-  );
-}
