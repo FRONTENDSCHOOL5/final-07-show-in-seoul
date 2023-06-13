@@ -60,7 +60,7 @@ const ProfileBtn = styled.button`
   cursor: pointer;
 `;
 
-export default function Profile() {
+const Profile = () => {
   return (
     <>
       <GlobalStyle />
@@ -81,4 +81,6 @@ export default function Profile() {
       </ProfileSection>
     </>
   );
-}
+};
+
+export default Profile;
