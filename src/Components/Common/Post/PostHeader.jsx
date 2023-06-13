@@ -1,5 +1,4 @@
 import React from 'react';
-import GlobalStyle from '../../../Styles/GlobalStyle';
 import styled, { css } from 'styled-components';
 
 const PostHeaderDiv = styled.div`
@@ -61,7 +60,7 @@ export default function PostHeader() {
             <PostUserId>@ char_chocolate</PostUserId>
           </PostUserDiv>
         </PostHeaderA>
-        <PostSettingBtn></PostSettingBtn>
+        {/* <PostSettingBtn></PostSettingBtn> */}
       </PostHeaderDiv>
     </>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import GlobalStyle from '../../../Styles/GlobalStyle';
 import styled, { css } from 'styled-components';
 
 // 게시물 텍스트
