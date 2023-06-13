@@ -16,8 +16,6 @@ const Profile = () => {
           <li>뮤지컬</li>
           <li>피아노 연주회</li>
         </ul>
-        {/* 프로필 수정 버튼 */}
-        <button>프로필 수정</button>
       </ProfileSection>
     </>
   );
@@ -30,6 +28,7 @@ const ProfileSection = styled.section`
   width: 390px;
   text-align: center;
   border-bottom: 1px solid #dbdbdb;
+  padding-bottom: 16px;
   // 프로필 이미지
   img {
     width: 90px;
@@ -42,7 +41,8 @@ const ProfileSection = styled.section`
     display: flex;
     gap: 5px;
     justify-content: center;
-    margin-top: 10px;
+    margin: 10px 0 16px;
+
     li {
       font-size: 12px;
       border-radius: 20px;
@@ -50,18 +50,6 @@ const ProfileSection = styled.section`
       color: #ffffff;
       padding: 4px 10px;
     }
-  }
-  // 프로필 수정 버튼
-  button {
-    border: none;
-    font-size: 14px;
-    color: #767676;
-    border: 1px solid #dbdbdb;
-    border-radius: 20px;
-    padding: 6px 26px;
-    margin: 16px 0;
-    background-color: #ffffff;
-    cursor: pointer;
   }
 `;
 

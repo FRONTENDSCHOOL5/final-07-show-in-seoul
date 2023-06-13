@@ -14,7 +14,6 @@ import ProfileSettingPage from './Pages/ProfileSettingPage';
 import SearchPage from './Pages/SearchPage';
 import ShowDetailPage from './Pages/ShowDetailPage';
 import SignupPage from './Pages/SignupPage';
-import Profile from './Components/Common/Profile';
 
 function App() {
   return (
