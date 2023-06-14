@@ -6,7 +6,7 @@ import iconArrow from '../../Assets/Icon/icon-arrow-left.png';
 import iconLogout from '../../Assets/Icon/icon-logout.png';
 import iconMore from '../../Assets/Icon/icon-more-vertical.png';
 
-// 왼쪽 요소 : 미입력시 기본 값 show logo
+// 왼쪽 요소 : 미입력시 기본 값 쇼인서울 로고
 const LeftEl = ({ leftType }) => {
   if (leftType === 'arrow') {
     return <img src={iconArrow} alt="뒤로가기" />;
@@ -47,7 +47,9 @@ const TopBar = ({ leftType, rightType }) => {
   return (
     <>
       <Header>
+        {/* leftType : arrow(뒤로가기) search(검색) */}
         <LeftEl leftType={leftType} />
+        {/* createPost(글쓰기) save(저장) upload(업로드) logout(로그아웃) more(더보기) */}
         <RightEl rightType={rightType} />
       </Header>
     </>
