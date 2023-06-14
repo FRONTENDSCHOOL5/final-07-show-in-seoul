@@ -26,11 +26,7 @@ const PostContentBtns = styled.div`
     border: none;
     width: 15px;
     height: 15px;
-    background-image: url('');
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    // 게시물 밑, 좋아요/댓글 버튼 옆에 숫자 표시
+    background: url('src/Assets/Img/heart.png') no-repeat / cover;
     span {
       margin-left: 17px;
       font-size: 12px;
@@ -42,4 +38,5 @@ const PostContentBtns = styled.div`
 // 게시물 밑, 댓글 버튼에게만 줘야하는 css
 const ContentCommentBtn = styled.button`
   margin-left: 40px;
+  background-image: url('');
 `;

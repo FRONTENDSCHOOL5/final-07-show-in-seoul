@@ -37,8 +37,6 @@ const PostContentImgs = styled.ul`
   // 게시물 사진
   li {
     height: 228px;
-    background-image: url('');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('') no-repeat / cover;
   }
 `;
