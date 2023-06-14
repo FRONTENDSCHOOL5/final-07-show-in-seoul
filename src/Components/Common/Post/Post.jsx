@@ -31,6 +31,9 @@ export default Post;
 const PostSection = styled.section`
   width: 358px;
   margin: 16px 16px 30px;
+  button {
+    background-color: #ffffff;
+  }
 `;
 
 // 게시물 내용물 감싼거
