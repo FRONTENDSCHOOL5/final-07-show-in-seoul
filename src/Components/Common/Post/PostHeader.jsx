@@ -44,8 +44,6 @@ const PostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url('') no-repeat / cover;
-    /* background-repeat: no-repeat; */
-    /* background-size: cover; */
     margin-left: 130px;
   }
 `;
