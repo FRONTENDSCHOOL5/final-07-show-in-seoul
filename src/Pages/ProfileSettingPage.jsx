@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import Button from '../Components/Common/Button';
 
 const ProfileSettingPage = () => {
   return (
@@ -15,7 +16,7 @@ const ProfileSettingPage = () => {
         <InputBox name="취향" disabled={true} />
         <InterestsTag etc={false} /> */}
       </div>
-      {/* <Button size="Large">시작하기</Button> */}
+      <Button size="Large">시작하기</Button>
     </SProfileSetting>
   );
 };
@@ -48,5 +49,7 @@ const SProfileSetting = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 325px;
+    margin-bottom: 150px;
   }
 `;
