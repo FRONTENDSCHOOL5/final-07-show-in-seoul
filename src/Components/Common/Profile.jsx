@@ -27,7 +27,6 @@ export default Profile;
 const ProfileSection = styled.section`
   width: 390px;
   text-align: center;
-  border-bottom: 1px solid #dbdbdb;
   padding-bottom: 16px;
   // 프로필 이미지
   img {
