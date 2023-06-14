@@ -15,14 +15,51 @@ export default Button;
 
 const StyledButton = styled.button`
   // 버튼 크기에 따른 사이즈 선택 (필수 요소)
-  width: ${({ size }) => (size === 'Large' ? '322px' : size === 'Medium' ? '120px' : '90px')};
-  height: ${({ size }) => (size === 'Large' ? '44px' : size === 'Medium' ? '34px' : '32px')};
+  width: ${({ size }) => {
+    if (size === 'Large') {
+      return '322px';
+    } else if (size === 'Medium') {
+      return '120px';
+    } else {
+      return '90px';
+    }
+  }};
+  height: ${({ size }) => {
+    if (size === 'Large') {
+      return '44px';
+    } else if (size === 'Medium') {
+      return '34px';
+    } else {
+      return '32px';
+    }
+  }};
   // 미지정 시 main color, gray는 회원가입과 돌아가기, white는 글쓰기와 프로필 수정 버튼 스타일
-  background: ${({ color }) => (color === 'gray' ? '#DBDBDB' : color === 'white' ? '#FFFFFF' : '#961F1F')};
+  background: ${({ color }) => {
+    if (color === 'gray') {
+      return '#DBDBDB';
+    } else if (color === 'white') {
+      return '#FFFFFF';
+    } else {
+      return '#961F1F';
+    }
+  }};
   // 미지정 시 기본 스타일
   // 글쓰기, 프로필 수정 버튼에서 활성화
-  color: ${({ active }) => (active ? '#767676' : '#FFFFFF')};
-  border: ${({ active }) => (active ? '1px solid #DBDBDB' : 'none')};
+  color: ${({ active }) => {
+    if (active) {
+      return '#767676';
+    } else {
+      return '#FFFFFF';
+    }
+  }};
+
+  border: ${({ active }) => {
+    if (active) {
+      return '1px solid #DBDBDB';
+    } else {
+      return 'none';
+    }
+  }};
 
   border-radius: 44px;
   cursor: pointer;
