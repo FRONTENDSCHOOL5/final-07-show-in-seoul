@@ -4,53 +4,31 @@ import TopBar from '../Components/Common/TopBar';
 import BottomNav from '../Components/Common/BottomNav';
 import imgPoster from '../Assets/Img/포스터.jpeg';
 
-const MainContent = () => {
+const MainContent = (img, area, title, place, schedule) => {
+  return (
+    <a>
+      <img
+        src={'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y'}
+        alt="포스터"
+      />
+      <p>마포구</p>
+      <h3>여러줄이면 어떻게되나 봅시다 테스트1테스트2테스트3테스트4테스트5 </h3>
+      <p>마포아트센터 아트홀맥</p>
+      <p>2023. 12. 05.~2023. 12. 05.</p>
+    </a>
+  );
+};
+const MainFeed = () => {
   return (
     <section>
       <h2 className="a11y-hidden">서울시 문화행사 정보</h2>
       <div>
-        <a>
-          <img src={imgPoster} alt="포스터" />
-          <p>마포구</p>
-          <h3>여러줄이면 어떻게되나 봅시다 테스트1테스트2테스트3테스트4테스트5 </h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.~2023. 12. 05.</p>
-        </a>
-        <a>
-          <img src={imgPoster} />
-          <p>마포구</p>
-          <h3>M 아티스트 2023 김도현 피아노 리사이틀 II</h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.~2023. 12. 05.</p>
-        </a>
-        <a>
-          <img src={imgPoster} />
-          <p>마포구</p>
-          <h3>한줄은? </h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.</p>
-        </a>
-        <a>
-          <img src={imgPoster} />
-          <p>마포구</p>
-          <h3>M 아티스트 2023 김도현 피아노 리사이틀 II</h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.~2023. 12. 05.</p>
-        </a>
-        <a>
-          <img src={imgPoster} />
-          <p>마포구</p>
-          <h3>M 아티스트 2023 김도현 피아노 리사이틀 II</h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.~2023. 12. 05.</p>
-        </a>
-        <a>
-          <img src={imgPoster} />
-          <p>마포구</p>
-          <h3>M 아티스트 2023 김도현 피아노 리사이틀 II</h3>
-          <p>마포아트센터 아트홀맥</p>
-          <p>2023. 12. 05.~2023. 12. 05.</p>
-        </a>
+        <MainContent />
+        <MainContent />
+        <MainContent />
+        <MainContent />
+        <MainContent />
+        <MainContent />
       </div>
     </section>
   );
@@ -60,7 +38,7 @@ const MainPage = () => {
   return (
     <MainLayout>
       <TopBar />
-      <MainContent />
+      <MainFeed />
       <BottomNav />
     </MainLayout>
   );
