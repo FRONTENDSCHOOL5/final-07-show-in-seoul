@@ -2,34 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import BottomNav from '../Components/Common/BottomNav';
-import imgPoster from '../Assets/Img/포스터.jpeg';
+import showInfo from '../Assets/Data/서울시 문화행사 정보.json';
 
-const MainContent = (img, area, title, place, schedule) => {
+const MainContent = ({ data }) => {
   return (
     <a>
-      <img
-        src={'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y'}
-        alt="포스터"
-      />
-      <p>마포구</p>
-      <h3>여러줄이면 어떻게되나 봅시다 테스트1테스트2테스트3테스트4테스트5 </h3>
-      <p>마포아트센터 아트홀맥</p>
-      <p>2023. 12. 05.~2023. 12. 05.</p>
+      <img src={data.main_img} alt="포스터" />
+      <p>{data.guname}</p>
+      <h3>{data.title} </h3>
+      <p>{data.place}</p>
+      <p>{data.date}</p>
     </a>
   );
 };
+
 const MainFeed = () => {
   return (
     <section>
       <h2 className="a11y-hidden">서울시 문화행사 정보</h2>
-      <div>
-        <MainContent />
-        <MainContent />
-        <MainContent />
-        <MainContent />
-        <MainContent />
-        <MainContent />
-      </div>
+      <ul>
+        {showInfo.DATA.map((data, i) => {
+          return (
+            <li key={i}>
+              <MainContent data={data} />
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 };
@@ -66,11 +65,11 @@ const MainLayout = styled.main`
   section {
     flex: 1;
     overflow: scroll;
-    div {
+    ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: 15px 10px;
-      a {
+      li {
         width: 160px;
         margin: 10px auto;
         h3 {
@@ -98,6 +97,10 @@ const MainLayout = styled.main`
         p {
           font-size: 12px;
           margin-top: 5px;
+          line-height: 1.2;
+          /* overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; */
           &:nth-child(2) {
             color: salmon;
           }
