@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import Button from './Button';
 
 const Profile = () => {
   return (
@@ -16,6 +17,7 @@ const Profile = () => {
           <li>뮤지컬</li>
           <li>피아노 연주회</li>
         </ul>
+        <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
       </ProfileSection>
     </>
   );
