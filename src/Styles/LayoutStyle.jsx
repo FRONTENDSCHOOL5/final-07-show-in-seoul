@@ -5,6 +5,8 @@ const SLayoutStyle = styled.div`
   width: 390px;
   height: 829px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 `;
 
 // const SLayout = styled.div`
