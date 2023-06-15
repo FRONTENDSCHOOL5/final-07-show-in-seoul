@@ -1,13 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import iconHeart from '../../../Assets/Icon/icon-heart.png';
+import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.png';
+import iconComment from '../../../Assets/Icon/icon-message-circle.png';
 
 const PostContentButtons = () => {
   return (
     <>
       <PostContentBtns>
-        <button>
+        <ContentHeartBtn>
           <span>58</span>
-        </button>
+        </ContentHeartBtn>
         <ContentCommentBtn>
           <span>12</span>
         </ContentCommentBtn>
@@ -23,10 +26,8 @@ const PostContentBtns = styled.div`
   margin-top: 14px;
   // 게시물 밑, 좋아요 버튼과 댓글 버튼의 공통 css
   button {
-    border: none;
-    width: 15px;
-    height: 15px;
-    background: url('src/Assets/Img/heart.png') no-repeat / cover;
+    width: 20px;
+    height: 20px;
     span {
       margin-left: 17px;
       font-size: 12px;
@@ -35,8 +36,16 @@ const PostContentBtns = styled.div`
   }
 `;
 
+// 게시물 밑, 하트 버튼에게만 줘야하는 css
+const ContentHeartBtn = styled.button`
+  background: url(${iconHeart}) no-repeat center;
+  &:hover {
+    background-image: url(${iconHeartPink});
+  }
+`;
+
 // 게시물 밑, 댓글 버튼에게만 줘야하는 css
 const ContentCommentBtn = styled.button`
   margin-left: 40px;
-  background-image: url('');
+  background: url(${iconComment}) no-repeat center;
 `;
