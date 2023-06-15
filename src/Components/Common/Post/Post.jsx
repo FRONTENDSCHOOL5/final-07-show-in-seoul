@@ -28,7 +28,8 @@ const Post = () => {
 export default Post;
 
 // 게시물 컨테이너
-const PostSection = styled.section`
+const PostSection = styled.li`
+  display: block;
   width: 358px;
   margin: 16px 16px 30px;
   button {
