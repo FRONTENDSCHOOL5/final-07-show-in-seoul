@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.png';
 
 const PostHeader = () => {
   return (
@@ -43,7 +44,7 @@ const PostHeaderDiv = styled.div`
     border: none;
     width: 18px;
     height: 18px;
-    background: url('') no-repeat / cover;
+    background: url(${iconSmallMore}) no-repeat center;
     margin-left: 130px;
   }
 `;
