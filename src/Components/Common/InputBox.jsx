@@ -7,8 +7,7 @@ const InputBox = props => {
       <label className="input-label" htmlFor="input-content">
         {props.title}
       </label>
-
-      <input disabled id="input-content" type="text" placeholder={props.placeholder} />
+      <input disabled={props.disabled} id="input-content" type="text" placeholder={props.placeholder} />
     </SInputBox>
   );
 };
@@ -16,18 +15,28 @@ const InputBox = props => {
 export default InputBox;
 
 const SInputBox = styled.form`
+  width: 100%;
+  position: relative;
+  text-align: center;
+
   #input-content {
-    width: 390px;
-    border: none;
+    width: 80%;
     border-bottom: 1px solid #dbdbdb;
     padding: 10px 0 5px 0;
-    outline: none;
-    background-color: white;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  #input-content:disabled {
+    border: none;
   }
   #input-content::placeholder {
-    color: #dbdbdb;
+    color: var(--gray);
   }
+
   .input-label {
-    color: #767676;
+    color: var(--deepgray);
+    font-size: 12px;
+    position: absolute;
   }
 `;
