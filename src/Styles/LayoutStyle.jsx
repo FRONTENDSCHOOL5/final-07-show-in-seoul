@@ -13,4 +13,4 @@ const SLayoutStyle = styled.div`
 
 //<Button onError={username !== userId}></Button>
 
-export { SLayoutStyle };
+export default SLayoutStyle;
