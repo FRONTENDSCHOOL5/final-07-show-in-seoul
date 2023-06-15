@@ -30,16 +30,8 @@ const ProfileSettingPage = () => {
 export default ProfileSettingPage;
 
 const SProfileSetting = styled.div`
-  width: 390px;
-  height: 844px;
-  margin: 50px auto 0;
-  padding: 34px 34px 90px;
-  border: 1px solid green;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   .profile-setting-header {
+    padding: 30px 0 40px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,7 +40,8 @@ const SProfileSetting = styled.div`
       font-size: 24px;
     }
     p {
-      color: #767676;
+      color: var(--deepgray);
+      font-size: 14px;
     }
   }
   .profile-setting-info {
