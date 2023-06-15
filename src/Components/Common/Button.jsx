@@ -33,6 +33,24 @@ const StyledButton = styled.button`
       return '32px';
     }
   }};
+  font-size: ${({ size }) => {
+    if (size === 'Large') {
+      return '16px';
+    } else if (size === 'Medium') {
+      return '14px';
+    } else {
+      return '14px';
+    }
+  }};
+  font-weight: ${({ size }) => {
+    if (size === 'Large') {
+      return 'bold';
+    } else if (size === 'Medium') {
+      return 'normal';
+    } else {
+      return 'normal';
+    }
+  }};
   // 미지정 시 main color, gray는 회원가입과 돌아가기, white는 글쓰기와 프로필 수정 버튼 스타일
   background: ${({ color }) => {
     if (color === 'gray') {
