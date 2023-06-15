@@ -12,11 +12,10 @@ const Profile = () => {
         <ProfileName>찰리 채플린의 초콜릿 공장</ProfileName>
         <ProfileId>@ char_chocolate</ProfileId>
         {/* 프로필 관심 리스트 표시 */}
-        <ul>
-          <li>연극</li>
-          <li>뮤지컬</li>
-          <li>피아노 연주회</li>
-        </ul>
+
+        {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
+        <div></div>
+
         <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
       </ProfileSection>
     </>
