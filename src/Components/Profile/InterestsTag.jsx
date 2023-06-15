@@ -28,7 +28,7 @@ const SInterests = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    width: 350px;
+    width: 390px;
     margin: 0 auto;
     justify-content: flex-start;
   }

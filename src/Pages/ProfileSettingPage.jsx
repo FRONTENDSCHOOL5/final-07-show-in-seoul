@@ -1,6 +1,9 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import Button from '../Components/Common/Button';
+import InputBox from '../Components/Common/InputBox';
+import InterestsTag from '../Components/Profile/InterestsTag';
+import { Link } from 'react-router-dom';
 
 const ProfileSettingPage = () => {
   return (
@@ -10,12 +13,15 @@ const ProfileSettingPage = () => {
         <p className="profile-setting-description">나중에 언제든지 변경할 수 있습니다.</p>
         {/* <ProfileImageEdit /> */}
       </div>
+
       <div className="profile-setting-info">
-        {/* <InputBox name="사용자 이름" />
-        <InputBox name="계정 ID" />
-        <InputBox name="취향" disabled={true} />
-        <InterestsTag etc={false} /> */}
+        <InputBox title="사용자 이름" placeholder="2~10자 이내여야 합니다." />
+        <InputBox title="계정 ID" placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다." />
+        <InputBox title="취향dd" disabled={true} placeholder="최대 4개까지 선택할 수 있습니다." />
+        <InterestsTag etc={false} />
       </div>
+      <Link to="https://www.naver.com">눌러보세요~</Link>
+
       <Button size="Large">시작하기</Button>
     </SProfileSetting>
   );

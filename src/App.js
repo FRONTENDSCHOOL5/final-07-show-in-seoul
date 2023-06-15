@@ -14,6 +14,7 @@ import ProfileSettingPage from './Pages/ProfileSettingPage';
 import SearchPage from './Pages/SearchPage';
 import ShowDetailPage from './Pages/ShowDetailPage';
 import SignupPage from './Pages/SignupPage';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/mainpage" element={<MainPage />} />
         <Route path="/errorpage" element={<ErrorPage />} />
         <Route path="/categorypage" element={<CategoryPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );
