@@ -13,44 +13,42 @@ const Button = ({ size, children, active, disabled, color }) => {
 
 export default Button;
 
+const SizeValue = size => {
+  const sizes = {
+    Large: {
+      width: '322px',
+      height: '44px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+    },
+    Medium: {
+      width: '120px',
+      height: '34px',
+      fontSize: '14px',
+      fontWeight: 'normal',
+    },
+    MediumS: {
+      width: '90px',
+      height: '32px',
+      fontSize: '14px',
+      fontWeight: 'normal',
+    },
+  };
+
+  return sizes[size] || sizes.MediumS;
+};
+
 const StyledButton = styled.button`
   // 버튼 크기에 따른 사이즈 선택 (필수 요소)
-  width: ${({ size }) => {
-    if (size === 'Large') {
-      return '322px';
-    } else if (size === 'Medium') {
-      return '120px';
-    } else {
-      return '90px';
-    }
-  }};
-  height: ${({ size }) => {
-    if (size === 'Large') {
-      return '44px';
-    } else if (size === 'Medium') {
-      return '34px';
-    } else {
-      return '32px';
-    }
-  }};
-  font-size: ${({ size }) => {
-    if (size === 'Large') {
-      return '16px';
-    } else if (size === 'Medium') {
-      return '14px';
-    } else {
-      return '14px';
-    }
-  }};
-  font-weight: ${({ size }) => {
-    if (size === 'Large') {
-      return 'bold';
-    } else if (size === 'Medium') {
-      return 'normal';
-    } else {
-      return 'normal';
-    }
-  }};
+  ${({ size }) => {
+    const { width, height, fontSize, fontWeight } = SizeValue(size);
+    return `
+      width: ${width};
+      height: ${height};
+      font-size: ${fontSize};
+      font-weight: ${fontWeight};
+    `;
+  }}
   // 미지정 시 main color, gray는 회원가입과 돌아가기, white는 글쓰기와 프로필 수정 버튼 스타일
   background: ${({ color }) => {
     if (color === 'gray') {
