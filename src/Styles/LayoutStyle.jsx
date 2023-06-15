@@ -1,11 +1,4 @@
-import React from 'react';
-import { styled } from 'styled-components';
-
-const LayoutStyle = () => {
-  return <SLayoutStyle></SLayoutStyle>;
-};
-
-export default LayoutStyle;
+import styled from 'styled-components';
 
 const SLayoutStyle = styled.div`
   margin: 0 auto;
@@ -13,3 +6,11 @@ const SLayoutStyle = styled.div`
   height: 829px;
   background-color: white;
 `;
+
+// const SLayout = styled.div`
+//   ${SLayoutStyle}
+// `;
+
+//<Button onError={username !== userId}></Button>
+
+export { SLayoutStyle };
