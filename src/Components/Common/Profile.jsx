@@ -14,7 +14,12 @@ const Profile = () => {
         {/* 프로필 관심 리스트 표시 */}
 
         {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
-        <div></div>
+        <div>
+          {/* <div>오페라</div>
+          <div>피아노 연주</div>
+          <div>오케스트라</div>
+          <div>피아노 피아노 피아노</div> */}
+        </div>
 
         <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
       </ProfileSection>
@@ -37,18 +42,20 @@ const ProfileSection = styled.section`
     margin: 30px auto 0;
   }
   // 프로필 관심 목록
-  ul {
+  div {
     display: flex;
     gap: 5px;
     justify-content: center;
     margin: 10px 0 16px;
 
-    li {
+    div {
       font-size: 12px;
       border-radius: 20px;
       background-color: #961f1f;
       color: #ffffff;
-      padding: 4px 10px;
+      height: 21px;
+      line-height: 21px;
+      padding: 0 10px;
     }
   }
 `;
