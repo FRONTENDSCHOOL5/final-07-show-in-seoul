@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const PostContent = () => {
   return (
     <>
-      <PostContentA>
+      <SPostContentA>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex commodi repellendus ratione optio nostrum
           maiores, eaque officiis quibusdam, fuga qui illo architecto adipisci, ducimus dicta reprehenderit quasi
@@ -15,14 +15,14 @@ const PostContent = () => {
             <img src="" alt=""></img>
           </li>
         </ul>
-      </PostContentA>
+      </SPostContentA>
     </>
   );
 };
 
 export default PostContent;
 
-const PostContentA = styled.a`
+const SPostContentA = styled.a`
   display: block;
   // 게시물 텍스트
   p {
