@@ -3,10 +3,8 @@ import styled from 'styled-components';
 const SLayoutStyle = styled.div`
   margin: 0 auto;
   width: 390px;
-  height: 829px;
+  height: 100vh;
   background-color: white;
-  display: flex;
-  flex-direction: column;
 `;
 
 // const SLayout = styled.div`
