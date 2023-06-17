@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import Button from '../Components/Common/Button';
 import InputBox from '../Components/Common/InputBox';
 import InterestsTag from '../Components/Profile/InterestsTag';
