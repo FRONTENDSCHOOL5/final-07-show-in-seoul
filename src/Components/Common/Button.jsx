@@ -13,16 +13,69 @@ const Button = ({ size, children, active, disabled, color }) => {
 
 export default Button;
 
+const SizeValue = size => {
+  const sizes = {
+    Large: {
+      width: '322px',
+      height: '44px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+    },
+    Medium: {
+      width: '120px',
+      height: '34px',
+      fontSize: '14px',
+      fontWeight: 'normal',
+    },
+    MediumS: {
+      width: '90px',
+      height: '32px',
+      fontSize: '14px',
+      fontWeight: 'normal',
+    },
+  };
+
+  return sizes[size] || sizes.MediumS;
+};
+
 const StyledButton = styled.button`
   // 버튼 크기에 따른 사이즈 선택 (필수 요소)
-  width: ${({ size }) => (size === 'Large' ? '322px' : size === 'Medium' ? '120px' : '90px')};
-  height: ${({ size }) => (size === 'Large' ? '44px' : size === 'Medium' ? '34px' : '32px')};
+  ${({ size }) => {
+    const { width, height, fontSize, fontWeight } = SizeValue(size);
+    return `
+      width: ${width};
+      height: ${height};
+      font-size: ${fontSize};
+      font-weight: ${fontWeight};
+    `;
+  }}
   // 미지정 시 main color, gray는 회원가입과 돌아가기, white는 글쓰기와 프로필 수정 버튼 스타일
-  background: ${({ color }) => (color === 'gray' ? '#DBDBDB' : color === 'white' ? '#FFFFFF' : '#961F1F')};
+  background: ${({ color }) => {
+    if (color === 'gray') {
+      return '#DBDBDB';
+    } else if (color === 'white') {
+      return '#FFFFFF';
+    } else {
+      return '#961F1F';
+    }
+  }};
   // 미지정 시 기본 스타일
   // 글쓰기, 프로필 수정 버튼에서 활성화
-  color: ${({ active }) => (active ? '#767676' : '#FFFFFF')};
-  border: ${({ active }) => (active ? '1px solid #DBDBDB' : 'none')};
+  color: ${({ active }) => {
+    if (active) {
+      return '#767676';
+    } else {
+      return '#FFFFFF';
+    }
+  }};
+
+  border: ${({ active }) => {
+    if (active) {
+      return '1px solid #DBDBDB';
+    } else {
+      return 'none';
+    }
+  }};
 
   border-radius: 44px;
   cursor: pointer;
