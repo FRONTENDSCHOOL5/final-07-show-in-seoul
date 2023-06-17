@@ -6,23 +6,18 @@ const Profile = () => {
   return (
     <>
       {/* 프로필 컨테이너 */}
-      <ProfileSection>
+      <SProfileSection>
         {/* 프로필 이미지,이름,아이디 */}
         <img src="./src/assets/logo.png"></img>
-        <ProfileName>찰리 채플린의 초콜릿 공장</ProfileName>
-        <ProfileId>@ char_chocolate</ProfileId>
+        <SProfileName>찰리 채플린의 초콜릿 공장</SProfileName>
+        <SProfileId>@ char_chocolate</SProfileId>
         {/* 프로필 관심 리스트 표시 */}
 
         {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
-        <div>
-          {/* <div>오페라</div>
-          <div>피아노 연주</div>
-          <div>오케스트라</div>
-          <div>피아노 피아노 피아노</div> */}
-        </div>
+        <div></div>
 
         <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
-      </ProfileSection>
+      </SProfileSection>
     </>
   );
 };
@@ -30,7 +25,7 @@ const Profile = () => {
 export default Profile;
 
 // 프로필 컨테이너
-const ProfileSection = styled.section`
+const SProfileSection = styled.section`
   width: 390px;
   text-align: center;
   padding-bottom: 16px;
@@ -61,14 +56,14 @@ const ProfileSection = styled.section`
 `;
 
 // 프로필 이름
-const ProfileName = styled.p`
+const SProfileName = styled.p`
   font-size: 16px;
   font-weight: 700;
   margin-top: 16px;
 `;
 
 // 프로필 아이디
-const ProfileId = styled.p`
+const SProfileId = styled.p`
   font-size: 12px;
   font-weight: 400;
   color: rgba(118, 118, 118, 1);
