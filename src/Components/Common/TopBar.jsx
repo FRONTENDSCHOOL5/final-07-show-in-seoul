@@ -5,15 +5,28 @@ import iconLogo from '../../Assets/Icon/logo-text.png';
 import iconArrow from '../../Assets/Icon/icon-arrow-left.png';
 import iconLogout from '../../Assets/Icon/icon-logout.png';
 import iconMore from '../../Assets/Icon/icon-more-vertical.png';
+import iconArrowWhite from '../../Assets/Icon/icon-arrow-white.png';
+import iconShare from '../../Assets/Icon/icon-share.png';
+
+const IconBtn = ({ id, icon, altTxt }) => {
+  console.log(altTxt);
+  return (
+    <button>
+      <img id={id} src={icon} alt={altTxt} />
+    </button>
+  );
+};
 
 // 왼쪽 요소 : 미입력시 기본 값 쇼인서울 로고
 const LeftEl = ({ leftEl }) => {
   if (leftEl === 'back') {
-    return <img src={iconArrow} alt="뒤로가기" />;
+    return <IconBtn icon={iconArrow} altTxt={'뒤로가기'} />;
+  } else if (leftEl === 'backWhite') {
+    return <IconBtn id="iconArrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} />;
   } else if (leftEl === 'search') {
     return <input placeholder="행사 검색" />;
   } else {
-    return <img id="showLogo" src={iconLogo} alt="쇼!인서울 피드" />;
+    return <IconBtn id="showLogo" icon={iconLogo} altTxt={'쇼!인서울 피드'} />;
   }
 };
 
@@ -30,9 +43,11 @@ const RightEl = ({ rightEl }) => {
   } else if (rightEl === 'upload') {
     return <Button size="Small">업로드</Button>;
   } else if (rightEl === 'logout') {
-    return <img src={iconLogout} alt="로그아웃" />;
+    return <IconBtn icon={iconLogout} altTxt={'로그아웃'} />;
   } else if (rightEl === 'more') {
-    return <img src={iconMore} alt="더보기" />;
+    return <IconBtn icon={iconMore} altTxt={'더보기'} />;
+  } else if (rightEl === 'share') {
+    return <IconBtn icon={iconShare} altTxt={'공유하기'} />;
   } else {
     return null;
   }
@@ -42,19 +57,17 @@ const RightEl = ({ rightEl }) => {
 const TopBar = ({ leftEl, rightEl }) => {
   return (
     <>
-      <Header>
-        {/* back(뒤로가기) search(검색) */}
+      <SHeader>
         <LeftEl leftEl={leftEl} />
-        {/* newPost(글쓰기) save(저장) upload(업로드) logout(로그아웃) more(더보기) */}
         <RightEl rightEl={rightEl} />
-      </Header>
+      </SHeader>
     </>
   );
 };
 
 export default TopBar;
 
-const Header = styled.header`
+const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,15 +76,21 @@ const Header = styled.header`
   padding: 0 16px;
   border-bottom: solid 2px #dbdbdb;
   box-sizing: border-box;
+  button {
+    padding: 0;
+  }
   img {
     width: 24px;
     height: 24px;
   }
   #showLogo {
-    width: 100px;
+    width: 103px;
+  }
+  #iconArrowWhite {
+    width: 35px;
+    height: 35px;
   }
   input {
-    all: unset;
     width: 100%;
     height: 32px;
     background-color: #f2f2f2;
