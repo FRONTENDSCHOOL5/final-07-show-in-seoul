@@ -8,17 +8,17 @@ import AlbumOn from '../../../Assets/Icon/icon-post-album-on.png';
 const PostLayoutButtons = () => {
   return (
     <>
-      <LayoutButtons>
-        <ListButton></ListButton>
-        <GridButton></GridButton>
-      </LayoutButtons>
+      <SLayoutButtons>
+        <SListButton></SListButton>
+        <SGridButton></SGridButton>
+      </SLayoutButtons>
     </>
   );
 };
 
 export default PostLayoutButtons;
 
-const LayoutButtons = styled.div`
+const SLayoutButtons = styled.div`
   width: 390px;
   height: 44px;
   display: flex;
@@ -32,7 +32,7 @@ const LayoutButtons = styled.div`
   }
 `;
 
-const ListButton = styled.button`
+const SListButton = styled.button`
   border-right: none;
   background: url(${ListOff}) no-repeat center;
   &:hover {
@@ -41,7 +41,7 @@ const ListButton = styled.button`
   }
 `;
 
-const GridButton = styled.button`
+const SGridButton = styled.button`
   border-left: none;
   background: url(${AlbumOff}) no-repeat center;
   &:hover {
