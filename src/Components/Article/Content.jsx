@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Content = ({ data }) => {
   return (
-    <SLink>
+    <SLink to="/ShowDetailPage">
       <img src={data.main_img} alt="포스터" />
       <p>{data.guname}</p>
       <h3>{data.title} </h3>
@@ -15,7 +16,7 @@ const Content = ({ data }) => {
 
 export default Content;
 
-const SLink = styled.a`
+const SLink = styled(Link)`
   img {
     width: 160px;
     height: 190px;
