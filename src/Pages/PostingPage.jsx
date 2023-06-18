@@ -9,7 +9,7 @@ const PostingPage = () => {
       <TopBar leftEl="back" rightEl="upload" />
       <SPostingContent>
         <textarea required rows="10" cols="33" placeholder="게시글 입력하기.."></textarea>
-        <img src="" alt=""></img>
+        <img className="uploadImg" src="" alt=""></img>
         <label>
           <img src={Upload} />
           <input type="file" style={{ display: 'none' }} />
@@ -29,7 +29,7 @@ const SPostingContent = styled.div`
     border: none;
     margin-bottom: 16px;
   }
-  img {
+  .uploadImg {
     width: 100%;
     height: 228px;
     object-fit: cover;
@@ -39,9 +39,6 @@ const SPostingContent = styled.div`
     height: 50px;
     display: inline-block;
     margin: 112px 0px 0px 308px;
-    img {
-      width: 50px;
-      height: 50px;
-    }
+    cursor: pointer;
   }
 `;
