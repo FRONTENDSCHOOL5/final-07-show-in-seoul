@@ -34,6 +34,7 @@ const Comments = () => {
 export default Comments;
 
 const SComments = styled.div`
+  /* 댓글들이 많아지면 밑에 댓글과 간격 주기 위해 */
   margin-bottom: 16px;
   .comment-wrap {
     display: flex;
