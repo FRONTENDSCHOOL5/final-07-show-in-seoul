@@ -22,4 +22,7 @@ export default MainPage;
 const SectionLayout = styled.section`
   flex: 1;
   overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
