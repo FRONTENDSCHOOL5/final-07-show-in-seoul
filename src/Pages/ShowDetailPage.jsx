@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BottomNav from '../Components/Common/BottomNav';
 import Button from '../Components/Common/Button';
 import Tags from '../Components/Profile/Tags';
+import TopBarBtn from '../Components/Common/TopBarBtn';
 import iconArrowWhite from '../Assets/Icon/icon-arrow-white.png';
 import iconShare from '../Assets/Icon/icon-share.png';
 const imgSrc = 'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y';
@@ -17,12 +18,11 @@ const ShowDetailPage = ({ props }) => {
 
   return (
     <>
-      {/* <TopBar leftEl={'backWhite'} rightEl={'share'} /> */}
-      {/* <div>
-        <img src={iconArrowWhite} alt="뒤로가기" />
-        <img src={iconShare} alt="뒤로가기" />
-      </div> */}
       <SShowDetail>
+        <header class="topBtns">
+          <TopBarBtn id="arrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} />
+          <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} />
+        </header>
         <h1 className="a11y-hidden">Show Dtail</h1>
         <div className="info">
           <div className="tags">
@@ -58,7 +58,17 @@ const SShowDetail = styled.section`
   background: url(${imgSrc}) no-repeat center top / 100%;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: space-between;
+  .topBtns {
+    padding: 5px 10px 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #arrowWhite {
+      width: 35px;
+      height: 35px;
+    }
+  }
   .info {
     padding: 30px 34px 10px 34px;
     background-color: #fff;
