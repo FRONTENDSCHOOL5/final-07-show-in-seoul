@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import BottomNav from '../Components/Common/BottomNav';
 import Button from '../Components/Common/Button';
-import TopBar from '../Components/Common/TopBar';
 import Tags from '../Components/Profile/Tags';
+import iconArrowWhite from '../Assets/Icon/icon-arrow-white.png';
+import iconShare from '../Assets/Icon/icon-share.png';
+const imgSrc = 'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y';
 
 const ShowDetailPage = ({ props }) => {
   const showInfo = [
@@ -16,6 +18,10 @@ const ShowDetailPage = ({ props }) => {
   return (
     <>
       {/* <TopBar leftEl={'backWhite'} rightEl={'share'} /> */}
+      {/* <div>
+        <img src={iconArrowWhite} alt="뒤로가기" />
+        <img src={iconShare} alt="뒤로가기" />
+      </div> */}
       <SShowDetail>
         <h1 className="a11y-hidden">Show Dtail</h1>
         <div className="info">
@@ -47,8 +53,6 @@ const ShowDetailPage = ({ props }) => {
 
 export default ShowDetailPage;
 
-const imgSrc = 'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y';
-
 const SShowDetail = styled.section`
   flex: 1;
   background: url(${imgSrc}) no-repeat center top / 100%;
@@ -63,11 +67,12 @@ const SShowDetail = styled.section`
       display: flex;
       gap: 10px;
       margin-bottom: 10px;
+      text-align: center;
       div {
-        text-align: center;
         div {
           background-color: var(--main);
           color: white;
+          margin: 0 auto;
         }
       }
     }
