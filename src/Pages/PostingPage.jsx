@@ -28,6 +28,12 @@ const SPostingContent = styled.div`
     resize: none;
     border: none;
     margin-bottom: 16px;
+    :focus {
+      outline: none;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .uploadImg {
     width: 100%;
