@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileImg from '../../Assets/Img/basic-profile-img.png';
-import MoreIcon from '../../Assets/Icon/icon-more-vertical.svg';
+import ProfileImg from '../../Assets/Icon/logo-gray-small.png';
+import MoreIcon from '../../Assets/Icon/icon-more-vertical.png';
 
 const Comments = () => {
   return (
@@ -34,11 +34,10 @@ const Comments = () => {
 export default Comments;
 
 const SComments = styled.div`
+  margin-bottom: 16px;
   .comment-wrap {
     display: flex;
     position: relative;
-    width: 390px;
-    margin: 16px;
   }
 
   .comment-profile {
