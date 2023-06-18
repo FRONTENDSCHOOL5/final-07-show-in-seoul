@@ -29,7 +29,8 @@ const SPostContentBtns = styled.div`
     width: 20px;
     height: 20px;
     span {
-      margin-left: 17px;
+      margin-left: 27px;
+      display: inline-block;
       font-size: 12px;
       color: #767676;
     }

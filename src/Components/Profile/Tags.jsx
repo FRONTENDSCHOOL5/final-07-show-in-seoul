@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { constants } from './constants';
 
 const Tags = props => {
