@@ -57,7 +57,6 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 390px;
   height: 48px;
   padding: 0 16px;
   border-bottom: solid 2px #dbdbdb;
