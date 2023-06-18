@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const TopBarBtn = ({ id, icon, altTxt }) => {
   console.log(altTxt);
   return (
-    <button>
+    <SIconBtn>
       <img id={id} src={icon} alt={altTxt} />
-    </button>
+    </SIconBtn>
   );
 };
 
