@@ -6,6 +6,7 @@ import Content from './Content';
 const FeedContents = () => {
   return (
     <SFeedContents>
+      {/* json으로 받아온 데이터 map 함수 활용하여 표시 */}
       {showInfo.DATA.map((data, i) => {
         return (
           <li key={i}>

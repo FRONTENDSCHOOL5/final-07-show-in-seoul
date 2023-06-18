@@ -9,7 +9,7 @@ const Content = ({ data }) => {
         <img src={data.main_img} alt="포스터 이미지" />
       </div>
       <p>{data.guname}</p>
-      <h3>{data.title} </h3>
+      <h2>{data.title} </h2>
       <p>{data.place}</p>
       <p>{data.date}</p>
     </SLink>
