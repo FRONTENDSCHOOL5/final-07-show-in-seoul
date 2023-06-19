@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.png';
+import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
 
 const PostHeader = () => {
   return (
     <>
       <SPostHeaderDiv>
         <a>
-          <img src="./src/assets/basic-profile-img-.png" alt="" />
+          <img src="./src/assets/basic-profile-img-.svg" alt="" />
           <div>
             <SPostUserName>찰리 채플린의 초콜릿 공장</SPostUserName>
             <SPostUserId>@ char_chocolate</SPostUserId>

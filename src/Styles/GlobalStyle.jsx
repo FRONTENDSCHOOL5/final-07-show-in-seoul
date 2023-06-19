@@ -3,7 +3,12 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
-
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 :root {
 	--main: #961f1f;
 	--disabled: #DCB6B6;
@@ -14,11 +19,12 @@ ${reset}
 
 body {
 	background-color: #fff8ed;
-	font-family: 'pretendard', 'Noto Sans KR';
+    font-family: 'Pretendard-Regular';
 }
 
 * {
 	box-sizing: border-box;
+    font-family: 'Pretendard-Regular';
 }
 
 li {

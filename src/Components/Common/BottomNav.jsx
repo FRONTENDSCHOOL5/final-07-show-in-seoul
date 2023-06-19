@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import iconCategory from '../../Assets/Icon/icon-category.png';
-import iconSearch from '../../Assets/Icon/icon-search.png';
-import iconHome from '../../Assets/Icon/icon-home.png';
-import iconPost from '../../Assets/Icon/icon-post.png';
-import iconUser from '../../Assets/Icon/icon-user.png';
-import iconCategoryFill from '../../Assets/Icon/icon-category-fill.png';
-import iconSearchFill from '../../Assets/Icon/icon-search-fill.png';
-import iconHomeFill from '../../Assets/Icon/icon-home-fill.png';
-import iconPostFill from '../../Assets/Icon/icon-post-fill.png';
-import iconUserFill from '../../Assets/Icon/icon-user-fill.png';
+import iconCategory from '../../Assets/Icon/icon-category.svg';
+import iconSearch from '../../Assets/Icon/icon-search.svg';
+import iconHome from '../../Assets/Icon/icon-home.svg';
+import iconPost from '../../Assets/Icon/icon-post.svg';
+import iconUser from '../../Assets/Icon/icon-user.svg';
+import iconCategoryFill from '../../Assets/Icon/icon-category-fill.svg';
+import iconSearchFill from '../../Assets/Icon/icon-search-fill.svg';
+import iconHomeFill from '../../Assets/Icon/icon-home-fill.svg';
+import iconPostFill from '../../Assets/Icon/icon-post-fill.svg';
+import iconUserFill from '../../Assets/Icon/icon-user-fill.svg';
 
 const BottomNav = props => {
   console.log(props);
@@ -58,7 +58,9 @@ const NavList = styled.ul`
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  border-top: solid 2px #dbdbdb;
+  border-top: solid 1px var(--gray);
+  position: fixed;
+  bottom: 0;
   a {
     text-decoration: none;
     img {

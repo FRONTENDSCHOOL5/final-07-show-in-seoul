@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import HyphenIcon from '../../Assets/Icon/icon-hyphen.png';
+// import HyphenIcon from '../../Assets/Icon/icon-hyphen.svg';
 
 const CategoryPeriod = () => {
   return (
@@ -9,9 +9,7 @@ const CategoryPeriod = () => {
         <label htmlFor="dateFrom"></label>
         <input id="dateFrom" type="date" />
       </form>
-      <div className="hyphen">
-        <img src={HyphenIcon} alt="-" />
-      </div>
+      <div className="hyphen">{/* <img src={HyphenIcon} alt="-" /> */}</div>
       <form className="dateForm">
         <label htmlFor="dateTo"></label>
         <input id="dateTo" type="date" />

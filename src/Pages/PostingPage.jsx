@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Upload from '../Assets/Icon/upload-file.png';
+import Upload from '../Assets/Icon/upload-file.svg';
 import TopBar from '../Components/Common/TopBar';
 
 const PostingPage = () => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListOff from '../../../Assets/Icon/icon-post-list-off.png';
-import ListOn from '../../../Assets/Icon/icon-post-list-on.png';
-import AlbumOff from '../../../Assets/Icon/icon-post-album-off.png';
-import AlbumOn from '../../../Assets/Icon/icon-post-album-on.png';
+import ListOff from '../../../Assets/Icon/icon-post-list-off.svg';
+import ListOn from '../../../Assets/Icon/icon-post-list-on.svg';
+import AlbumOff from '../../../Assets/Icon/icon-post-album-off.svg';
+import AlbumOn from '../../../Assets/Icon/icon-post-album-on.svg';
 
 const PostLayoutButtons = () => {
   return (

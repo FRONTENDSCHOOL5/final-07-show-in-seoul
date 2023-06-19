@@ -4,8 +4,8 @@ import BottomNav from '../Components/Common/BottomNav';
 import Button from '../Components/Common/Button';
 import Tags from '../Components/Profile/Tags';
 import TopBarBtn from '../Components/Common/TopBarBtn';
-import iconArrowWhite from '../Assets/Icon/icon-arrow-white.png';
-import iconShare from '../Assets/Icon/icon-share.png';
+import iconArrowWhite from '../Assets/Icon/icon-arrow-white.svg';
+import iconShare from '../Assets/Icon/icon-share.svg';
 const imgSrc = 'https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6a59720cd9c34bbfa056eb6b5031f809&thumb=Y';
 
 const ShowDetailPage = ({ props }) => {

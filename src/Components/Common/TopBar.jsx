@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import TopBarBtn from './TopBarBtn';
-import iconLogo from '../../Assets/Icon/logo-text.png';
-import iconArrow from '../../Assets/Icon/icon-arrow-left.png';
-import iconLogout from '../../Assets/Icon/icon-logout.png';
-import iconMore from '../../Assets/Icon/icon-more-vertical.png';
+import iconLogo from '../../Assets/Icon/logo-text.svg';
+import iconArrow from '../../Assets/Icon/icon-arrow-left.svg';
+import iconLogout from '../../Assets/Icon/icon-logout.svg';
+import iconMore from '../../Assets/Icon/icon-more-vertical.svg';
 
 // 왼쪽 요소 : 미입력시 기본 값 쇼인서울 로고
 const LeftEl = ({ leftEl }) => {
@@ -57,10 +57,13 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 390px;
   height: 48px;
   padding: 0 16px;
-  border-bottom: solid 2px #dbdbdb;
+  border-bottom: solid 1px var(--gray);
   box-sizing: border-box;
+  position: fixed;
+  top: 0;
   #showLogo {
     width: 103px;
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import DefaultImg from '../../Assets/Img/basic-profile-img.png';
-import UploadBtn from '../../Assets/Img/upload-file.png';
+import DefaultImg from '../../Assets/Img/basic-profile-img.svg';
+import UploadBtn from '../../Assets/Img/upload-file.svg';
 
 const ProfileImageEdit = () => {
   return (

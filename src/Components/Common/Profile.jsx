@@ -8,7 +8,7 @@ const Profile = () => {
       {/* 프로필 컨테이너 */}
       <SProfileSection>
         {/* 프로필 이미지,이름,아이디 */}
-        <img src="./src/assets/logo.png"></img>
+        <img src="./src/assets/logo.svg"></img>
         <SProfileName>찰리 채플린의 초콜릿 공장</SProfileName>
         <SProfileId>@ char_chocolate</SProfileId>
         {/* 프로필 관심 리스트 표시 */}

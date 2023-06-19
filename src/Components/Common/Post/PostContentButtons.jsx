@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import iconHeart from '../../../Assets/Icon/icon-heart.png';
-import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.png';
-import iconComment from '../../../Assets/Icon/icon-message-circle.png';
+import iconHeart from '../../../Assets/Icon/icon-heart.svg';
+import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.svg';
+import iconComment from '../../../Assets/Icon/icon-message-circle.svg';
 
 const PostContentButtons = () => {
   return (

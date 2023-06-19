@@ -31,7 +31,7 @@ const SLink = styled(Link)`
       object-fit: cover;
     }
   }
-  h3 {
+  h2 {
     font-size: 14px;
     font-weight: bold;
     margin-top: 5px;

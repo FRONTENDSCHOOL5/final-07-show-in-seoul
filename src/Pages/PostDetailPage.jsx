@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
-import LogoGraySmall from '../Assets/Icon/logo-gray-small.png';
+import LogoGraySmall from '../Assets/Icon/logo-gray-small.svg';
 
 const PostDetailPage = () => {
   return (

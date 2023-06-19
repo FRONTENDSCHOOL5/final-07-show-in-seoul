@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileImg from '../../Assets/Icon/logo-gray-small.png';
-import MoreIcon from '../../Assets/Icon/icon-more-vertical.png';
+import ProfileImg from '../../Assets/Icon/logo-gray-small.svg';
+import MoreIcon from '../../Assets/Icon/icon-more-vertical.svg';
 
 const Comments = () => {
   return (
