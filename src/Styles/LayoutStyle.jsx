@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SLayoutStyle = styled.div`
   margin: 0 auto;
   width: 390px;
-  height: 100vh;
+  height: 829px;
   background-color: white;
 `;
 
