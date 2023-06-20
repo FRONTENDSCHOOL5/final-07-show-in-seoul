@@ -1,10 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const Button = ({ size, children, active, disabled, color }) => {
+const Button = ({ size, children, active, disabled, color, navigate }) => {
+  const navi = useNavigate();
+
+  const handleClick = () => {
+    if (navigate) {
+      navi(navigate);
+    }
+  };
+
   return (
     <>
-      <StyledButton size={size} active={active} disabled={disabled} color={color}>
+      <StyledButton size={size} active={active} disabled={disabled} color={color} onClick={handleClick}>
         {children}
       </StyledButton>
     </>
@@ -19,7 +28,7 @@ const SizeValue = size => {
       width: '322px',
       height: '44px',
       fontSize: '16px',
-      fontWeight: 'bold',
+      fontWeight: 'normal',
     },
     Medium: {
       width: '120px',
