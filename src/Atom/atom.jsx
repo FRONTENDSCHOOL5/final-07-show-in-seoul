@@ -1,14 +1,24 @@
 import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
+const { persistAtom } = recoilPersist();
+
 export const Token = atom({
 	key: "setToken",
 	default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const Show = atom({
-  key: "CultureShow",
-  default: {},
+  key: "Show",
+  default: [{hello: 'hello'}, {good: 'wow'}],
+  effects_UNSTABLE: [persistAtom],
+})
+
+export const TotalShow = atom({
+  key: "TotalShow",
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
 })
 
 export const InterestTags = atom({
