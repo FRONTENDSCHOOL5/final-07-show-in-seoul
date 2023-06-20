@@ -13,8 +13,16 @@ const Error = ({ text, buttonStyle }) => {
       <p className="error-text">{text}</p>
 
       {/* buttonStyle을 404, category 두가지로 나누었습니다. */}
-      {buttonStyle === '404' && <Button size="Medium">이전 페이지</Button>}
-      {buttonStyle === 'category' && <Button size="Medium">돌아가기</Button>}
+      {buttonStyle === '404' && (
+        <Button size="Medium" navigate="-1">
+          이전 페이지
+        </Button>
+      )}
+      {buttonStyle === 'category' && (
+        <Button size="Medium" navigate="/categorypage">
+          다시 선택하기
+        </Button>
+      )}
     </SError>
   );
 };
