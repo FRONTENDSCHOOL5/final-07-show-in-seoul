@@ -3,13 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const SearchContent = ({ data, keyword }) => {
+  // 키워드 색상 변경을 위해 문자열로 변경
+  const beforeStr = JSON.stringify(data.title);
+  const chageStr = beforeStr.replace(new RegExp(keyword, 'g'), `<span>${keyword}</span>`);
+  const afterStr = JSON.parse(chageStr);
+
   return (
     <SLink to="/ShowDetailPage">
       <img src={data.main_img} alt="포스터" />
-      <div class="container">
-        <h2>{data.title}</h2>
+      <div className="container">
+        <h2 dangerouslySetInnerHTML={{ __html: afterStr }} />
+        {/* <h2>{data.title}</h2> */}
         <p>
-          {data.place} / {data.guname}
+          {data.guname} | {data.place}
         </p>
         <p>{data.date}</p>
       </div>
@@ -35,7 +41,7 @@ const SLink = styled(Link)`
     h2 {
       display: inline-block;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 900;
       margin-top: 5px;
       /* 여러줄 다 보이기 */
       overflow: hidden;
@@ -44,6 +50,9 @@ const SLink = styled(Link)`
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      span {
+        color: var(--warning);
+      }
     }
     p {
       font-size: 12px;
