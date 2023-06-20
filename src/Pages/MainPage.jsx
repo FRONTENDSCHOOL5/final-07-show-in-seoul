@@ -20,8 +20,8 @@ const MainPage = () => {
 export default MainPage;
 
 const SectionLayout = styled.section`
-  flex: 1;
-  overflow: scroll;
+  height: calc(100vh - 108px);
+  overflow-y: scroll;
   /* 스크롤바 숨기기 */
   &::-webkit-scrollbar {
     display: none;
