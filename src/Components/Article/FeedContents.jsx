@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import showInfo from '../../Assets/Data/서울시 문화행사 정보.json';
+// import showInfo from '../../Assets/Data/서울시 문화행사 정보.json';
 import Content from './Content';
 
-const FeedContents = () => {
+const FeedContents = ({ showInfo }) => {
   return (
     <SFeedContents>
       {/* json으로 받아온 데이터 map 함수 활용하여 표시 */}
-      {showInfo.DATA.map((data, i) => {
+      {showInfo.map((data, i) => {
         return (
           <li key={i}>
             <Content data={data} />
