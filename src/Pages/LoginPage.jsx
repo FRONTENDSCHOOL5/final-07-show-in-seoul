@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import SInputBox from '../Components/Common/InputBox';
 import Button from '../Components/Common/Button';
 import logoImage from '../Assets/Img/logo.svg';
 import kakao from '../Assets/Img/kakao.svg';
 import google from '../Assets/Img/google.svg';
 import naver from '../Assets/Img/naver.svg';
+import Login from '../Components/Login/Login';
 
 const LoginPage = () => {
   return (
@@ -14,12 +14,10 @@ const LoginPage = () => {
       <img src={logoImage} alt="로고 이미지" className="logo" />
       <section className="modal">
         <div className="login-form">
-          <SInputBox title="이메일" />
-          <SInputBox title="비밀번호" />
-          <Button size="Large">로그인</Button>
+          <Login></Login>
         </div>
         <div className="signup-form">
-          <Button size="Large" color="gray" className="join-btn">
+          <Button size="Large" color="gray" className="join-btn" navigate="/signuppage">
             회원가입
           </Button>
           <div className="sns-login">
@@ -45,10 +43,11 @@ const SContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -48px;
   background-color: var(--main);
 
   .logo {
-    margin-top: 120px;
+    margin-top: 100px;
   }
 
   .modal {
@@ -56,28 +55,43 @@ const SContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
     background-color: #ffffff;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 100px;
     border-radius: 20px 20px 0 0;
   }
 
-  .login-form,
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: -38px;
-    gap: 30px;
+  label {
+    margin-top: 40px;
+  }
+
+  #email {
+    margin-bottom: -20px;
+  }
+
+  #password {
+    margin-bottom: 15px;
+  }
+
+  .input-content {
+    margin-bottom: 10px;
+    padding-top: 60px;
+  }
+
+  button {
+    margin-top: 15px;
   }
 
   .kakao,
   .google,
   .naver {
-    margin: 0 15px -50px 15px;
+    margin: 0 15px -80px 15px;
     cursor: pointer;
     width: 75px;
+  }
+
+  .failedText {
+    color: #fc6d6d;
+    font-size: 14px;
   }
 `;
