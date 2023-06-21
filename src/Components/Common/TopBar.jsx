@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import TopBarBtn from './TopBarBtn';
+import SearchInput from '../Search/SearchInput';
 import iconLogo from '../../Assets/Icon/logo-text.svg';
 import iconArrow from '../../Assets/Icon/icon-arrow-left.svg';
 import iconLogout from '../../Assets/Icon/icon-logout.svg';
 import iconMore from '../../Assets/Icon/icon-more-vertical.svg';
 
 // 왼쪽 요소 : 미입력시 기본 값 쇼인서울 로고
-const LeftEl = ({ leftEl }) => {
+const LeftEl = ({ leftEl, setKeyword }) => {
   if (leftEl === 'back') {
     return <TopBarBtn icon={iconArrow} altTxt={'뒤로가기'} />;
   } else if (leftEl === 'search') {
-    return <input placeholder="행사 검색" />;
+    return <SearchInput setKeyword={setKeyword} />;
   } else {
     return <TopBarBtn id="showLogo" icon={iconLogo} altTxt={'쇼!인서울 피드'} />;
   }
@@ -40,11 +41,11 @@ const RightEl = ({ rightEl }) => {
 };
 
 // 최종 표시될 상단바
-const TopBar = ({ leftEl, rightEl }) => {
+const TopBar = ({ leftEl, rightEl, setKeyword }) => {
   return (
     <>
       <SHeader>
-        <LeftEl leftEl={leftEl} />
+        <LeftEl leftEl={leftEl} setKeyword={setKeyword} />
         <RightEl rightEl={rightEl} />
       </SHeader>
     </>
@@ -67,14 +68,18 @@ const SHeader = styled.header`
   #showLogo {
     width: 103px;
   }
-  input {
+  form {
     width: 100%;
-    height: 32px;
-    background-color: #f2f2f2;
-    border-radius: 30px;
-    &::placeholder {
-      color: #c4c4c4;
-      padding: 10px 0 0 15px;
+    /* padding: 0 0 0 15px; */
+    input {
+      width: calc(100% - 30px);
+      height: 32px;
+      background-color: #f2f2f2;
+      border-radius: 30px;
+      padding: 0 15px;
+      &::placeholder {
+        color: #c4c4c4;
+      }
     }
   }
 `;
