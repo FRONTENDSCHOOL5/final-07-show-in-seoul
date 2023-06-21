@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import showInfo from '../../Assets/Data/서울시 문화행사 정보.json';
 import Content from './Content';
 
 const FeedContents = ({ showInfo }) => {
