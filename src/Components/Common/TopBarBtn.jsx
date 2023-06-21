@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TopBarBtn = ({ id, icon, altTxt }) => {
+const TopBarBtn = ({ id, type, icon, altTxt, onClick }) => {
   console.log(altTxt);
   return (
-    <SIconBtn>
+    <SIconBtn type={type} onClick={onClick}>
       <img id={id} src={icon} alt={altTxt} />
     </SIconBtn>
   );
