@@ -15,6 +15,7 @@ import SearchPage from './Pages/SearchPage';
 import ShowDetailPage from './Pages/ShowDetailPage';
 import SignupPage from './Pages/SignupPage';
 import LayoutStyle from './Styles/LayoutStyle';
+import TokenErrorPage from './Pages/TokenErrorPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <LayoutStyle>
         <Routes>
           <Route path="/" element={<SplashPage />} />
+          <Route path="/*" element={<ErrorPage />} />
           <Route path="/loginpage" element={<LoginPage />} />
           <Route path="/signuppage" element={<SignupPage />} />
           <Route path="/searchpage" element={<SearchPage />} />
@@ -35,6 +37,7 @@ function App() {
           <Route path="/postdetailpage" element={<PostDetailPage />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/errorpage" element={<ErrorPage />} />
+          <Route path="/tokenerrorpage" element={<TokenErrorPage />} />
           <Route path="/categorypage" element={<CategoryPage />} />
         </Routes>
       </LayoutStyle>

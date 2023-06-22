@@ -23,6 +23,11 @@ const Error = ({ text, buttonStyle }) => {
           다시 선택하기
         </Button>
       )}
+      {buttonStyle === 'tokenError' && (
+        <Button size="Medium" navigate="/loginpage">
+          로그인하기
+        </Button>
+      )}
     </SError>
   );
 };
