@@ -4,7 +4,6 @@ import { constants } from './constants';
 import Tags from './Tags';
 
 const TagList = constants.area.map(el => {
-  console.log(el);
   return <Tags text={el} />;
 });
 
