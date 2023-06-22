@@ -1,15 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
-import { useNavigate } from 'react-router-dom';
 
 const PostHeader = ({ userName, accountName }) => {
-  const navigate = useNavigate();
-  const goToEditPosting = () => {
-    navigate('/postingpage');
-    
-  };
-
   return (
     <>
       <SPostHeaderDiv>
@@ -20,7 +13,7 @@ const PostHeader = ({ userName, accountName }) => {
             <SPostUserId>{accountName}</SPostUserId>
           </div>
         </a>
-        <button onClick={goToEditPosting}></button>
+        <button></button>
       </SPostHeaderDiv>
     </>
   );
