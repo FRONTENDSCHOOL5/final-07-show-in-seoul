@@ -39,8 +39,8 @@ const SLink = styled(Link)`
     /* 여러줄 다 보이기 */
     overflow: hidden;
     white-space: normal;
-    line-height: 1.2;
     display: -webkit-box;
+    line-height: 1.2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
@@ -48,6 +48,10 @@ const SLink = styled(Link)`
     font-size: 12px;
     margin-top: 5px;
     line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     &:nth-child(2) {
       color: salmon;
     }
