@@ -7,13 +7,13 @@ const Button = ({ size, children, active, disabled, color, navigate }) => {
 
   const handleClick = () => {
     if (navigate) {
-      navi(navigate);
+      navigate === '-1' ? navi(-1) : navi(navigate);
     }
   };
 
   return (
     <>
-      <StyledButton size={size} active={active} disabled={disabled} color={color} onClick={handleClick}>
+      <StyledButton type="button" size={size} active={active} disabled={disabled} color={color} onClick={handleClick}>
         {children}
       </StyledButton>
     </>
