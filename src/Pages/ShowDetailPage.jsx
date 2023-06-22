@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import ShowDeatailTopBar from '../Components/Article/ShowDeatailTopBar';
 import ShowDetailInfo from '../Components/Article/ShowDetailInfo';
 import BottomNav from '../Components/Common/BottomNav';
+import { useNavigate } from 'react-router-dom';
+import TokenCheck from '../Utils/TokenCheck';
 
 const ShowDetailPage = () => {
-  const location = useLocation();
-  const detailData = location.state;
+  const detailData = useLocation().state;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!detailData) {
+      navigate('/errorpage');
+    }
+  }, [detailData, navigate]);
 
   return (
     <>
+      <TokenCheck />
       <SShowDetail>
         <div className="shadowStyle" />
         <ShowDeatailTopBar />
-        <div className="posterImg">
-          <img src={detailData.MAIN_IMG} alt="포스터" />
-        </div>
-        <ShowDetailInfo detailData={detailData} />
+        <div className="posterImg">{detailData && <img src={detailData.MAIN_IMG} alt="포스터" />}</div>
+        {detailData && <ShowDetailInfo detailData={detailData} />}
       </SShowDetail>
       <BottomNav />
     </>

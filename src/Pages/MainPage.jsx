@@ -24,15 +24,14 @@ const MainPage = () => {
     fetchData();
   }, []);
 
-  const showInfo = getShow.slice(1);
-  console.log(showInfo);
+  console.log(getShow);
 
   return (
     <>
       <TopBar />
       <SectionLayout>
         <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
-        <FeedContents showInfo={showInfo} />
+        <FeedContents showInfo={getShow} />
       </SectionLayout>
       <BottomNav />
     </>
