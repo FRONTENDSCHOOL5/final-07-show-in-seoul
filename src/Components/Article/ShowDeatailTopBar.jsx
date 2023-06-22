@@ -13,7 +13,7 @@ const ShowDeatailTopBar = () => {
 
   return (
     <SShowDetailTopBar>
-      <div class="topBtns">
+      <div className="topBtns">
         <TopBarBtn id="arrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} onClick={handleClick} />
         <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} />
       </div>

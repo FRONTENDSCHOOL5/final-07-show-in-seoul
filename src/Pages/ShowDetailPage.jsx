@@ -14,7 +14,7 @@ const ShowDetailPage = () => {
       <SShowDetail>
         <div className="shadowStyle" />
         <ShowDeatailTopBar />
-        <div class="posterImg">
+        <div className="posterImg">
           <img src={detailData.MAIN_IMG} alt="포스터" />
         </div>
         <ShowDetailInfo detailData={detailData} />

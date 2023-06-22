@@ -20,7 +20,7 @@ const ShowDetailInfo = ({ detailData }) => {
         <Tags text={showCodeName(detailData.CODENAME)} />
         <Tags text={showState(detailData.STRTDATE, detailData.END_DATE)} />
       </div>
-      <div class="info-txt">
+      <div className="info-txt">
         <h2>{detailData.TITLE}</h2>
         <p className="place">
           {detailData.GUNAME} | {detailData.PLACE}
@@ -28,7 +28,7 @@ const ShowDetailInfo = ({ detailData }) => {
         <ul>
           {detailDataArr.map((data, i) => {
             return (
-              <li key={i} i>
+              <li key={i}>
                 <p className="list">{data.list}</p>
                 <p>{showDataTrim(data.data)}</p>
               </li>
