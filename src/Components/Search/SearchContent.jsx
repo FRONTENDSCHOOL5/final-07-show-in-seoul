@@ -9,7 +9,7 @@ const SearchContent = ({ data, keyword }) => {
   const afterStr = JSON.parse(chageStr);
 
   return (
-    <SLink to="/ShowDetailPage">
+    <SLink to="/ShowDetailPage" state={data}>
       <img src={data.MAIN_IMG} alt="포스터" />
       <div className="container">
         {/* 문자열을 html로 렌더링 해주는 속성 */}

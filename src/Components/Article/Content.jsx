@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Content = ({ data }) => {
   return (
-    <SLink to="/ShowDetailPage">
+    <SLink to="/ShowDetailPage" state={data}>
       <div className="imgBox">
         <img src={data.MAIN_IMG} alt="포스터 이미지" />
       </div>
