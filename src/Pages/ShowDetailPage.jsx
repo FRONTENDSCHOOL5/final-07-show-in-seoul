@@ -13,7 +13,7 @@ const ShowDetailPage = () => {
 
   useEffect(() => {
     if (!detailData) {
-      navigate('/errorpage');
+      navigate('/errorpage', { state: 'invalidAccess' });
     }
   }, [detailData, navigate]);
 
