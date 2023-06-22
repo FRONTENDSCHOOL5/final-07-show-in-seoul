@@ -90,7 +90,8 @@ const SContainer = styled.div`
     width: 75px;
   }
 
-  .failedText {
+  .failedText,
+  .bothEmptyText {
     color: #fc6d6d;
     font-size: 14px;
   }

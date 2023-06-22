@@ -21,6 +21,9 @@ function Login() {
     return true;
   };
 
+  // input 값이 모두 들어왔는지 확인
+  const isValidForm = email.length > 0 && password.length > 0;
+
   const LoginFunc = async e => {
     e.preventDefault();
     setFailedMessage(''); // 텍스트 초기화
@@ -49,7 +52,7 @@ function Login() {
       } else if (data.user) {
         console.log('로그인 성공!');
         setUserToken(data.user.token);
-        navigate('/mainpage'); // 로그인 성공 시 navigateTo 상태를 설정해줌
+        navigate('/mainpage');
       } else {
         console.log('로그인 예외');
       }
@@ -70,7 +73,9 @@ function Login() {
           onChange={e => setPassword(e.target.value)}
         />
         {FailedMessage && <p className="failedText">{FailedMessage}</p>}
-        <Button size="Large">로그인</Button>
+        <Button size="Large" disabled={!isValidForm}>
+          로그인
+        </Button>
       </form>
     </>
   );
