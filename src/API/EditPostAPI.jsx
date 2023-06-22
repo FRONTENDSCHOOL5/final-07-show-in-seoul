@@ -1,14 +1,16 @@
 import React from 'react';
+import { Token } from '../Atom/atom';
+import { useRecoilValue } from 'recoil';
+
 // 게시글 수정
 const EditPostAPI = async () => {
+  const getMyToken = useRecoilValue(Token);
   try {
     const response = await fetch(URL + '/post/' + '64931eadb2cb2056635c819e', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'Bearer ' +
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzZkOGRkYjJjYjIwNTY2MzJkMDE0ZiIsImV4cCI6MTY5MDY5NDUzMCwiaWF0IjoxNjg1NTEwNTMwfQ.IMMrE38HEj0wKkpBScEVd046lUSEYrluamzyMYxNu5k',
+        Authorization: 'Bearer ' + { getMyToken },
       },
       body: JSON.stringify({
         post: {
