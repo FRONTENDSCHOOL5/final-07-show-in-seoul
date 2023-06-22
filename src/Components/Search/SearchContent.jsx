@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { showDateForm } from '../../Utils/showDetailFunction';
 
 const SearchContent = ({ data, keyword }) => {
   // 키워드 색상 변경을 위해 문자열로 변경 후 replace
@@ -9,7 +10,7 @@ const SearchContent = ({ data, keyword }) => {
   const afterStr = JSON.parse(chageStr);
 
   return (
-    <SLink to="/ShowDetailPage">
+    <SLink to="/ShowDetailPage" state={data}>
       <img src={data.MAIN_IMG} alt="포스터" />
       <div className="container">
         {/* 문자열을 html로 렌더링 해주는 속성 */}
@@ -17,7 +18,7 @@ const SearchContent = ({ data, keyword }) => {
         <p>
           {data.GUNAME} | {data.PLACE}
         </p>
-        <p>{data.DATE}</p>
+        <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
       </div>
     </SLink>
   );
@@ -43,13 +44,7 @@ const SLink = styled(Link)`
       font-size: 14px;
       font-weight: 900;
       margin-top: 5px;
-      /* 여러줄 다 보이기 */
-      overflow: hidden;
-      white-space: normal;
       line-height: 1.2;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
       span {
         color: var(--warning);
       }
@@ -58,6 +53,10 @@ const SLink = styled(Link)`
       font-size: 12px;
       margin-top: 5px;
       line-height: 1.2;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
       :nth-child(3) {
         color: grey;
       }

@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { showDateForm } from '../../Utils/showDetailFunction';
 
 const Content = ({ data }) => {
   return (
-    <SLink to="/ShowDetailPage">
+    <SLink to="/ShowDetailPage" state={data}>
       <div className="imgBox">
         <img src={data.MAIN_IMG} alt="포스터 이미지" />
       </div>
       <p>{data.GUNAME}</p>
       <h2>{data.TITLE} </h2>
       <p>{data.PLACE}</p>
-      <p>{data.DATE}</p>
+      <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
     </SLink>
   );
 };
@@ -38,8 +39,8 @@ const SLink = styled(Link)`
     /* 여러줄 다 보이기 */
     overflow: hidden;
     white-space: normal;
-    line-height: 1.2;
     display: -webkit-box;
+    line-height: 1.2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
@@ -47,6 +48,10 @@ const SLink = styled(Link)`
     font-size: 12px;
     margin-top: 5px;
     line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     &:nth-child(2) {
       color: salmon;
     }
