@@ -42,5 +42,5 @@ export const showState = (startDate, endDate) => {
 
 // 정보가 null이면 '정보없음' 반환, 데이터 앞 공백 제거하는 함수
 export const showDataTrim = showData => {
-  return showData === null ? '정보없음' : showData.replace(/^\s+/g, '');
+  return showData === '' ? '정보없음' : showData.replace(/^\s+/g, '');
 };

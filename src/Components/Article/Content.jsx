@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { showDateForm } from '../../Utils/showDetailFunction';
 
 const Content = ({ data }) => {
   return (
@@ -11,7 +12,7 @@ const Content = ({ data }) => {
       <p>{data.GUNAME}</p>
       <h2>{data.TITLE} </h2>
       <p>{data.PLACE}</p>
-      <p>{data.DATE}</p>
+      <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
     </SLink>
   );
 };

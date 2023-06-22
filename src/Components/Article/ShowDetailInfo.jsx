@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Common/Button';
 import Tags from '../Profile/Tags';
-import { showCodeName, showState, showDataTrim } from '../../Utils/showDetailFunction';
+import { showCodeName, showDateForm, showState, showDataTrim } from '../../Utils/showDetailFunction';
 
 const ShowDetailInfo = ({ detailData }) => {
   const detailDataArr = [
     { list: '신청일자', data: detailData.RGSTDATE },
-    { list: '공연일자', data: detailData.DATE },
+    { list: '공연일자', data: showDateForm(detailData.STRTDATE, detailData.END_DATE) },
     { list: '이용대상', data: detailData.USE_TRGT },
     { list: '이용요금', data: detailData.USE_FEE },
   ];

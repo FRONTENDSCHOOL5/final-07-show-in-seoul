@@ -25,6 +25,7 @@ const MainPage = () => {
   }, []);
 
   const showInfo = getShow.slice(1);
+  console.log(showInfo);
 
   return (
     <>
