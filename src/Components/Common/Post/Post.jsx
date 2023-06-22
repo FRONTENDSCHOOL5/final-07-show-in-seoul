@@ -4,17 +4,17 @@ import PostHeader from './PostHeader';
 import PostContentButtons from './PostContentButtons';
 import PostContent from './PostContent';
 
-const Post = () => {
+const Post = ({ userName, accountName, postText, postImage }) => {
   return (
     <>
       {/* 게시물 전체 컨테이너  */}
       <SPostSection>
         {/* 게시물 헤더 */}
-        <PostHeader />
+        <PostHeader userName={userName} accountName={accountName} />
         {/* 게시물 컨텐트 전체 Div */}
         <SPostContentDiv>
           {/* 게시물 내용물(텍스트와 사진) */}
-          <PostContent />
+          <PostContent postText={postText} postImage={postImage} />
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
           <PostContentButtons />
           {/* 게시물 맨 밑, 날짜 표시 */}
@@ -46,6 +46,5 @@ const SPostContentDate = styled.p`
   font-size: 10px;
   font-weight: 400;
   color: #767676;
-  margin-top: 5px;
-  cursor: pointer;
+  margin-top: 15px;
 `;

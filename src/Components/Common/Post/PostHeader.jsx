@@ -1,19 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
+import { useNavigate } from 'react-router-dom';
 
-const PostHeader = () => {
+const PostHeader = ({ userName, accountName }) => {
+  const navigate = useNavigate();
+  const goToEditPosting = () => {
+    navigate('/postingpage');
+    
+  };
+
   return (
     <>
       <SPostHeaderDiv>
         <a>
           <img src="./src/assets/basic-profile-img-.svg" alt="" />
           <div>
-            <SPostUserName>찰리 채플린의 초콜릿 공장</SPostUserName>
-            <SPostUserId>@ char_chocolate</SPostUserId>
+            <SPostUserName>{userName}</SPostUserName>
+            <SPostUserId>{accountName}</SPostUserId>
           </div>
         </a>
-        <button></button>
+        <button onClick={goToEditPosting}></button>
       </SPostHeaderDiv>
     </>
   );
@@ -24,7 +31,6 @@ export default PostHeader;
 const SPostHeaderDiv = styled.div`
   display: flex;
   // 게시물 헤더 속, 게시물 작성자의 프로필사진/이름/아이디 감싸준거
-  // (클릭 했을 경우 작성자 프로필로 이동 시켜주기 위함)
   a {
     display: flex;
     cursor: pointer;
@@ -45,7 +51,8 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 130px;
+    display: block;
+    margin-left: 250px;
   }
 `;
 

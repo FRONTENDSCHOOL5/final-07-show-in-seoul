@@ -1,18 +1,14 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const PostContent = () => {
+const PostContent = ({ postText, postImage }) => {
   return (
     <>
       <SPostContentA>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex commodi repellendus ratione optio nostrum
-          maiores, eaque officiis quibusdam, fuga qui illo architecto adipisci, ducimus dicta reprehenderit quasi
-          voluptatem amet dignissimos.
-        </p>
+        <p>{postText}</p>
         <ul>
           <li>
-            <img src="" alt=""></img>
+            <img src={postImage} alt=""></img>
           </li>
         </ul>
       </SPostContentA>
@@ -24,6 +20,7 @@ export default PostContent;
 
 const SPostContentA = styled.a`
   display: block;
+  cursor: pointer;
   // 게시물 텍스트
   p {
     font-size: 14px;
@@ -42,7 +39,11 @@ const SPostContentA = styled.a`
     // 게시물 사진
     li {
       height: 228px;
-      background: url('') no-repeat / cover;
+      img {
+        height: 228px;
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 `;
