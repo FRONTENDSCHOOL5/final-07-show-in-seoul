@@ -15,7 +15,6 @@ import SearchPage from './Pages/SearchPage';
 import ShowDetailPage from './Pages/ShowDetailPage';
 import SignupPage from './Pages/SignupPage';
 import LayoutStyle from './Styles/LayoutStyle';
-import TokenErrorPage from './Pages/TokenErrorPage';
 
 function App() {
   return (
@@ -37,7 +36,6 @@ function App() {
           <Route path="/postdetailpage" element={<PostDetailPage />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/errorpage" element={<ErrorPage />} />
-          <Route path="/tokenerrorpage" element={<TokenErrorPage />} />
           <Route path="/categorypage" element={<CategoryPage />} />
         </Routes>
       </LayoutStyle>
