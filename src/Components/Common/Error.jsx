@@ -4,30 +4,31 @@ import error from '../../Assets/Img/error.svg';
 import Button from './Button';
 
 const Error = ({ text, buttonStyle }) => {
+  let move = '/';
+  let message = '';
+
+  // 버튼스타일에 따른 렌더링값 설정
+  if (buttonStyle === '404') {
+    move = '-1';
+    message = '이전 페이지';
+  } else if (buttonStyle === 'invalidAccess') {
+    move = '/mainpage';
+    message = '메인 페이지';
+  } else if (buttonStyle === 'tokenError') {
+    move = '/loginpage';
+    message = '로그인하기';
+  } else if (buttonStyle === 'category') {
+    move = '/categorypage';
+    message = '다시 선택하기';
+  }
+
   return (
     <SError>
-      {/* 에러 페이지 기본 이미지입니다*/}
       <img src={error} alt="에러화면 이미지입니다" className="error-img" />
-
-      {/* 페이지에 맞는 에러 text를 작성해주세요*/}
       <p className="error-text">{text}</p>
-
-      {/* buttonStyle을 404, category 두가지로 나누었습니다. */}
-      {buttonStyle === '404' && (
-        <Button size="Medium" navigate="-1">
-          이전 페이지
-        </Button>
-      )}
-      {buttonStyle === 'category' && (
-        <Button size="Medium" navigate="/categorypage">
-          다시 선택하기
-        </Button>
-      )}
-      {buttonStyle === 'tokenError' && (
-        <Button size="Medium" navigate="/loginpage">
-          로그인하기
-        </Button>
-      )}
+      <Button size="Medium" navigate={move}>
+        {message}
+      </Button>
     </SError>
   );
 };
