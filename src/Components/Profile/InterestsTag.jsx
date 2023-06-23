@@ -1,16 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { constants } from './constants';
 import Tags from './Tags';
-
-const TagList = constants.category.map(el => {
-  return <Tags text={el} />;
-});
+import { InterestTags } from '../../Atom/atom';
+import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
 
 const InterestsTag = () => {
+  const setInterestTags = useSetRecoilState(InterestTags);
+  const getInterestTags = useRecoilValue(InterestTags);
+  const resetInterestsTags = useResetRecoilState(InterestTags);
+
   return (
     <SInterests>
-      <div className="interest-tag-wrap">{TagList}</div>
+      {getInterestTags.map((el, idx) => {
+        return (
+          <Tags
+            index={idx}
+            status={el[1]}
+            text={el[0]}
+            getTags={getInterestTags}
+            setTags={setInterestTags}
+            resetTags={resetInterestsTags}
+          />
+        );
+      })}
     </SInterests>
   );
 };
@@ -18,17 +30,10 @@ const InterestsTag = () => {
 export default InterestsTag;
 
 const SInterests = styled.div`
-  .interest-tag-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: flex-start;
-  }
-
-  .interest-tag-wrap .tags {
-    padding: 5px 18px;
-    width: auto;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 15px;
+  width: 100%;
+  justify-content: center;
 `;

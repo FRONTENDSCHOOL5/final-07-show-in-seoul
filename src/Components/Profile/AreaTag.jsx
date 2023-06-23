@@ -1,16 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import { constants } from './constants';
 import Tags from './Tags';
-
-const TagList = constants.area.map(el => {
-  return <Tags text={el} />;
-});
+import { AreaTags } from '../../Atom/atom';
+import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
 
 const AreaTag = () => {
+  const setAreaTags = useSetRecoilState(AreaTags);
+  const getAreaTags = useRecoilValue(AreaTags);
+  const resetAreaTags = useResetRecoilState(AreaTags);
+
   return (
     <SArea>
-      <div className="area-tag-wrap">{TagList}</div>
+      {getAreaTags.map((el, idx) => {
+        return (
+          <Tags
+            index={idx}
+            status={el[1]}
+            text={el[0]}
+            setTags={setAreaTags}
+            getTags={getAreaTags}
+            resetTags={resetAreaTags}
+          />
+        );
+      })}
     </SArea>
   );
 };
@@ -18,13 +30,10 @@ const AreaTag = () => {
 export default AreaTag;
 
 const SArea = styled.div`
-  .area-tag-wrap {
-    display: flex;
-    column-gap: 15px;
-    row-gap: 10px;
-    flex-wrap: wrap;
-    width: 350px;
-    margin: 0 auto;
-    justify-content: space-between;
-  }
+  display: flex;
+  column-gap: 11px;
+  row-gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 `;
