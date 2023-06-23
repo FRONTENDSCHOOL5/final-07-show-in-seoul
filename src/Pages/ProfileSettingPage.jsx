@@ -7,14 +7,15 @@ import { useState } from 'react';
 import { SignUpAPI } from '../API/User';
 import { LoginAPI } from '../API/User';
 import { Token } from '../Atom/atom';
+import { Myaccountname } from '../Atom/atom';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-// import { signUpHandler } from '../Components/Login/SignUp';
 
 const ProfileSettingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const setToken = useSetRecoilState(Token);
+  const setMyAccountName = useSetRecoilState(Myaccountname);
   const [profile, setProfile] = useState({
     username: '',
     email: location.state.email,
@@ -41,6 +42,7 @@ const ProfileSettingPage = () => {
       const loginResponse = await LoginAPI({ user: { email: profile.email, password: profile.password } });
       if (loginResponse.hasOwnProperty('user')) {
         setToken(loginResponse.user.token);
+        setMyAccountName(loginResponse.user.accountname);
         navigate('/mainpage');
       } else {
         console.log('회원가입 후 로그인 실패');
