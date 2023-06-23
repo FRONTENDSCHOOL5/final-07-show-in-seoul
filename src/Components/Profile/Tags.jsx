@@ -1,45 +1,54 @@
 import React from 'react';
-import { useState } from 'react';
 import styled from 'styled-components';
-import { constants } from './constants';
 
-const Tags = props => {
-  //   function onAndOff(el) {
-  //     if (!isSelected) {
-  //       constants.el = true;
-  //       setIsSelected(true);
-  //       // el.style.color = white;
-  //       // el.style.background: '#961f1f';
-  //     } else {
-  //       constants.el = false;
-  //       setIsSelected(false);
-  //     }
-  //   }
+const Tags = ({ text, status, getTags, setTags, resetTags }) => {
+  const toggle = e => {
+    if (e.target.textContent === '전체') {
+      resetTags();
+    } else {
+      setTags(() => {
+        const newArr = [];
+        getTags.forEach((el, i) => {
+          newArr.push(el.slice());
+          if (el[0] === e.target.textContent) {
+            if (el[1]) {
+              e.target.classList.remove('active');
+            } else {
+              e.target.classList.add('active');
+            }
+            newArr[i].push(!newArr[i].pop());
+          }
+        });
+        newArr[0].pop();
+        newArr[0].push(false);
+        return newArr;
+      });
+    }
+  };
 
-  // const [isSelected, setIsSelected] = useState(false);
-
-  return (
-    <STags>
-      <div className="tags">{props.text}</div>
-    </STags>
-  );
+  if (status)
+    return (
+      <STags className="active" onClick={toggle}>
+        {text}
+      </STags>
+    );
+  return <STags onClick={toggle}>{text}</STags>;
 };
 
 export default Tags;
 
 const STags = styled.div`
-  .tags {
-    padding: 5px 0;
-    background-color: #f1f0f0;
-    color: #878787;
-    font-size: 12px;
-    border-radius: 30px;
-    width: 58px;
-    text-align: center;
-  }
+  padding: 6px 14px;
+  background-color: #f1f0f0;
+  color: #878787;
+  font-size: 14px;
+  border-radius: 30px;
+  min-width: 60px;
+  text-align: center;
+  cursor: pointer;
 
-  /* .tags.active {
+  &.active {
     color: white;
     background-color: #961f1f;
-  } */
+  }
 `;
