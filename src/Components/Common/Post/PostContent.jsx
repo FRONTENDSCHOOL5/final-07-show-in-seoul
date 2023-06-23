@@ -40,5 +40,10 @@ const SPostContentA = styled.a`
       height: 228px;
       background: url('') no-repeat / cover;
     }
+    img {
+      height: 228px;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 `;

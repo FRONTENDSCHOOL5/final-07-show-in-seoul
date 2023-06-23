@@ -8,8 +8,9 @@ const PostHeader = ({ postsData }) => {
     <>
       <SPostHeaderDiv>
         <a>
-          {/* 프로필 이미지 데이터가 없다면 기본 이미지로 대체*/}ㄴ
-          {/* {postsData.image ? <img src={postsData.image} alt="" /> : <img src={basicProfileImg} alt="" />} */}
+          {/* 프로필 이미지 데이터가 없다면 기본 이미지로 대체*/}
+          {/* {postsData.image ? <img src={프로필 설정페이지에서 받아오는 이미지} alt="" /> : <img src={basicProfileImg} alt="" />} */}
+          <img src={basicProfileImg} alt="" />
           <div>
             <SPostUserName>{postsData.author.username}</SPostUserName>
             <SPostUserId>{postsData.author.accountname}</SPostUserId>

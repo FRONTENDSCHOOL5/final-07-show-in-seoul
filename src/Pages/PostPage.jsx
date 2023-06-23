@@ -51,16 +51,7 @@ const PostPage = () => {
       <TopBar rightEl="newPost" />
       <SUl>
         {postsData.length > 0 ? (
-          postsData.map(el => (
-            <Post
-              userName={`${el.author.username}`}
-              accountName={`${el.author.accountname}`}
-              postText={`${el.content}`}
-              postImage={`${el.image}`}
-              // 게시글 아이디 > 게시글 수정할 때 필요
-              postId={`${el.id}`}
-            />
-          ))
+          postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
           <li className="noContent">게시글이 존재하지 않습니다.</li>
         )}
