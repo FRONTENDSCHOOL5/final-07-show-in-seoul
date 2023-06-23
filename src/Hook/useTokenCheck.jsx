@@ -9,7 +9,7 @@ const useTokenCheck = () => {
   const location = useLocation().pathname;
 
   useEffect(() => {
-    if (tokenCheck) {
+    if (!tokenCheck) {
       navigate('/errorpage', { state: location });
     }
   }, [tokenCheck, navigate, location]);

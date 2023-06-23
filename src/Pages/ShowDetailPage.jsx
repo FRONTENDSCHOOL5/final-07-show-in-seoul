@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import useTokenCheck from '../Hook/useTokenCheck';
 
 const ShowDetailPage = () => {
-  useTokenCheck();
+  // useTokenCheck();
   const detailData = useLocation().state;
   const navigate = useNavigate();
 
