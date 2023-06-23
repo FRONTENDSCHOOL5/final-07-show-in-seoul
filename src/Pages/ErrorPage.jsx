@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import SError from '../Components/Common/Error';
+import Error from '../Components/Common/Error';
 import { useLocation } from 'react-router-dom';
 
 const ErrorCheck = ({ errorCheck }) => {
   // 메인페이지, 검색페이지를 통하지 않고 ShowDetailPage에 접근하는 경우
   if (errorCheck === 'invalidAccess') {
-    return <SError text="잘못된 접근경로 입니다 :(" buttonStyle="invalidAccess"></SError>;
+    return <Error text="잘못된 접근경로 입니다 :(" buttonStyle="invalidAccess"></Error>;
   }
   // errorCheck 에 '/' 로 시작하는 경로 정보가 들어왔을 경우 : 토큰 에러
   else if (errorCheck && errorCheck.startsWith('/')) {
-    return <SError text="잘못된 접근경로 입니다 :(" buttonStyle="tokenError"></SError>;
+    return <Error text="잘못된 접근경로 입니다 :(" buttonStyle="tokenError"></Error>;
   }
   // 위 사항에서 찾을 수 없는 경우의 모든 에러
   else {
-    return <SError text="페이지를 찾을 수 없습니다 :(" buttonStyle="404"></SError>;
+    return <Error text="페이지를 찾을 수 없습니다 :(" buttonStyle="404"></Error>;
   }
 };
 

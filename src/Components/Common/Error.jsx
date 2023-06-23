@@ -26,9 +26,11 @@ const Error = ({ text, buttonStyle }) => {
     <SError>
       <img src={error} alt="에러화면 이미지입니다" className="error-img" />
       <p className="error-text">{text}</p>
-      <Button size="Medium" navigate={move}>
-        {message}
-      </Button>
+      {buttonStyle && (
+        <Button size="Medium" navigate={move}>
+          {message}
+        </Button>
+      )}
     </SError>
   );
 };
