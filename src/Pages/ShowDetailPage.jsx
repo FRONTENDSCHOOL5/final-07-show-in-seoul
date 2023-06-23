@@ -5,9 +5,10 @@ import ShowDeatailTopBar from '../Components/Article/ShowDeatailTopBar';
 import ShowDetailInfo from '../Components/Article/ShowDetailInfo';
 import BottomNav from '../Components/Common/BottomNav';
 import { useNavigate } from 'react-router-dom';
-import TokenCheck from '../Utils/TokenCheck';
+import useTokenCheck from '../Hook/useTokenCheck';
 
 const ShowDetailPage = () => {
+  useTokenCheck();
   const detailData = useLocation().state;
   const navigate = useNavigate();
 
@@ -19,7 +20,6 @@ const ShowDetailPage = () => {
 
   return (
     <>
-      <TokenCheck />
       <SShowDetail>
         <div className="shadowStyle" />
         <ShowDeatailTopBar />
