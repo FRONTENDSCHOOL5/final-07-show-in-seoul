@@ -9,6 +9,12 @@ export const Token = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const MyAccountName = atom({
+  key: 'MyAccountName',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const Show = atom({
   key: 'Show',
   default: [],

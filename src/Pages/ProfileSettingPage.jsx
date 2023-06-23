@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { SignUpAPI } from '../API/User';
 import { LoginAPI } from '../API/User';
 import { Token } from '../Atom/atom';
-import { Myaccountname } from '../Atom/atom';
+import { MyAccountName } from '../Atom/atom';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const ProfileSettingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const setToken = useSetRecoilState(Token);
-  const setMyAccountName = useSetRecoilState(Myaccountname);
+  const setMyAccountName = useSetRecoilState(MyAccountName);
   const [profile, setProfile] = useState({
     username: '',
     email: location.state.email,
