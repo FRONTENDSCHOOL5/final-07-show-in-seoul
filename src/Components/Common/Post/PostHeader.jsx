@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
+import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
-const PostHeader = () => {
+const PostHeader = ({ postsData }) => {
   return (
     <>
       <SPostHeaderDiv>
         <a>
-          <img src="./src/assets/basic-profile-img-.svg" alt="" />
+          {/* 프로필 이미지 데이터가 없다면 기본 이미지로 대체*/}ㄴ
+          {/* {postsData.image ? <img src={postsData.image} alt="" /> : <img src={basicProfileImg} alt="" />} */}
           <div>
-            <SPostUserName>찰리 채플린의 초콜릿 공장</SPostUserName>
-            <SPostUserId>@ char_chocolate</SPostUserId>
+            <SPostUserName>{postsData.author.username}</SPostUserName>
+            <SPostUserId>{postsData.author.accountname}</SPostUserId>
           </div>
         </a>
         <button></button>
