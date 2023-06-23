@@ -79,4 +79,10 @@ const SUl = styled.ul`
   &::-webkit-scrollbar {
     display: none;
   }
+  .noContent {
+    color: #dbdbdb;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 300px;
+  }
 `;
