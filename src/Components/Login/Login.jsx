@@ -4,8 +4,7 @@ import SInputBox from '../Common/InputBox';
 import Button from '../Common/Button';
 import { IsValidEmailAPI, LoginAPI } from '../../API/User';
 import { useNavigate } from 'react-router-dom';
-import { Token } from '../../Atom/atom';
-import { MyAccountName } from '../Atom/atom';
+import { Token, MyAccountName } from '../../Atom/atom';
 import { useSetRecoilState } from 'recoil';
 
 function Login() {
