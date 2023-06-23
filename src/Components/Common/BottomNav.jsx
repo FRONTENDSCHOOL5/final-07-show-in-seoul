@@ -12,10 +12,20 @@ import iconPostFill from '../../Assets/Icon/icon-post-fill.svg';
 import iconUserFill from '../../Assets/Icon/icon-user-fill.svg';
 import { Link, useLocation } from 'react-router-dom';
 
+import { atom } from 'recoil';
+import { MyAccountName } from '../../Atom/atom';
+
 const BottomNav = () => {
+  const GetMyAccountName = atom(MyAccountName);
   // navigation 아이콘 데이터
   const iconList = [
-    { id: 1, title: '카테고리', off: iconCategory, on: iconCategoryFill, link: ['/categorypage'] },
+    {
+      id: 1,
+      title: '카테고리',
+      off: iconCategory,
+      on: iconCategoryFill,
+      link: ['/categorypage', { state: GetMyAccountName }],
+    },
     { id: 2, title: '검색', off: iconSearch, on: iconSearchFill, link: ['/searchpage'] },
     { id: 3, title: '홈', off: iconHome, on: iconHomeFill, link: ['/mainpage'] },
     { id: 4, title: '게시판', off: iconPost, on: iconPostFill, link: ['/postpage'] },
