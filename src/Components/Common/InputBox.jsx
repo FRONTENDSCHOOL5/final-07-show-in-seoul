@@ -16,6 +16,7 @@ const InputBox = props => {
         value={props.value}
         onChange={props.onChange}
       />
+      {props.FailedMessage && <p className="failedText">{props.FailedMessage}</p>}
     </SInputBox>
   );
 };

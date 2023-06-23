@@ -61,37 +61,15 @@ const SContainer = styled.div`
     border-radius: 20px 20px 0 0;
   }
 
-  label {
-    margin-top: 40px;
+  .login-form {
+    display: flex;
+    flex-direction: column;
   }
 
-  #email {
-    margin-bottom: -20px;
-  }
-
-  #password {
-    margin-bottom: 15px;
-  }
-
-  .input-content {
-    margin-bottom: 10px;
-    padding-top: 60px;
-  }
-
-  button {
-    margin-top: 15px;
-  }
-
-  .kakao,
-  .google,
-  .naver {
-    margin: 0 15px -80px 15px;
+  .sns-login {
+    display: flex;
     cursor: pointer;
-    width: 75px;
-  }
-
-  .failedText {
-    color: #fc6d6d;
-    font-size: 14px;
+    gap: 40px;
+    margin: 25px 0 0 10px;
   }
 `;

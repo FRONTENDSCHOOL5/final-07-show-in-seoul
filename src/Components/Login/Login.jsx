@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import SInputBox from '../Common/InputBox';
 import Button from '../Common/Button';
 import { IsValidEmailAPI, LoginAPI } from '../../API/User';
@@ -21,9 +22,11 @@ function Login() {
     return true;
   };
 
+  // input 값이 모두 들어왔는지 확인
+  const isValidForm = email.length > 0 && password.length > 0;
+
   const LoginFunc = async e => {
     e.preventDefault();
-    setFailedMessage(''); // 텍스트 초기화
 
     // 이메일 형식 확인
     const validResult = await IsValidEmailAPI(email);
@@ -49,7 +52,7 @@ function Login() {
       } else if (data.user) {
         console.log('로그인 성공!');
         setUserToken(data.user.token);
-        navigate('/mainpage'); // 로그인 성공 시 navigateTo 상태를 설정해줌
+        navigate('/mainpage');
       } else {
         console.log('로그인 예외');
       }
@@ -60,7 +63,7 @@ function Login() {
 
   return (
     <>
-      <form onSubmit={LoginFunc}>
+      <Sform onSubmit={LoginFunc}>
         <SInputBox title="이메일" id="email" type="text" value={email} onChange={e => setEmail(e.target.value)} />
         <SInputBox
           title="비밀번호"
@@ -68,12 +71,34 @@ function Login() {
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
+          FailedMessage={FailedMessage}
         />
-        {FailedMessage && <p className="failedText">{FailedMessage}</p>}
-        <Button size="Large">로그인</Button>
-      </form>
+        <Button size="Large" disabled={!isValidForm}>
+          로그인
+        </Button>
+      </Sform>
     </>
   );
 }
 
 export default Login;
+
+const Sform = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 40px;
+
+  button {
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+
+  .failedText,
+  .bothEmptyText {
+    margin-top: 10px;
+    margin-left: -120px;
+    color: #fc6d6d;
+    font-size: 14px;
+  }
+`;

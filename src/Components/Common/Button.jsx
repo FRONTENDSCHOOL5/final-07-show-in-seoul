@@ -12,11 +12,9 @@ const Button = ({ size, children, active, disabled, color, navigate }) => {
   };
 
   return (
-    <>
-      <StyledButton type="button" size={size} active={active} disabled={disabled} color={color} onClick={handleClick}>
-        {children}
-      </StyledButton>
-    </>
+    <SButton type="submit" size={size} active={active} disabled={disabled} color={color} onClick={handleClick}>
+      {children}
+    </SButton>
   );
 };
 
@@ -47,7 +45,7 @@ const SizeValue = size => {
   return sizes[size] || sizes.MediumS;
 };
 
-const StyledButton = styled.button`
+const SButton = styled.button`
   // 버튼 크기에 따른 사이즈 선택 (필수 요소)
   ${({ size }) => {
     const { width, height, fontSize, fontWeight } = SizeValue(size);
