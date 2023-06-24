@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Common/Button';
-import Tags from '../Profile/Tags';
+// import Tags from '../Profile/InterestsTags';
 import { showCodeName, showDataTrim } from '../../Utils/showDetailFunction';
 
 const ShowDetailInfo = ({ detailData }) => {
