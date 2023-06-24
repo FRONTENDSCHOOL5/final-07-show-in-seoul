@@ -3,27 +3,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Common/Button';
 import Tags from '../Profile/Tags';
-import { showCodeName, showDateForm, showState, showDataTrim } from '../../Utils/showDetailFunction';
+import { showCodeName, showDataTrim } from '../../Utils/showDetailFunction';
 
 const ShowDetailInfo = ({ detailData }) => {
   const detailDataArr = [
-    { list: '신청일자', data: detailData.RGSTDATE },
-    { list: '공연일자', data: showDateForm(detailData.STRTDATE, detailData.END_DATE) },
-    { list: '이용대상', data: detailData.USE_TRGT },
-    { list: '이용요금', data: detailData.USE_FEE },
+    { list: '신청일자', data: detailData.rgstdate },
+    // { list: '공연일자', data: showDateForm(detailData.STRTDATE, detailData.END_DATE) },
+    { list: '공연일자', data: detailData.date },
+    { list: '이용대상', data: detailData.use_trgt },
+    { list: '이용요금', data: detailData.use_fee },
   ];
 
   return (
     <SShowDtailInfo>
       <h1 className="a11y-hidden">Show Dtail</h1>
       <div className="tags">
-        <Tags text={showCodeName(detailData.CODENAME)} />
-        <Tags text={showState(detailData.STRTDATE, detailData.END_DATE)} />
+        {/* 추후 수정 필요 - 공연종료 | 공연중 | 공연예정 */}
+        <div>{showCodeName(detailData.codename)}</div>
+        <div>공연상태</div>
       </div>
       <div className="info-txt">
-        <h2>{detailData.TITLE}</h2>
+        <h2>{detailData.title}</h2>
         <p className="place">
-          {detailData.GUNAME} | {detailData.PLACE}
+          {detailData.guname} | {detailData.place}
         </p>
         <ul>
           {detailDataArr.map((data, i) => {
@@ -37,7 +39,7 @@ const ShowDetailInfo = ({ detailData }) => {
         </ul>
       </div>
 
-      <Link to={detailData.ORG_LINK}>
+      <Link to={detailData.org_link}>
         <Button size="Large">상세페이지 이동하기</Button>
       </Link>
     </SShowDtailInfo>
@@ -58,13 +60,14 @@ const SShowDtailInfo = styled.section`
   .tags {
     display: flex;
     gap: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     text-align: center;
-    div .tags {
-      width: 100%;
+    div {
+      font-size: 14px;
+      padding: 5px 10px;
       background-color: var(--main);
       color: white;
-      padding: 5px 10px;
+      border-radius: 30px;
     }
   }
   .info-txt {

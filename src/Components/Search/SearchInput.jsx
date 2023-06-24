@@ -6,7 +6,6 @@ import iconSearch from '../../Assets/Icon/icon-search.svg';
 const SearchInput = ({ setKeyword }) => {
   const [prevKeyword, setPrevKeyword] = useState('');
   const [newKeyword, setNewKeyword] = useState('');
-  const [inputValue, setInputValue] = useState('');
 
   // newKeyword 값이 변하고, 이전 키워드와 현재 키워드가 일치하지 않을 때에만 변경
   useEffect(() => {
@@ -16,17 +15,28 @@ const SearchInput = ({ setKeyword }) => {
     }
   }, [newKeyword]);
 
-  const submitButtonHandler = e => {
+  const submitButtonHandler = (e, inputValue) => {
     // 버튼 클릭시 다른이벤트는 중지하고 입력값을 새로운 키워드로 설정
     e.preventDefault();
     setNewKeyword(inputValue);
   };
 
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      submitButtonHandler(e, e.target.value);
+    }
+  };
+
   return (
     <SSearchInput>
       {/* onChange 이벤트가 발생하면 inputValue 변경 */}
-      <input placeholder="행사 검색" onChange={e => setInputValue(e.target.value)} />
-      <TopBarBtn type="submit" onClick={submitButtonHandler} icon={iconSearch} alt={'검색'} />
+      <input placeholder="행사 검색" onKeyPress={handleKeyPress} />
+      <TopBarBtn
+        type="submit"
+        onClick={e => submitButtonHandler(e, e.target.previousElementSibling.value)}
+        icon={iconSearch}
+        alt={'검색'}
+      />
     </SSearchInput>
   );
 };
