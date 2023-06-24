@@ -27,7 +27,6 @@ const SearchContent = ({ data, keyword }) => {
 export default SearchContent;
 
 const SLink = styled(Link)`
-  /* margin: 10px 20px; */
   display: flex;
   align-items: center;
   gap: 10px;

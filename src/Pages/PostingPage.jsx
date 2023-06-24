@@ -1,20 +1,118 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import Upload from '../Assets/Icon/upload-file.svg';
+import React, { useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
+import cancelButton from '../Assets/Icon/x.svg';
+import { Token } from '../Atom/atom';
+import { useLocation } from 'react-router-dom';
 
 const PostingPage = () => {
+  const URL = 'https://api.mandarin.weniv.co.kr';
+  const [type, setType] = useState('');
+  const [textareaValue, setTextareaValue] = useState('');
+  const textRef = useRef();
+  const getMyToken = useRecoilValue(Token);
+  const showData = useLocation().state;
+
+  // 업로드 버튼 클릭 시 실행, api에 게시글 등록
+  const postSubmit = async () => {
+    try {
+      const response = await fetch(URL + '/post', {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + getMyToken,
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          post: {
+            // textarea에 타이핑 되는 내용들
+            content: `${showData.TITLE}^${showData.PLACE}^${textareaValue}`,
+            // 업로드한 사진
+            image: showData.MAIN_IMG,
+          },
+        }),
+      });
+
+      const res = await response.json();
+      console.log(res);
+
+      textRef.current.value = '';
+      setTextareaValue('');
+      document.querySelector('#imagePre').src = '';
+
+      return res;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // textarea에 타이핑 되는 내용들 가져 오는
+  const handleInputChange = e => {
+    setTextareaValue(e.target.value);
+    console.log(textareaValue);
+  };
+
   return (
     <>
-      <TopBar leftEl="back" rightEl="upload" />
-      <SPostingContent>
-        <textarea required rows="10" cols="33" placeholder="게시글 입력하기.."></textarea>
-        <img className="uploadImg" src="" alt=""></img>
-        <label>
-          <img src={Upload} />
-          <input type="file" style={{ display: 'none' }} />
-        </label>
-      </SPostingContent>
+      <TopBar leftEl="back" />
+      {type === 'edit' ? (
+        <form>
+          <SPostingContent>
+            <button type="button" disabled={!textareaValue} className="uploadBtn">
+              수정하기
+            </button>
+            <UploadTextArea
+              className="uploadTextarea"
+              onChange={handleInputChange}
+              ref={textRef}
+              rows="10"
+              cols="33"
+              defaultValue={'수정할 내용'}
+              placeholder="게시글 입력하기.."></UploadTextArea>{' '}
+            <ImageUploadDiv>
+              <ul>
+                <li>
+                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                </li>
+              </ul>
+            </ImageUploadDiv>
+          </SPostingContent>
+        </form>
+      ) : (
+        <form>
+          <SPostingContent>
+            <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
+              업로드
+            </button>
+            <ImageUploadDiv>
+              <ul>
+                <li>
+                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                </li>
+              </ul>
+            </ImageUploadDiv>
+            <div style={{ textAlign: 'center' }} className="showDetail">
+              <br></br>
+              {showData.TITLE}
+              <br></br>
+              {showData.GUNAME}
+              <br></br>
+              {showData.PLACE}
+              <br></br>
+              {showData.DATE}
+              <br></br>
+              {showData.USE_TRGT}
+            </div>
+            <UploadTextArea
+              className="uploadTextarea"
+              onChange={handleInputChange}
+              ref={textRef}
+              rows="10"
+              cols="33"
+              placeholder="게시글 입력하기.."></UploadTextArea>{' '}
+          </SPostingContent>
+        </form>
+      )}
     </>
   );
 };
@@ -23,28 +121,67 @@ export default PostingPage;
 
 const SPostingContent = styled.div`
   margin: 32px 16px;
-  textarea {
-    width: 100%;
-    resize: none;
-    border: none;
-    margin-bottom: 16px;
-    :focus {
-      outline: none;
-    }
-    &::-webkit-scrollbar {
-      display: none;
+  .uploadBtn {
+    position: absolute;
+    top: 8px;
+    margin-left: 268px;
+    background-color: var(--main);
+    color: white;
+    width: 90px;
+    height: 32px;
+    border-radius: 44px;
+    font-size: 14px;
+    font-weight: normal;
+  }
+`;
+
+const ImageUploadDiv = styled.div`
+  height: 228px;
+
+  ul {
+    li {
+      position: relative;
+      img {
+        width: 100%;
+        height: 228px;
+        object-fit: contain;
+        border: none;
+        border-radius: 15px;
+      }
+      button {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        z-index: 10;
+        background: url(${cancelButton}) no-repeat center;
+      }
     }
   }
-  .uploadImg {
-    width: 100%;
-    height: 228px;
-    object-fit: cover;
+  .uploadLabel {
+    .uploadImg {
+      position: relative;
+      margin-bottom: -70px;
+      margin-left: 308px;
+      cursor: pointer;
+    }
+    input {
+    }
   }
-  label {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin: 112px 0px 0px 308px;
-    cursor: pointer;
+`;
+
+const UploadTextArea = styled.textarea`
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  margin-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::placeholder {
+    color: #dbdbdb;
   }
 `;

@@ -1,38 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
+import TotalCount from '../Components/Article/TotalCount';
 import FeedContents from '../Components/Article/FeedContents';
 import BottomNav from '../Components/Common/BottomNav';
 import GetShowAPI from '../API/GetShowAPI';
-import { Show, TotalShow } from '../Atom/atom';
+import { Show, IsLoginState } from '../Atom/atom';
 import { useRecoilState } from 'recoil';
 
 const MainPage = () => {
-  // 공공 API data 저장
   const [getShow, setShow] = useRecoilState(Show);
-  const [getTotalShow, setTotalShow] = useRecoilState(TotalShow);
+  const [isLoginState, setIsLoginState] = useRecoilState(IsLoginState);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await GetShowAPI(getShow, setShow, getTotalShow, setTotalShow);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  useMemo(() => {
+    if (isLoginState === 'false') {
+      const fetchData = async () => {
+        try {
+          await GetShowAPI(setShow);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+      console.log('useMemo 데이터 가져오기 실행...');
+      setIsLoginState(true);
+    }
+  }, [getShow]);
 
-    fetchData();
-  }, []);
-
-  const showInfo = getShow.slice(1);
-  console.log(showInfo);
+  console.log('메인피드 렌더링...', getShow);
 
   return (
     <>
       <TopBar />
       <SectionLayout>
         <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
-        <FeedContents showInfo={showInfo} />
+        <TotalCount data={getShow} />
+        {getShow && <FeedContents showInfo={getShow} />}
       </SectionLayout>
       <BottomNav />
     </>
@@ -47,5 +50,8 @@ const SectionLayout = styled.section`
   /* 스크롤바 숨기기 */
   &::-webkit-scrollbar {
     display: none;
+  }
+  ul {
+    margin-top: 25px;
   }
 `;

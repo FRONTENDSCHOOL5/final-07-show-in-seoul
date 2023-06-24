@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Common/Button';
-import Tags from '../Profile/CategoryTags';
-import { showCodeName, showDateForm, showState, showDataTrim } from '../../Utils/showDetailFunction';
+import { showCodeName, showState, showDateForm, showDataTrim } from '../../Utils/showDetailFunction';
 
 const ShowDetailInfo = ({ detailData }) => {
   const detailDataArr = [
@@ -17,8 +16,8 @@ const ShowDetailInfo = ({ detailData }) => {
     <SShowDtailInfo>
       <h1 className="a11y-hidden">Show Dtail</h1>
       <div className="tags">
-        <Tags text={showCodeName(detailData.CODENAME)} />
-        <Tags text={showState(detailData.STRTDATE, detailData.END_DATE)} />
+        <div>{showCodeName(detailData.CODENAME)}</div>
+        <div>{showState(detailData.STRTDATE, detailData.END_DATE)}</div>
       </div>
       <div className="info-txt">
         <h2>{detailData.TITLE}</h2>
@@ -58,13 +57,14 @@ const SShowDtailInfo = styled.section`
   .tags {
     display: flex;
     gap: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     text-align: center;
-    div .tags {
-      width: 100%;
+    div {
+      font-size: 14px;
+      padding: 5px 10px;
       background-color: var(--main);
       color: white;
-      padding: 5px 10px;
+      border-radius: 30px;
     }
   }
   .info-txt {

@@ -1,18 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const PostContent = () => {
+const PostContent = ({ postsData }) => {
+  // console.log(postsData);
   return (
     <>
       <SPostContentA>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex commodi repellendus ratione optio nostrum
-          maiores, eaque officiis quibusdam, fuga qui illo architecto adipisci, ducimus dicta reprehenderit quasi
-          voluptatem amet dignissimos.
-        </p>
+        <p>{postsData.content}</p>
         <ul>
           <li>
-            <img src="" alt=""></img>
+            <img src={postsData.image} alt=""></img>
           </li>
         </ul>
       </SPostContentA>
@@ -43,6 +40,11 @@ const SPostContentA = styled.a`
     li {
       height: 228px;
       background: url('') no-repeat / cover;
+    }
+    img {
+      height: 228px;
+      width: 100%;
+      object-fit: cover;
     }
   }
 `;

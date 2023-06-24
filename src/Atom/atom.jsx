@@ -22,15 +22,15 @@ export const MyAccountName = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const Show = atom({
-  key: 'Show',
-  default: [],
+export const IsLoginState = atom({
+  key: 'IsLoginState',
+  default: 'false',
   effects_UNSTABLE: [persistAtom],
 });
 
-export const TotalShow = atom({
-  key: 'TotalShow',
-  default: 0,
+export const Show = atom({
+  key: 'Show',
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
