@@ -1,25 +1,35 @@
-const GetShowAPI = async (getShow, setShow, getTotalShow, setTotalShow) => {
+const GetShowAPI = async setShow => {
   try {
-    while (true) {
-      const response = await fetch(
-        'http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/' +
-          (getShow.length + 1) +
-          '/' +
-          (getShow.length + 1000),
+    const response = await fetch(
+      'http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/1/1',
+    );
+
+    if (!response.ok) throw new Error('ERROR');
+
+    const resArray = await response.json();
+    const totalNum = resArray.culturalEventInfo.list_total_count;
+
+    const loopCnt = Math.ceil(totalNum / 1000);
+
+    const loadingList = [];
+    for (let i = 0; i < loopCnt; i++) {
+      const start = 1000 * i + 1;
+      const end = start + 999;
+      loadingList.push(
+        fetch(
+          `http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/${start}/${end}`,
+        ).then(response => {
+          if (!response.ok) throw new Error(`ERROR on ${i + 1}`);
+          return response.json();
+        }),
       );
-
-      if (!response.ok) throw new Error('ERROR');
-
-      const resArray = await response.json();
-      if (getTotalShow === 0) {
-        setTotalShow(resArray.culturalEventInfo.list_total_count);
-        continue;
-      }
-      if (getShow.length >= getTotalShow) {
-        break;
-      }
-      setShow([...getShow, ...resArray.culturalEventInfo.row]);
     }
+
+    const showResponses = await Promise.all(loadingList);
+
+    const allShow = showResponses.flatMap(response => response.culturalEventInfo.row);
+
+    setShow([...allShow]);
   } catch (e) {
     console.error(e);
   }

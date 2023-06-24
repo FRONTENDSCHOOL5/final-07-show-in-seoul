@@ -5,17 +5,21 @@ import TopBarBtn from '../Common/TopBarBtn';
 import iconArrowWhite from '../../Assets/Icon/icon-arrow-white.svg';
 import iconShare from '../../Assets/Icon/icon-share.svg';
 
-const ShowDeatailTopBar = () => {
+const ShowDeatailTopBar = ({ data }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(-1);
+  };
+
+  const goToPosting = () => {
+    navigate('/postingpage', { state: data });
   };
 
   return (
     <SShowDetailTopBar>
       <div className="topBtns">
         <TopBarBtn id="arrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} onClick={handleClick} />
-        <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} />
+        <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} onClick={goToPosting} />
       </div>
     </SShowDetailTopBar>
   );

@@ -65,6 +65,7 @@ const SHeader = styled.header`
   box-sizing: border-box;
   position: fixed;
   top: 0;
+	background-color: #fff;
   #showLogo {
     width: 103px;
   }
