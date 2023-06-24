@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled, css } from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
@@ -48,9 +48,9 @@ const SContainer = styled.div`
 
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
-  padding: 16px;
+  padding: 12px 16px;
   width: 390px;
-  height: calc(100vh - 510px);
+  height: calc(100vh - 590px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
