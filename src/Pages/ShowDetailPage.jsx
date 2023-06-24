@@ -23,7 +23,7 @@ const ShowDetailPage = () => {
       <SShowDetail>
         <div className="shadowStyle" />
         <ShowDeatailTopBar />
-        <div className="posterImg">{detailData && <img src={detailData.MAIN_IMG} alt="포스터" />}</div>
+        <div className="posterImg">{detailData && <img src={detailData.main_img} alt="포스터" />}</div>
         {detailData && <ShowDetailInfo detailData={detailData} />}
       </SShowDetail>
       <BottomNav />
