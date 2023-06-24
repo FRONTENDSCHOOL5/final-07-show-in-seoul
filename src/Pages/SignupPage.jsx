@@ -10,10 +10,9 @@ const SignupPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const testemail = 'hellohello123@naver.com';
-  // const testpassword = 'hellohello';
 
-  const signupHandle = async () => {
+  const signupHandle = async e => {
+    e.preventDefault();
     //이메일 체크
     const response = await IsValidEmailAPI(email);
     if (response.message !== '사용 가능한 이메일 입니다.') {
@@ -28,7 +27,7 @@ const SignupPage = () => {
   return (
     <SContainer>
       <h1 className="title">회원가입</h1>
-      <form className="signup-form">
+      <form onSubmit={signupHandle} className="signup-form">
         <InputBox
           title="이메일"
           id="email"
@@ -41,13 +40,11 @@ const SignupPage = () => {
           type="password"
           onChange={e => setPassword(e.target.value)}
           placeholder="비밀번호를 설정해 주세요."></InputBox>
-        <div onClick={signupHandle}>
-          <Button size="Large">다음</Button>
-        </div>
-        <Button size="Large" color="gray" navigate="-1">
-          돌아가기
-        </Button>
+        <Button size="Large">다음</Button>
       </form>
+      <Button size="Large" color="gray" navigate="-1">
+        돌아가기
+      </Button>
     </SContainer>
   );
 };
@@ -69,9 +66,6 @@ const SContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 25px;
-  }
-
-  button {
-    margin-bottom: -13px;
+    margin-bottom: 10px;
   }
 `;
