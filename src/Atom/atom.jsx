@@ -27,6 +27,42 @@ export const TotalShow = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const ProfileTagCount = atom({
+  key: 'ProfileTagCount',
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const CategoryInterestTagCount = atom({
+  key: 'CategoryInterestTagcount',
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const CategoryAreaTagCount = atom({
+  key: 'CategoryAreaTagcount',
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const ProfileTags = atom({
+  key: 'ProfileTags',
+  default: [
+    ['교육/체험', false],
+    ['독주/독창회', false],
+    ['무용', false],
+    ['전시/미술', false],
+    ['영화', false],
+    ['축제', false],
+    ['국악', false],
+    ['콘서트', false],
+    ['연극', false],
+    ['뮤지컬/오페라', false],
+    ['클래식', false],
+  ],
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const InterestTags = atom({
   key: 'InterestTags',
   default: [
