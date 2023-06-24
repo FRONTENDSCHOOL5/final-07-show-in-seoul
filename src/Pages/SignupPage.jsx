@@ -75,7 +75,7 @@ const SignupPage = () => {
           다음
         </Button>
       </form>
-      <Button size="Large" color="gray" navigate="-1">
+      <Button size="Large" color="gray" navigate="/loginpage">
         돌아가기
       </Button>
     </SContainer>
@@ -98,7 +98,7 @@ const SContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 25px;
-    margin-bottom: 10px;
+    gap: 30px;
+    margin-bottom: 20px;
   }
 `;
