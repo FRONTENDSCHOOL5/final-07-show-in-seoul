@@ -15,7 +15,7 @@ const CategoryPage = () => {
       <SCategoryPage>
         <section>
           <CategoryHeader title="분야" />
-          <InterestsTag />
+          <InterestsTag etc={true} />
         </section>
         <section>
           <CategoryHeader title="지역" />

@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tags = ({ text, status, getTags, setTags, resetTags }) => {
+const Tags = ({ text, status, getTags, setTags, resetTags, setCount, getCount }) => {
   const toggle = e => {
+    let count = 0;
     if (e.target.textContent === '전체') {
       resetTags();
+      setCount(0);
     } else {
       setTags(() => {
         const newArr = [];
@@ -12,9 +14,11 @@ const Tags = ({ text, status, getTags, setTags, resetTags }) => {
           newArr.push(el.slice());
           if (el[0] === e.target.textContent) {
             if (el[1]) {
-              e.target.classList.remove('active');
+              status = false;
+              count = -1;
             } else {
-              e.target.classList.add('active');
+              status = true;
+              count = 1;
             }
             newArr[i].push(!newArr[i].pop());
           }
@@ -23,6 +27,10 @@ const Tags = ({ text, status, getTags, setTags, resetTags }) => {
         newArr[0].push(false);
         return newArr;
       });
+      setCount(getCount + count);
+    }
+    if (getCount + count === 0) {
+      resetTags();
     }
   };
 

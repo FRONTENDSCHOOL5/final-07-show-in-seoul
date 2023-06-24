@@ -22,8 +22,11 @@ const SProfileImageEdit = styled.div`
   position: relative;
   .img-upload-btn {
     position: absolute;
-    top: 65%;
+    top: 60%;
     left: 58%;
     cursor: pointer;
+    img {
+      width: 35px;
+    }
   }
 `;
