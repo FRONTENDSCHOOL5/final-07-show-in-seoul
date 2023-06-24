@@ -25,11 +25,6 @@ const ProfileSettingPage = () => {
     image: 'https://api.mandarin.weniv.co.kr/1687375894455.png',
   });
 
-  const checkInterests = () => {
-    //취향 체크 (태그 선택된 것 string으로 바꿔주기)
-    setProfile({ ...profile, intro: '임시 문장입니다.' });
-  };
-
   const isValidProfile = () => {
     //유효성 검사
     return true;
@@ -53,24 +48,21 @@ const ProfileSettingPage = () => {
   };
 
   const signUpHandler = () => {
-    checkInterests();
     if (isValidProfile()) {
       signUp(profile);
     }
   };
 
   return (
-    <SProfileSetting>
+    <SProfileSetting onSubmit={signUpHandler}>
       <div className="profile-setting-header">
         <h1>프로필 설정</h1>
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </div>
       <ProfileInfoEdit profile={profile} setProfile={setProfile} />
-      <div onClick={signUpHandler}>
-        <Button navi="mainpage" size="Large">
-          시작하기
-        </Button>
-      </div>
+      <Button navi="mainpage" size="Large">
+        시작하기
+      </Button>
     </SProfileSetting>
   );
 };
@@ -80,9 +72,9 @@ export default ProfileSettingPage;
 const SProfileSetting = styled.form`
   width: 100%;
   padding: 0 22px;
+  text-align: center;
 
   .profile-setting-header {
-    padding: 30px 0 0 0;
     text-align: center;
     h1 {
       font-size: 24px;

@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { InfoWarning } from '../../Atom/atom';
+import { useSetRecoilState } from 'recoil';
 
-const ProfileTags = ({ text, status, getTags, setTags, setCount, getCount, setInfoWarning }) => {
+const ProfileTags = ({ text, status, getTags, setTags, setCount, getCount }) => {
+  const setWarning = useSetRecoilState(InfoWarning);
+
   const toggle = e => {
     console.log(getCount);
     if (getCount === 4 && !e.target.classList.contains('active')) {
-      setInfoWarning(true);
+      setWarning(true);
       return;
     }
+    setWarning(false);
     let count = 0;
     setTags(() => {
       const newArr = [];

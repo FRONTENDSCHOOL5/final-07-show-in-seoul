@@ -30,11 +30,12 @@ const ProfileInterests = ({ setInfoText, setInfoWarning }) => {
 
 export default ProfileInterests;
 
-const SProfileInterests = styled.div`
+const SProfileInterests = styled.section`
   display: flex;
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 15px;
   width: 100%;
   justify-content: center;
+  margin-top: -10px;
 `;

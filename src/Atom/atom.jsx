@@ -33,6 +33,11 @@ export const UserInterestTagCount = atom({
   // effects_UNSTABLE: [persistAtom],
 });
 
+export const InfoWarning = atom({
+  key: 'InfoWarning',
+  default: false,
+});
+
 export const CategoryInterestTagCount = atom({
   key: 'CategoryInterestTagcount',
   default: 0,
