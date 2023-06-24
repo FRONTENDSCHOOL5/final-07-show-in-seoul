@@ -31,7 +31,7 @@ const GetUserPostAPI = accountname => {
   const [postData, setPostData] = useState([]);
   const getMyToken = useRecoilValue(Token);
 
-  console.log(accountname);
+  // console.log(accountname);
   const getPostData = async () => {
     try {
       const response = await fetch(URL + '/post/' + accountname + '/userpost', {
@@ -43,7 +43,7 @@ const GetUserPostAPI = accountname => {
       });
       const data = await response.json();
       setPostData(data.post);
-      console.log(data.post);
+      // console.log(data.post);
       if (!response.ok) throw new Error('유저 게시글 정보 불러오기 에러');
       return data.post;
     } catch (e) {

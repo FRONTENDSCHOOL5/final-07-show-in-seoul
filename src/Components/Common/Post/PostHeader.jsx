@@ -11,7 +11,7 @@ import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 import { Token, MyAccountName } from '../../../Atom/atom';
 
 const PostHeader = ({ postsData }) => {
-  console.log(postsData);
+  // console.log(postsData);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
 

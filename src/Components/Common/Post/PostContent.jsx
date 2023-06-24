@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const PostContent = ({ postsData }) => {
-  console.log(postsData);
+  // console.log(postsData);
   return (
     <>
       <SPostContentA>

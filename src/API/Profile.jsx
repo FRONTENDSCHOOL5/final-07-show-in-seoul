@@ -54,7 +54,6 @@ const GetOtherProfileAPI = accountname => {
 
   const getOtherProfile = async () => {
     try {
-      console.log(accountName);
       const response = await fetch(URL + '/profile/' + accountName, {
         method: 'GET',
         headers: {
