@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
+import { useRecoilValue } from 'recoil';
+import { Link, useNavigate } from 'react-router-dom';
 
-const PostHeader = () => {
+// 이미지
+import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
+import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
+
+// recoil
+import { Token, MyAccountName } from '../../../Atom/atom';
+
+const PostHeader = ({ postsData }) => {
+  // console.log(postsData);
+  const accountname = postsData.author?.accountname;
+  const username = postsData.author?.username;
+
   return (
     <>
       <SPostHeaderDiv>
-        <a>
-          <img src="./src/assets/basic-profile-img-.svg" alt="" />
+        <Link className="wrapper" to="/profiledetailpage" state={postsData.author?.accountname}>
+          {/* 프로필 이미지 api로 받아와서 수정해야함 */}
+          <img src={basicProfileImg} alt="" />
           <div>
-            <SPostUserName>찰리 채플린의 초콜릿 공장</SPostUserName>
-            <SPostUserId>@ char_chocolate</SPostUserId>
+            <SPostUserName>{username}</SPostUserName>
+            <SPostUserId>{accountname}</SPostUserId>
           </div>
-        </a>
+        </Link>
         <button></button>
       </SPostHeaderDiv>
     </>
@@ -25,7 +38,7 @@ const SPostHeaderDiv = styled.div`
   display: flex;
   // 게시물 헤더 속, 게시물 작성자의 프로필사진/이름/아이디 감싸준거
   // (클릭 했을 경우 작성자 프로필로 이동 시켜주기 위함)
-  a {
+  .wrapper {
     display: flex;
     cursor: pointer;
     // 게시물 작성자 프로필 사진
@@ -45,7 +58,7 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 130px;
+    margin-left: 230px;
   }
 `;
 
