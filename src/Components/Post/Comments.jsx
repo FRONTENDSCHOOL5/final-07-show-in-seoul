@@ -15,7 +15,7 @@ const Comments = () => {
             <div className="commment-name">서귀포시 무슨</div>
             <div className="comment-time">5분 전</div>
           </div>
-          <div>
+          <div className="comment-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus quae deserunt ex molestiae natus eos
             optio fugiat quos vero reprehenderit ut tempora dignissimos, numquam eaque mollitia, nam totam alias
             aspernatur.
@@ -36,6 +36,7 @@ export default Comments;
 const SComments = styled.div`
   /* 댓글들이 많아지면 밑에 댓글과 간격 주기 위해 */
   margin-bottom: 16px;
+  font-size: 14px;
   .comment-wrap {
     display: flex;
     position: relative;
@@ -53,7 +54,10 @@ const SComments = styled.div`
   .comment-title {
     display: flex;
     align-items: center;
-    margin: 12px 0 16px 0;
+    margin: 8px 0 16px 0;
+    .comment-name {
+      font-weight: 500;
+    }
   }
 
   .comment-time {
@@ -62,10 +66,15 @@ const SComments = styled.div`
     color: #8c8c8c;
   }
 
+  .comment-text {
+    color: rgba(51, 51, 51, 1);
+    font-weight: 400;
+  }
+
   .commentSetting {
     position: absolute;
     right: 0;
-    top: 8px;
+    top: 4px;
   }
 
   .commentSetBtn {

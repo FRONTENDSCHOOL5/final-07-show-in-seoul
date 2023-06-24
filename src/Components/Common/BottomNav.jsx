@@ -12,12 +12,13 @@ import iconPostFill from '../../Assets/Icon/icon-post-fill.svg';
 import iconUserFill from '../../Assets/Icon/icon-user-fill.svg';
 import { Link, useLocation } from 'react-router-dom';
 
-import { atom } from 'recoil';
+import { atom, useRecoilValue } from 'recoil';
 import { MyAccountName } from '../../Atom/atom';
 
 const BottomNav = () => {
   // 바텀 네비 프로필 눌렀을 경우, 프로필 디테일 페이지에 내 accountname을 전달해주기 위해서
-  const GetMyAccountName = atom(MyAccountName);
+  const GetMyAccountName = useRecoilValue(MyAccountName);
+  console.log(GetMyAccountName);
   // navigation 아이콘 데이터
   const iconList = [
     {
@@ -25,12 +26,19 @@ const BottomNav = () => {
       title: '카테고리',
       off: iconCategory,
       on: iconCategoryFill,
-      link: ['/categorypage', { state: GetMyAccountName }],
+      link: ['/categorypage'],
     },
     { id: 2, title: '검색', off: iconSearch, on: iconSearchFill, link: ['/searchpage'] },
     { id: 3, title: '홈', off: iconHome, on: iconHomeFill, link: ['/mainpage'] },
     { id: 4, title: '게시판', off: iconPost, on: iconPostFill, link: ['/postpage'] },
-    { id: 5, title: '프로필', off: iconUser, on: iconUserFill, link: ['/profiledetailpage'] },
+    {
+      id: 5,
+      title: '프로필',
+      off: iconUser,
+      on: iconUserFill,
+      link: ['/profiledetailpage'],
+      state: GetMyAccountName,
+    },
   ];
 
   // 현재 페이지 경로 확인
@@ -50,7 +58,7 @@ const BottomNav = () => {
         {iconList.map(icon => {
           return (
             <li key={icon.id}>
-              <Link to={icon.link[0]}>
+              <Link to={icon.link[0]} state={icon.state}>
                 {/* 현재 activeIcon 번호와 id 가 일치하면 on 아이콘 표시 & p 색상 변경 */}
                 <img src={activeIcon === icon.id ? icon.on : icon.off} alt={icon.title} />
                 <Title color={activeIcon === icon.id ? '#961F1F' : '#767676'}>{icon.title}</Title>

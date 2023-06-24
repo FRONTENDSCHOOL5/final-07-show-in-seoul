@@ -58,7 +58,8 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 230px;
+    margin-left: 240px;
+    margin-top: 10px;
   }
 `;
 
