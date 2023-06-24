@@ -53,6 +53,6 @@ const SPostContentDate = styled.p`
   font-size: 10px;
   font-weight: 400;
   color: #767676;
-  margin-top: 5px;
+  margin-top: 15px;
   cursor: pointer;
 `;

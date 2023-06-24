@@ -14,29 +14,37 @@ const PostDetailPage = () => {
     <>
       <TopBar leftEl="back" rightEl="more" />
       <Post postsData={getPostsData} />
-      <SCommentsWrapper>
-        <Comments />
-        <Comments />
-        <Comments />
-        <Comments />
-      </SCommentsWrapper>
-      <SCommentDiv name="" action="" method="">
-        <img src={LogoGraySmall} alt="" />
-        <form>
-          <textarea placeholder="댓글 입력하기..."></textarea>
-          <button type="submit">게시</button>
-        </form>
-      </SCommentDiv>
+      <SContainer>
+        <SCommentsWrapper>
+          <Comments />
+          <Comments />
+          <Comments />
+          <Comments />
+        </SCommentsWrapper>
+        <SCommentDiv name="" action="" method="">
+          <img src={LogoGraySmall} alt="" />
+          <form>
+            <textarea placeholder="댓글 입력하기..."></textarea>
+            <button type="submit">게시</button>
+          </form>
+        </SCommentDiv>
+      </SContainer>
     </>
   );
 };
 
 export default PostDetailPage;
 
+const SContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+`;
+
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
   padding: 16px;
-  height: calc(100% - 539px);
+  width: 390px;
+  height: calc(100vh - 510px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
