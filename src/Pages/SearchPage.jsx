@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import SearchContent from '../Components/Search/SearchContent';
 import BottomNav from '../Components/Common/BottomNav';
-// import { Show } from '../Atom/atom';
-// import { useRecoilValue } from 'recoil';
-import jsonData from '../Assets/Data/서울시 문화행사 정보.json';
+import { Show } from '../Atom/atom';
+import { useRecoilValue } from 'recoil';
 
 const SearchPage = () => {
-  const showInfo = jsonData.DATA;
+  const showInfo = [...useRecoilValue(Show)];
   // 검색키워드 상태관리 할 변수
   const [keyword, setKeyword] = useState(null);
   // 키워드에 값이 없으면 빈 배열 반환, 있으면 해당 키워드 검색

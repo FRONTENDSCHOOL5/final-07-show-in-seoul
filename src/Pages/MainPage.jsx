@@ -1,23 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import FeedContents from '../Components/Article/FeedContents';
 import BottomNav from '../Components/Common/BottomNav';
-import GetShowAPI from '../API/GetShowAPI';
-import { Show, TotalShow } from '../Atom/atom';
+import { Show } from '../Atom/atom';
 import { useRecoilState } from 'recoil';
 import jsonData from '../Assets/Data/서울시 문화행사 정보.json';
 
 const MainPage = () => {
-  const showInfo = jsonData.DATA;
-  console.log(showInfo);
+  const [getShow, setShow] = useRecoilState(Show);
+
+  useMemo(() => {
+    if (getShow.length === 0) {
+      setShow(jsonData.DATA);
+      console.log('useMemo 데이터 얻어오기 실행...');
+    }
+  }, [getShow]);
+
+  console.log('렌더링...');
+  console.log(getShow);
+  // const showInfo = [...getShow];
 
   return (
     <>
       <TopBar />
       <SectionLayout>
         <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
-        <FeedContents showInfo={showInfo} />
+        {getShow && <FeedContents showInfo={getShow} />}
       </SectionLayout>
       <BottomNav />
     </>
