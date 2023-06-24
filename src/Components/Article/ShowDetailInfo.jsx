@@ -2,30 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Common/Button';
-// import Tags from '../Profile/InterestsTags';
-import { showCodeName, showDataTrim } from '../../Utils/showDetailFunction';
+import { showCodeName, showState, showDateForm, showDataTrim } from '../../Utils/showDetailFunction';
 
 const ShowDetailInfo = ({ detailData }) => {
   const detailDataArr = [
-    { list: '신청일자', data: detailData.rgstdate },
-    // { list: '공연일자', data: showDateForm(detailData.STRTDATE, detailData.END_DATE) },
-    { list: '공연일자', data: detailData.date },
-    { list: '이용대상', data: detailData.use_trgt },
-    { list: '이용요금', data: detailData.use_fee },
+    { list: '신청일자', data: detailData.RGSTDATE },
+    { list: '공연일자', data: showDateForm(detailData.STRTDATE, detailData.END_DATE) },
+    { list: '이용대상', data: detailData.USE_TRGT },
+    { list: '이용요금', data: detailData.USE_FEE },
   ];
 
   return (
     <SShowDtailInfo>
       <h1 className="a11y-hidden">Show Dtail</h1>
       <div className="tags">
-        {/* 추후 수정 필요 - 공연종료 | 공연중 | 공연예정 */}
-        <div>{showCodeName(detailData.codename)}</div>
-        <div>공연상태</div>
+        <div>{showCodeName(detailData.CODENAME)}</div>
+        <div>{showState(detailData.STRTDATE, detailData.END_DATE)}</div>
       </div>
       <div className="info-txt">
-        <h2>{detailData.title}</h2>
+        <h2>{detailData.TITLE}</h2>
         <p className="place">
-          {detailData.guname} | {detailData.place}
+          {detailData.GUNAME} | {detailData.PLACE}
         </p>
         <ul>
           {detailDataArr.map((data, i) => {
@@ -39,7 +36,7 @@ const ShowDetailInfo = ({ detailData }) => {
         </ul>
       </div>
 
-      <Link to={detailData.org_link}>
+      <Link to={detailData.ORG_LINK}>
         <Button size="Large">상세페이지 이동하기</Button>
       </Link>
     </SShowDtailInfo>
