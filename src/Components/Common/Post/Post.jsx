@@ -23,7 +23,7 @@ const Post = ({ postsData }) => {
             <PostContent postsData={postsData} />
           </Link>
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
-          <PostContentButtons />
+          <PostContentButtons postsData={postsData} />
           {/* 게시물 맨 밑, 날짜 표시 */}
           <SPostContentDate>2020년 10월 21일</SPostContentDate>
         </SPostContentDiv>

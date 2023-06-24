@@ -13,6 +13,7 @@ const PostingPage = () => {
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);
   const showData = useLocation().state;
+  console.log(showData);
 
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postSubmit = async () => {
@@ -26,9 +27,9 @@ const PostingPage = () => {
         body: JSON.stringify({
           post: {
             // textarea에 타이핑 되는 내용들
-            content: `${showData.TITLE}^${showData.PLACE}^${textareaValue}`,
+            content: `${showData.title}^${showData.place}^${textareaValue}`,
             // 업로드한 사진
-            image: showData.MAIN_IMG,
+            image: showData.main_img,
           },
         }),
       });
@@ -72,7 +73,7 @@ const PostingPage = () => {
             <ImageUploadDiv>
               <ul>
                 <li>
-                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                  <img id="imagePre" src={showData.main_img} alt=""></img>
                 </li>
               </ul>
             </ImageUploadDiv>
@@ -87,21 +88,21 @@ const PostingPage = () => {
             <ImageUploadDiv>
               <ul>
                 <li>
-                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                  <img id="imagePre" src={showData.main_img} alt=""></img>
                 </li>
               </ul>
             </ImageUploadDiv>
             <div style={{ textAlign: 'center' }} className="showDetail">
               <br></br>
-              {showData.TITLE}
+              {showData.title}
               <br></br>
-              {showData.GUNAME}
+              {showData.guname}
               <br></br>
-              {showData.PLACE}
+              {showData.place}
               <br></br>
-              {showData.DATE}
+              {showData.date}
               <br></br>
-              {showData.USE_TRGT}
+              {showData.use_trgt}
             </div>
             <UploadTextArea
               className="uploadTextarea"
