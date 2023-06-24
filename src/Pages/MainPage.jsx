@@ -6,25 +6,10 @@ import BottomNav from '../Components/Common/BottomNav';
 import GetShowAPI from '../API/GetShowAPI';
 import { Show, TotalShow } from '../Atom/atom';
 import { useRecoilState } from 'recoil';
+import jsonData from '../Assets/Data/서울시 문화행사 정보.json';
 
 const MainPage = () => {
-  // 공공 API data 저장
-  const [getShow, setShow] = useRecoilState(Show);
-  const [getTotalShow, setTotalShow] = useRecoilState(TotalShow);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await GetShowAPI(getShow, setShow, getTotalShow, setTotalShow);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const showInfo = getShow.slice(1);
+  const showInfo = jsonData.DATA;
   console.log(showInfo);
 
   return (
