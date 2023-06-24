@@ -8,63 +8,24 @@ import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
 import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
 // recoil
-import { Token } from '../../../Atom/atom';
+import { Token, MyAccountName } from '../../../Atom/atom';
 
 const PostHeader = ({ postsData }) => {
-  // const getMyToken = useRecoilValue(Token);
-  // const URL = 'https://api.mandarin.weniv.co.kr';
-  // const postsData = { postsData };
-
-  // const GetOtherProfileAPI = ({ postsData }) => {
-  //   const accountName = postsData.author.accountname;
-  //   const [otherProfile, setOtherProfile] = useState([]);
-  //   const getOtherProfile = async ({}) => {
-  //     try {
-  //       const req = {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization: 'Bearer ' + getMyToken,
-  //         },
-  //       };
-
-  //       const response = await fetch(URL + '/profile/:' + { accountName }, req);
-  //       const data = await response.json();
-  //       setOtherProfile(data);
-  //       if (!response.ok) throw new Error('다른 프로필 보기 에러');
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   };
-  //   useEffect(() => {
-  //     getOtherProfile();
-  //   }, []);
-  //   return otherProfile.profile.image;
-  // };
-
-  // const otherProfileImg = GetOtherProfileAPI({ postsData });
   console.log(postsData);
-  const navigate = useNavigate();
-  const test = () => {
-    navigate('/profiledetailpage', { state: postsData });
-  };
-
   const accountname = postsData.author.accountname;
   const username = postsData.author.username;
-  console.log(accountname);
-  console.log(username);
+
   return (
     <>
       <SPostHeaderDiv>
-        <a onClick={test}>
-          {/* 프로필 이미지 데이터가 없다면 기본 이미지로 대체*/}
-          {/* {postsData.image ? <img src={프로필 설정페이지에서 받아오는 이미지} alt="" /> : <img src={basicProfileImg} alt="" />} */}
+        <Link className="wrapper" to="/profiledetailpage" state={postsData.author.accountname}>
+          {/* 프로필 이미지 api로 받아와서 수정해야함 */}
           <img src={basicProfileImg} alt="" />
           <div>
             <SPostUserName>{username}</SPostUserName>
             <SPostUserId>{accountname}</SPostUserId>
           </div>
-        </a>
+        </Link>
         <button></button>
       </SPostHeaderDiv>
     </>
@@ -77,7 +38,7 @@ const SPostHeaderDiv = styled.div`
   display: flex;
   // 게시물 헤더 속, 게시물 작성자의 프로필사진/이름/아이디 감싸준거
   // (클릭 했을 경우 작성자 프로필로 이동 시켜주기 위함)
-  a {
+  .wrapper {
     display: flex;
     cursor: pointer;
     // 게시물 작성자 프로필 사진
@@ -97,7 +58,7 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 130px;
+    margin-left: 230px;
   }
 `;
 

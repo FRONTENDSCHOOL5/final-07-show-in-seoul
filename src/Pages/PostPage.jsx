@@ -64,7 +64,7 @@ const PostPage = () => {
 export default PostPage;
 
 const SUl = styled.ul`
-  height: calc(100% - 108px);
+  height: calc(100vh - 108px);
   overflow-y: scroll;
   padding-top: 4px;
   &::-webkit-scrollbar {

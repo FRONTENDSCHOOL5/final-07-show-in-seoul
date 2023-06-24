@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
@@ -13,24 +13,46 @@ import BottomNav from '../Components/Common/BottomNav';
 import { MyAccountName } from '../Atom/atom';
 import { useRecoilValue } from 'recoil';
 
+// API
+import { GetUserPostAPI } from '../API/PostAPI';
+
 const ProfileDetailPage = () => {
-  const getMyAcoountName = useRecoilValue(MyAccountName);
-  console.log(getMyAcoountName);
-  const accountname = useLocation().state.author.accountname;
-  console.log(accountname);
+  // 리코일에 저장된, 지금 로그인 한 계정 이름
+  const getMyAccountName = useRecoilValue(MyAccountName);
+  console.log(getMyAccountName);
+
+  // 게시글 헤더를 눌렀을 때, 그 게시글 작성자의 계정 이름
+  const otherAccountName = useLocation().state;
+  console.log(otherAccountName);
+  const [isLoding, setIsLoding] = useState(false);
+  const [postsData, setPostsData] = useState([]);
+
+  // const loading = async () => {
+  //   const PpostsData = await GetUserPostAPI(otherAccountName);
+  //   // setPostsData(PpostsData);
+  //   // setIsLoding(true);
+  //   console.log(PpostsData);
+  // };
+  // useEffect(() => {
+  //   loading();
+  // }, []);
+  if (isLoding === true) {
+    const PpostsData = GetUserPostAPI(otherAccountName);
+    setPostsData(PpostsData);
+    setIsLoding(true);
+  }
+
+  // const postsData = GetUserPostAPI(otherAccountName);
 
   return (
+    // getMyAcoountName과 accountname이 같을 경우,
+    // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
+    // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
-      <TopBar leftEl="back" rightEl="logout" />
-      <Profile />
+      {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
+      <Profile accountname={otherAccountName} />
       <PostLayoutButtons />
-      <SUl>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </SUl>
+      <SUl>{isLoding ? <Post postsData={postsData} /> : <div></div>}</SUl>
       <BottomNav />
     </>
   );
@@ -39,7 +61,7 @@ const ProfileDetailPage = () => {
 export default ProfileDetailPage;
 
 const SUl = styled.ul`
-  height: calc(100% - 401.5px);
+  height: calc(100vh - 401.5px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

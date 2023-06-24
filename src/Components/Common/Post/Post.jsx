@@ -6,6 +6,8 @@ import PostContent from './PostContent';
 
 // postsData는 PostPage에서 관리자가 팔로우한 유저의 게시글 정보를 전달한 것이다.
 const Post = ({ postsData }) => {
+  console.log(postsData);
+
   return (
     <>
       {/* 게시물 전체 컨테이너  */}

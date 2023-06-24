@@ -16,6 +16,7 @@ import { atom } from 'recoil';
 import { MyAccountName } from '../../Atom/atom';
 
 const BottomNav = () => {
+  // 바텀 네비 프로필 눌렀을 경우, 프로필 디테일 페이지에 내 accountname을 전달해주기 위해서
   const GetMyAccountName = atom(MyAccountName);
   // navigation 아이콘 데이터
   const iconList = [
