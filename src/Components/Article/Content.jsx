@@ -13,6 +13,7 @@ const Content = ({ data }) => {
       <h2>{data.TITLE} </h2>
       <p>{data.PLACE}</p>
       <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
+      {/* <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p> */}
     </SLink>
   );
 };

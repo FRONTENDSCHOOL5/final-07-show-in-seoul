@@ -5,10 +5,10 @@ import SearchContent from '../Components/Search/SearchContent';
 import BottomNav from '../Components/Common/BottomNav';
 import { Show } from '../Atom/atom';
 import { useRecoilValue } from 'recoil';
+import TotalCount from '../Components/Article/TotalCount';
 
 const SearchPage = () => {
-  // 공공 API 데이터
-  const showInfo = useRecoilValue(Show).slice(1);
+  const showInfo = [...useRecoilValue(Show)];
   // 검색키워드 상태관리 할 변수
   const [keyword, setKeyword] = useState(null);
   // 키워드에 값이 없으면 빈 배열 반환, 있으면 해당 키워드 검색
@@ -20,9 +20,7 @@ const SearchPage = () => {
       <TopBar leftEl={'search'} setKeyword={setKeyword} />
       <SSearch>
         <h1 className="a11y-hidden">행사 검색</h1>
-        <p className="searchResultNumber">
-          검색결과 <span>{searchResult.length}</span>건
-        </p>
+        <TotalCount page={'search'} data={searchResult} />
         <ul className="searchResult">
           {searchResult.map((data, i) => {
             return (
@@ -48,16 +46,9 @@ const SSearch = styled.section`
   &::-webkit-scrollbar {
     display: none;
   }
-  .searchResultNumber {
+  div {
     width: 350px;
-    padding: 10px;
-    position: fixed;
-    font-size: 12px;
-    background-color: #fff;
-    span {
-      color: var(--warning);
-      font-weight: 900;
-    }
+    padding: 10px 5px;
   }
   .searchResult {
     flex: 1;

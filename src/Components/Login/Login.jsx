@@ -4,7 +4,7 @@ import SInputBox from '../Common/InputBox';
 import Button from '../Common/Button';
 import { IsValidEmailAPI, LoginAPI } from '../../API/User';
 import { useNavigate } from 'react-router-dom';
-import { Token } from '../../Atom/atom';
+import { Token, MyAccountName } from '../../Atom/atom';
 import { useSetRecoilState } from 'recoil';
 
 function Login() {
@@ -13,6 +13,7 @@ function Login() {
   const [FailedMessage, setFailedMessage] = useState('');
   const navigate = useNavigate();
   const setUserToken = useSetRecoilState(Token);
+  const setMyAccountName = useSetRecoilState(MyAccountName);
 
   // 비밀번호가 6자 이상인지 검사
   const validatePassword = password => {
@@ -52,6 +53,7 @@ function Login() {
       } else if (data.user) {
         console.log('로그인 성공!');
         setUserToken(data.user.token);
+        setMyAccountName(data.user.accountname);
         navigate('/mainpage');
       } else {
         console.log('로그인 예외');

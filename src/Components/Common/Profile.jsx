@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
+import { MyAccountName } from '../../Atom/atom';
+// 공통 컴포넌트
 import Button from './Button';
+// Assets
+import basicProfileLogo from '../../Assets/Img/basic-profile-img.svg';
+// API
+import { GetOtherProfileAPI } from '../../API/Profile';
 
-const Profile = () => {
+const Profile = ({ accountname }) => {
+  const profileData = GetOtherProfileAPI(accountname);
+  const getMyAccountName = useRecoilValue(MyAccountName);
+
   return (
     <>
-      {/* 프로필 컨테이너 */}
       <SProfileSection>
-        {/* 프로필 이미지,이름,아이디 */}
-        <img src="./src/assets/logo.svg"></img>
-        <SProfileName>찰리 채플린의 초콜릿 공장</SProfileName>
-        <SProfileId>@ char_chocolate</SProfileId>
-        {/* 프로필 관심 리스트 표시 */}
+        {/* 프로필 데이터에서 이미지가 기본 이미지라면 쇼인 기본 이미지로 바꿔준다 */}
+        {profileData.image === 'https://api.mandarin.weniv.co.kr/1687375894455.png' ? (
+          <img src={basicProfileLogo}></img>
+        ) : (
+          // 기본 이미지가 아니라면 유저가 설정한 프로필 이미지 넣어준다.
+          <img src={profileData.image}></img>
+        )}
+        <SProfileName>{profileData.username}</SProfileName>
+        <SProfileId>{profileData.accountname}</SProfileId>
 
         {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
         <div></div>
-
-        <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
+        {/* 내 프로필이면 수정버튼이 있고 다른 유저 프로필이면 수정 버튼 없애주기 */}
+        {accountname === getMyAccountName ? (
+          <Link to="/profileeditpage">
+            <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
+          </Link>
+        ) : (
+          <div className="a11y-hidden"></div>
+        )}
       </SProfileSection>
     </>
   );

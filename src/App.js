@@ -23,6 +23,7 @@ function App() {
       <LayoutStyle>
         <Routes>
           <Route path="/" element={<SplashPage />} />
+          <Route path="/*" element={<ErrorPage />} />
           <Route path="/loginpage" element={<LoginPage />} />
           <Route path="/signuppage" element={<SignupPage />} />
           <Route path="/searchpage" element={<SearchPage />} />
