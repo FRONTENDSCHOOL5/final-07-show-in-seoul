@@ -27,7 +27,7 @@ export const TotalShow = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const ProfileTagCount = atom({
+export const UserInterestTagCount = atom({
   key: 'ProfileTagCount',
   default: 0,
   effects_UNSTABLE: [persistAtom],
@@ -45,7 +45,7 @@ export const CategoryAreaTagCount = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const ProfileTags = atom({
+export const UserInterestTags = atom({
   key: 'ProfileTags',
   default: [
     ['교육/체험', false],

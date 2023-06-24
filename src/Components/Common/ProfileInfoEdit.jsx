@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ProfileImageEdit from './ProfileImageEdit';
 import InputBox from './InputBox';
-import InterestsTag from '../Profile/InterestsTag';
+import ProfileInterests from '../Profile/ProfileInterests';
 
 const ProfileInfoEdit = props => {
   return (
@@ -29,7 +29,7 @@ const ProfileInfoEdit = props => {
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
         />
         <InputBox title="취향" id="interests" disabled={true} placeholder="최대 4개까지 선택할 수 있습니다." />
-        <InterestsTag etc={false} />
+        <ProfileInterests />
       </div>
     </SProfileInfoEdit>
   );
