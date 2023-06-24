@@ -4,7 +4,7 @@ import { UserInterestTags, UserInterestTagCount } from '../../Atom/atom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ProfileTags from './ProfileTags';
 
-const ProfileInterests = ({ setInfoText, setInfoWarning }) => {
+const ProfileInterests = () => {
   const setUserInterestTags = useSetRecoilState(UserInterestTags);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const setUserInterestTagCount = useSetRecoilState(UserInterestTagCount);

@@ -78,7 +78,7 @@ const IsValidAccountAPI = async accountName => {
 
     const response = await fetch(URL + '/user/accountnamevalid', req);
 
-    if (!response.ok) throw new Error('계정 검증 에러');
+    // if (!response.ok) throw new Error('계정 검증 에러');
 
     return await response.json();
   } catch (e) {
