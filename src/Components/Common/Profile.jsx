@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
-import { GetOtherProfileAPI } from '../../API/Profile';
-import basicProfileLogo from '../../Assets/Img/basic-profile-img.svg';
 import { useRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
 import { MyAccountName } from '../../Atom/atom';
+// 공통 컴포넌트
+import Button from './Button';
+// Assets
+import basicProfileLogo from '../../Assets/Img/basic-profile-img.svg';
+// API
+import { GetOtherProfileAPI } from '../../API/Profile';
 
 const Profile = ({ accountname }) => {
   const profileData = GetOtherProfileAPI(accountname);
@@ -27,7 +31,9 @@ const Profile = ({ accountname }) => {
         <div></div>
         {/* 내 프로필이면 수정버튼이 있고 다른 유저 프로필이면 수정 버튼 없애주기 */}
         {accountname === getMyAccountName ? (
-          <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
+          <Link to="/profileeditpage">
+            <Button size="Medium" color="white" children="프로필 수정" active="active"></Button>
+          </Link>
         ) : (
           <div className="a11y-hidden"></div>
         )}
