@@ -56,7 +56,7 @@ const IsValidEmailAPI = async email => {
 
     const response = await fetch(URL + '/user/emailvalid', req);
 
-    if (!response.ok) throw new Error('이메일 검증 에러');
+    // if (!response.ok) throw new Error('이메일 검증 에러');
 
     return await response.json();
   } catch (e) {
