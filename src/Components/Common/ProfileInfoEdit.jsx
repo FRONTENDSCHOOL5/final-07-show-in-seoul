@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import ProfileImageEdit from './ProfileImageEdit';
 import InputBox from './InputBox';
 import ProfileInterests from '../Profile/ProfileInterests';
-import { useState } from 'react';
+import { InfoWarning } from '../../Atom/atom';
+import { useRecoilValue } from 'recoil';
+import { useState, useEffect } from 'react';
 
 const ProfileInfoEdit = ({ profile, setProfile }) => {
   const [infoText, setInfoText] = useState('');
-  const [infoWarning, setInfoWarning] = useState(false);
+  const [FailedMessage, setFailedMessage] = useState('');
+  const warning = useRecoilValue(InfoWarning);
 
   return (
     <SProfileInfoEdit>
@@ -32,8 +35,15 @@ const ProfileInfoEdit = ({ profile, setProfile }) => {
           }}
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
         />
-        <InputBox title="취향" id="interests" disabled={true} placeholder="최대 4개까지 선택할 수 있습니다." />
-        <ProfileInterests setInfoWarning={setInfoWarning} setInfoText={setInfoText} />
+        <InputBox
+          warning={warning}
+          FailedMessage={FailedMessage}
+          title="취향"
+          id="interests"
+          disabled={true}
+          placeholder="최대 4개까지 선택할 수 있습니다."
+        />
+        <ProfileInterests setInfoText={setInfoText} />
       </div>
     </SProfileInfoEdit>
   );
@@ -43,7 +53,7 @@ export default ProfileInfoEdit;
 
 const SProfileInfoEdit = styled.div`
   .profile-edit-header {
-    padding: 30px 0 40px 0;
+    padding: 20px 0 20px 0;
   }
 
   .profile-edit-info {
@@ -52,6 +62,6 @@ const SProfileInfoEdit = styled.div`
     align-items: center;
     height: 325px;
     margin-bottom: 50px;
-    gap: 15px;
+    gap: 20px;
   }
 `;
