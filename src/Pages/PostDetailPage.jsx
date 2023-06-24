@@ -10,6 +10,12 @@ import { useLocation } from 'react-router-dom';
 const PostDetailPage = () => {
   const getPostsData = useLocation().state;
   console.log(getPostsData);
+  // 댓글 가져오기
+
+  // 댓글 작성하기
+
+  // 댓글 수정하기
+
   return (
     <>
       <TopBar leftEl="back" rightEl="more" />
