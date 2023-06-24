@@ -1,31 +1,40 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
+import TotalCount from '../Components/Article/TotalCount';
 import FeedContents from '../Components/Article/FeedContents';
 import BottomNav from '../Components/Common/BottomNav';
-import { Show } from '../Atom/atom';
+import GetShowAPI from '../API/GetShowAPI';
+import { Show, IsLoginState } from '../Atom/atom';
 import { useRecoilState } from 'recoil';
-import jsonData from '../Assets/Data/서울시 문화행사 정보.json';
 
 const MainPage = () => {
   const [getShow, setShow] = useRecoilState(Show);
+  const [isLoginState, setIsLoginState] = useRecoilState(IsLoginState);
 
   useMemo(() => {
-    if (getShow.length === 0) {
-      setShow(jsonData.DATA);
-      console.log('useMemo 데이터 얻어오기 실행...');
+    if (isLoginState === 'false') {
+      const fetchData = async () => {
+        try {
+          await GetShowAPI(setShow);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+      console.log('useMemo 데이터 가져오기 실행...');
+      setIsLoginState(true);
     }
   }, [getShow]);
 
-  console.log('렌더링...');
-  console.log(getShow);
-  // const showInfo = [...getShow];
+  console.log('메인피드 렌더링...', getShow);
 
   return (
     <>
       <TopBar />
       <SectionLayout>
         <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
+        <TotalCount data={getShow} />
         {getShow && <FeedContents showInfo={getShow} />}
       </SectionLayout>
       <BottomNav />
@@ -41,5 +50,8 @@ const SectionLayout = styled.section`
   /* 스크롤바 숨기기 */
   &::-webkit-scrollbar {
     display: none;
+  }
+  ul {
+    margin-top: 25px;
   }
 `;
