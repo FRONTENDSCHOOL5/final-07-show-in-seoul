@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import SearchContent from '../Components/Search/SearchContent';
 import BottomNav from '../Components/Common/BottomNav';
-import { Show } from '../Atom/atom';
-import { useRecoilValue } from 'recoil';
+// import { Show } from '../Atom/atom';
+// import { useRecoilValue } from 'recoil';
+import jsonData from '../Assets/Data/서울시 문화행사 정보.json';
 
 const SearchPage = () => {
-  // 공공 API 데이터
-  const showInfo = useRecoilValue(Show).slice(1);
+  const showInfo = jsonData.DATA;
   // 검색키워드 상태관리 할 변수
   const [keyword, setKeyword] = useState(null);
   // 키워드에 값이 없으면 빈 배열 반환, 있으면 해당 키워드 검색
-  const searchResult = keyword ? showInfo.filter(obj => obj.TITLE.includes(keyword)) : [];
+  const searchResult = keyword ? showInfo.filter(obj => obj.title.includes(keyword)) : [];
 
   return (
     <>

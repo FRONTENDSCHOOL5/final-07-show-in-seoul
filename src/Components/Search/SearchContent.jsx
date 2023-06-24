@@ -1,24 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { showDateForm } from '../../Utils/showDetailFunction';
 
 const SearchContent = ({ data, keyword }) => {
   // 키워드 색상 변경을 위해 문자열로 변경 후 replace
-  const beforeStr = JSON.stringify(data.TITLE);
+  const beforeStr = JSON.stringify(data.title);
   const chageStr = beforeStr.replace(new RegExp(keyword, 'g'), `<span>${keyword}</span>`);
   const afterStr = JSON.parse(chageStr);
 
   return (
     <SLink to="/ShowDetailPage" state={data}>
-      <img src={data.MAIN_IMG} alt="포스터" />
+      <img src={data.main_img} alt="포스터" />
       <div className="container">
         {/* 문자열을 html로 렌더링 해주는 속성 */}
         <h2 dangerouslySetInnerHTML={{ __html: afterStr }} />
         <p>
-          {data.GUNAME} | {data.PLACE}
+          {data.guname} | {data.place}
         </p>
-        <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
+        <p>{data.date}</p>
       </div>
     </SLink>
   );
@@ -27,7 +26,6 @@ const SearchContent = ({ data, keyword }) => {
 export default SearchContent;
 
 const SLink = styled(Link)`
-  /* margin: 10px 20px; */
   display: flex;
   align-items: center;
   gap: 10px;
