@@ -25,38 +25,38 @@ const PostPostAPI = async post => {
     console.error(e);
   }
 };
-const GetUserPostAPI = async accountname => {
+const GetUserPostAPI = accountname => {
   const URL = 'https://api.mandarin.weniv.co.kr';
 
-  // const [postData, setPostData] = useState([]);
+  const [postData, setPostData] = useState([]);
   const getMyToken = useRecoilValue(Token);
 
   console.log(accountname);
-  // const getPostData = async () => {
-  try {
-    const response = await fetch(URL + '/post/' + accountname + '/userpost', {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: 'Bearer ' + getMyToken,
-      },
-    });
-    const data = await response.json();
-    // setPostData(data.post);
-    console.log(data.post);
-    if (!response.ok) throw new Error('유저 게시글 정보 불러오기 에러');
-    return data.post;
-  } catch (e) {
-    console.error(e);
-  }
-  // };
+  const getPostData = async () => {
+    try {
+      const response = await fetch(URL + '/post/' + accountname + '/userpost', {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: 'Bearer ' + getMyToken,
+        },
+      });
+      const data = await response.json();
+      setPostData(data.post);
+      console.log(data.post);
+      if (!response.ok) throw new Error('유저 게시글 정보 불러오기 에러');
+      return data.post;
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-  // useEffect(() => {
-  //   getPostData();
-  // }, []);
+  useEffect(() => {
+    getPostData();
+  }, []);
 
   // console.log(postData);
-  // return postData;
+  return postData;
 };
 
 const GetPostDetailAPI = async postId => {

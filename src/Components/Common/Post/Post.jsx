@@ -4,7 +4,8 @@ import PostHeader from './PostHeader';
 import PostContentButtons from './PostContentButtons';
 import PostContent from './PostContent';
 
-// postsData는 PostPage에서 관리자가 팔로우한 유저의 게시글 정보를 전달한 것이다.
+// postsData는 PostPage에서 관리자가 팔로우한 유저의 게시글들의 정보를 전달한 것이다.
+// profileData에서 전달하는 postsData는 게시글 작성자의 게시글들의 정보이다.
 const Post = ({ postsData }) => {
   console.log(postsData);
 

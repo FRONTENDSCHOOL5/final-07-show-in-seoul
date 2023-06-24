@@ -24,25 +24,8 @@ const ProfileDetailPage = () => {
   // 게시글 헤더를 눌렀을 때, 그 게시글 작성자의 계정 이름
   const otherAccountName = useLocation().state;
   console.log(otherAccountName);
-  const [isLoding, setIsLoding] = useState(false);
-  const [postsData, setPostsData] = useState([]);
 
-  // const loading = async () => {
-  //   const PpostsData = await GetUserPostAPI(otherAccountName);
-  //   // setPostsData(PpostsData);
-  //   // setIsLoding(true);
-  //   console.log(PpostsData);
-  // };
-  // useEffect(() => {
-  //   loading();
-  // }, []);
-  if (isLoding === true) {
-    const PpostsData = GetUserPostAPI(otherAccountName);
-    setPostsData(PpostsData);
-    setIsLoding(true);
-  }
-
-  // const postsData = GetUserPostAPI(otherAccountName);
+  const postsData = GetUserPostAPI(otherAccountName);
 
   return (
     // getMyAcoountName과 accountname이 같을 경우,
@@ -52,7 +35,15 @@ const ProfileDetailPage = () => {
       {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
       <Profile accountname={otherAccountName} />
       <PostLayoutButtons />
-      <SUl>{isLoding ? <Post postsData={postsData} /> : <div></div>}</SUl>
+      <SUl>
+        {postsData.length > 0 ? (
+          postsData.map(postsData => <Post postsData={postsData} />)
+        ) : (
+          <li style={{ display: 'none' }} className="noContent">
+            게시글이 존재하지 않습니다.
+          </li>
+        )}
+      </SUl>
       <BottomNav />
     </>
   );

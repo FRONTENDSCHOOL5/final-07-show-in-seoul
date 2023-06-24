@@ -12,13 +12,13 @@ import { Token, MyAccountName } from '../../../Atom/atom';
 
 const PostHeader = ({ postsData }) => {
   console.log(postsData);
-  const accountname = postsData.author.accountname;
-  const username = postsData.author.username;
+  const accountname = postsData.author?.accountname;
+  const username = postsData.author?.username;
 
   return (
     <>
       <SPostHeaderDiv>
-        <Link className="wrapper" to="/profiledetailpage" state={postsData.author.accountname}>
+        <Link className="wrapper" to="/profiledetailpage" state={postsData.author?.accountname}>
           {/* 프로필 이미지 api로 받아와서 수정해야함 */}
           <img src={basicProfileImg} alt="" />
           <div>
