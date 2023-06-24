@@ -1,29 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProfileTags = ({ text, status, getTags, setTags, setCount, getCount }) => {
+const ProfileTags = ({ text, status, getTags, setTags, setCount, getCount, setInfoWarning }) => {
   const toggle = e => {
-    //   let count = 0;
-    //   setTags(() => {
-    //     const newArr = [];
-    //     getTags.forEach((el, i) => {
-    //       newArr.push(el.slice());
-    //       if (el[0] === e.target.textContent) {
-    //         if (el[1]) {
-    //           status = false;
-    //           count = -1;
-    //         } else {
-    //           status = true;
-    //           count = 1;
-    //         }
-    //         newArr[i].push(!newArr[i].pop());
-    //       }
-    //     });
-    //     newArr[0].pop();
-    //     newArr[0].push(false);
-    //     return newArr;
-    //   });
-    //   setCount(getCount + count);
+    console.log(getCount);
+    if (getCount === 4 && !e.target.classList.contains('active')) {
+      setInfoWarning(true);
+      return;
+    }
+    let count = 0;
+    setTags(() => {
+      const newArr = [];
+      getTags.forEach((el, i) => {
+        newArr.push(el.slice());
+        if (el[0] === e.target.textContent) {
+          if (el[1]) {
+            status = false;
+            count = -1;
+          } else {
+            status = true;
+            count = 1;
+          }
+          newArr[i].push(!newArr[i].pop());
+        }
+      });
+      return newArr;
+    });
+    setCount(getCount + count);
   };
   if (status)
     return (

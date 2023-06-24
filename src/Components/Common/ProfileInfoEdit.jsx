@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import ProfileImageEdit from './ProfileImageEdit';
 import InputBox from './InputBox';
 import ProfileInterests from '../Profile/ProfileInterests';
+import { useState } from 'react';
 
-const ProfileInfoEdit = props => {
+const ProfileInfoEdit = ({ profile, setProfile }) => {
+  const [infoText, setInfoText] = useState('');
+  const [infoWarning, setInfoWarning] = useState(false);
+
   return (
     <SProfileInfoEdit>
       <div className="profile-edit-header">
@@ -15,8 +19,8 @@ const ProfileInfoEdit = props => {
           title="사용자 이름"
           id="userNamee"
           onChange={e => {
-            console.log(props.profile);
-            props.setProfile({ ...props.profile, username: e.target.value });
+            console.log(profile);
+            setProfile({ ...profile, username: e.target.value });
           }}
           placeholder="2~10자 이내여야 합니다."
         />
@@ -24,12 +28,12 @@ const ProfileInfoEdit = props => {
           title="계정 ID"
           id="accountId"
           onChange={e => {
-            props.setProfile({ ...props.profile, accountname: e.target.value });
+            setProfile({ ...profile, accountname: e.target.value });
           }}
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
         />
         <InputBox title="취향" id="interests" disabled={true} placeholder="최대 4개까지 선택할 수 있습니다." />
-        <ProfileInterests />
+        <ProfileInterests setInfoWarning={setInfoWarning} setInfoText={setInfoText} />
       </div>
     </SProfileInfoEdit>
   );
