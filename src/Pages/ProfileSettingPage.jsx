@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { SignUpAPI, LoginAPI } from '../API/User';
 import { Token, MyAccountName, UserInterestTags } from '../Atom/atom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { FollowAPI } from '../API/Follow';
 
 const ProfileSettingPage = () => {
   const navigate = useNavigate();
@@ -33,9 +34,13 @@ const ProfileSettingPage = () => {
     });
   };
 
-  const connectAdmin = () => {};
+  const connectAdmin = async () => {
+    const response = await FollowAPI(profile.accountname);
+    console.log(response);
+  };
 
-  const signUpHandler = async () => {
+  const signUpHandler = async e => {
+    e.preventDefault();
     introGenerator();
     const signUpResponse = await SignUpAPI({ user: profile });
     if (signUpResponse.hasOwnProperty('user')) {
