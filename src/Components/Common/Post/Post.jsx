@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PostHeader from './PostHeader';
 import PostContentButtons from './PostContentButtons';
 import PostContent from './PostContent';
+import { Link } from 'react-router-dom';
 
 // postsData는 PostPage에서 관리자가 팔로우한 유저의 게시글들의 정보를 전달한 것이다.
 // profileData에서 전달하는 postsData는 게시글 작성자의 게시글들의 정보이다.
@@ -17,8 +18,10 @@ const Post = ({ postsData }) => {
         <PostHeader postsData={postsData} />
         {/* 게시물 컨텐트 전체 Div */}
         <SPostContentDiv>
-          {/* 게시물 내용물(텍스트와 사진) */}
-          <PostContent postsData={postsData} />
+          <Link to="/postdetailpage" state={postsData}>
+            {/* 게시물 내용물(텍스트와 사진) */}
+            <PostContent postsData={postsData} />
+          </Link>
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
           <PostContentButtons />
           {/* 게시물 맨 밑, 날짜 표시 */}

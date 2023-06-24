@@ -5,11 +5,15 @@ import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
 import LogoGraySmall from '../Assets/Icon/logo-gray-small.svg';
 
+import { useLocation } from 'react-router-dom';
+
 const PostDetailPage = () => {
+  const getPostsData = useLocation().state;
+  console.log(getPostsData);
   return (
     <>
       <TopBar leftEl="back" rightEl="more" />
-      <Post />
+      <Post postsData={getPostsData} />
       <SCommentsWrapper>
         <Comments />
         <Comments />
