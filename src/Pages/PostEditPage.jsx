@@ -20,9 +20,6 @@ const PostEditPage = () => {
   console.log(postsData);
   console.log(postsDataArr);
 
-  //   const codeName = showCodeName(showData.CODENAME);
-  //   const ShowState = showState((showData.STRTDATE, showData.END_DATE));
-
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postUpdate = async () => {
     try {
@@ -35,7 +32,7 @@ const PostEditPage = () => {
         body: JSON.stringify({
           post: {
             // textarea에 타이핑 되는 내용들
-            content: `${textareaValue}!#%&@$^))+${postsDataArr[0]}!#%&@$^))+${postsDataArr[1]}!#%&@$^))+${postsDataArr[2]}!#%&@$^))+${postsDataArr[3]}!#%&@$^))+${postsDataArr[4]}!#%&@$^))+${postsDataArr[5]}!#%&@$^))+${postsDataArr[6]}!#%&@$^))+${postsDataArr[7]}!#%&@$^))+${postsDataArr[8]}!#%&@$^))+${postsDataArr[9]}`,
+            content: `${textareaValue}!#%&@$^))+${postsDataArr[1]}!#%&@$^))+${postsDataArr[2]}!#%&@$^))+${postsDataArr[3]}!#%&@$^))+${postsDataArr[4]}!#%&@$^))+${postsDataArr[5]}!#%&@$^))+${postsDataArr[6]}!#%&@$^))+${postsDataArr[7]}!#%&@$^))+${postsDataArr[8]}!#%&@$^))+${postsDataArr[9]}`,
             // 업로드한 사진
             image: postsData.image,
           },
