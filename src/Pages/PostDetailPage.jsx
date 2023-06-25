@@ -44,7 +44,7 @@ const PostDetailPage = () => {
 export default PostDetailPage;
 
 const SPostDetailContent = styled.div`
-  height: calc(100vh - 109px);
+  height: calc(100vh - 90px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
@@ -102,6 +102,11 @@ const SCommentDiv = styled.div`
   border-top: 1px solid #dbdbdb;
   display: flex;
   align-items: center;
+  width: 390px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+
   img {
     width: 36px;
     height: 36px;

@@ -23,12 +23,6 @@ const PostingPage = () => {
   const ShowState = showState((showData.STRTDATE, showData.END_DATE));
   console.log(ShowState);
 
-  // 업로드 버튼 클릭 시 게시글 등록되고 마이 프로필 페이지로 이동
-  const navigate = useNavigate();
-  const goToProfile = () => {
-    navigate('/postpage');
-  };
-
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postSubmit = async () => {
     try {
@@ -53,7 +47,7 @@ const PostingPage = () => {
 
       textRef.current.value = '';
       setTextareaValue('');
-      document.querySelector('#imagePre').src = '';
+      // document.querySelector('#imagePre').src = '';
 
       return res;
     } catch (error) {
@@ -94,42 +88,42 @@ const PostingPage = () => {
           </SPostingContent>
         </form>
       ) : (
-        <form>
+        <SForm>
           <SPostingContent>
-            <button type="button" disabled={!textareaValue} onClick={(postSubmit, goToProfile)} className="uploadBtn">
+            <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
               업로드
             </button>
-            <ImageUploadDiv>
-              <ul>
-                <li>
-                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
-                </li>
-              </ul>
-            </ImageUploadDiv>
-            <div className="showTags">
-              <div style={{ fontSize: '9px' }}>{codeName}</div>
-              <div style={{ fontSize: '9px' }}>{ShowState}</div>
-            </div>
-            <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '230px' }}>
-              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.GUNAME}</p>
-              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
-              <p style={{ fontSize: '11px', marginTop: '6px' }}>
-                {showData.GUNAME} | {showData.PLACE}
-              </p>
-              <div style={{ marginTop: '4px' }}>
-                <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
-              </div>
-              <div style={{ marginTop: '4px' }}>
-                <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
-              </div>
-              <div style={{ marginTop: '4px' }}>
-                <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
+            <div className="showDatas">
+              <ImageUploadDiv>
+                <ul>
+                  <li>
+                    <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                  </li>
+                </ul>
+              </ImageUploadDiv>
+
+              <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '210px' }}>
+                <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.CODENAME}</p>
+                <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
+                <p style={{ fontSize: '11px', marginTop: '6px' }}>
+                  {showData.GUNAME} | {showData.PLACE}
+                </p>
+                <div style={{ marginTop: '4px' }}>
+                  <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
+                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
+                </div>
+                <div style={{ marginTop: '4px' }}>
+                  <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
+                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
+                </div>
+                <div style={{ marginTop: '4px', borderBottom: '1px solid #dbdbdb', paddingBottom: '7px' }}>
+                  <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
+                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
+                </div>
               </div>
             </div>
             <UploadTextArea
+              required
               className="uploadTextarea"
               onChange={handleInputChange}
               ref={textRef}
@@ -137,16 +131,23 @@ const PostingPage = () => {
               cols="33"
               placeholder="게시글 입력하기.."></UploadTextArea>
           </SPostingContent>
-        </form>
+        </SForm>
       )}
     </>
   );
 };
 
 export default PostingPage;
+const SForm = styled.form`
+  height: calc(100vh - 48px);
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 const SPostingContent = styled.div`
-  margin: 32px 16px;
+  /* margin: 32px 16px; */
   .uploadBtn {
     position: fixed;
     top: 8px;
@@ -158,6 +159,10 @@ const SPostingContent = styled.div`
     border-radius: 44px;
     font-size: 14px;
     font-weight: normal;
+    z-index: 10;
+  }
+  .showDatas {
+    padding: 32px 16px 0px;
   }
 `;
 
@@ -199,11 +204,11 @@ const ImageUploadDiv = styled.div`
 `;
 
 const UploadTextArea = styled.textarea`
-  width: 100%;
+  width: 390px;
   resize: none;
   border: none;
   outline: none;
-  margin-bottom: 16px;
+  padding: 16px;
 
   &::-webkit-scrollbar {
     display: none;
