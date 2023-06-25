@@ -57,6 +57,7 @@ const SInputBox = styled.div`
 
   .warning::placeholder {
     color: var(--warning);
+  }
 
   .failedText {
     position: absolute;
@@ -64,4 +65,5 @@ const SInputBox = styled.div`
     font-size: 12px;
     margin-top: 5px;
     text-align: left;
+  }
 `;

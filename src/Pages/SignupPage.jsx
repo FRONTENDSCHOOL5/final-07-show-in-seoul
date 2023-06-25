@@ -18,7 +18,6 @@ const SignupPage = () => {
 
   const validEmailCheck = async () => {
     const response = await IsValidEmailAPI(email);
-    console.log(response);
     if (response.message === '사용 가능한 이메일 입니다.') {
       setEmailValid(true);
       setEmailFailMsg('');
