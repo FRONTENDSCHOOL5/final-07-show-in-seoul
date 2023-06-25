@@ -16,7 +16,6 @@ const ProfileSettingPage = () => {
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const [btnAble, setBtnAble] = useState(false);
   const [isValidInputs, setIsValidInputs] = useState(false);
-  const [introText, setIntroText] = useState('');
   const [profile, setProfile] = useState({
     username: '',
     email: location.state && location.state.email,
@@ -27,11 +26,15 @@ const ProfileSettingPage = () => {
   });
 
   const introGenerator = () => {
+    let introText = '';
+    let count = 0;
     getUserInterestTags.forEach(tag => {
       if (tag[1]) {
-        setIntroText(introText + ',' + tag[0]);
+        introText += ',' + tag[0];
+        count++;
       }
     });
+    setProfile({ ...profile, intro: count ? introText.slice(1) : '두루두루' });
   };
 
   const connectAdmin = async () => {
@@ -66,11 +69,11 @@ const ProfileSettingPage = () => {
     }
   }, [isValidInputs]);
 
-  // useEffect(() => {
-  //   if (location.state === null && !profile.email) {
-  //     navigate('/signuppage');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (location.state === null && !profile.email) {
+      navigate('/signuppage');
+    }
+  }, []);
 
   return (
     <SProfileSetting onSubmit={signUpHandler}>
@@ -78,7 +81,12 @@ const ProfileSettingPage = () => {
         <h1>프로필 설정</h1>
         <p>나중에 언제든지 변경할 수 있습니다.</p>
       </div>
-      <ProfileInfoEdit profile={profile} setProfile={setProfile} setIsValidInputs={setIsValidInputs} />
+      <ProfileInfoEdit
+        profile={profile}
+        setProfile={setProfile}
+        setIsValidInputs={setIsValidInputs}
+        introGenerator={introGenerator}
+      />
       <Button disabled={!btnAble} navi="mainpage" size="Large">
         시작하기
       </Button>

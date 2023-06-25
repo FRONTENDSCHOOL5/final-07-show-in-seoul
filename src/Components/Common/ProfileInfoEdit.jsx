@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { useState, useEffect } from 'react';
 import { IsValidAccountAPI } from '../../API/User';
 
-const ProfileInfoEdit = ({ setIsValidInputs, profile, setProfile }) => {
+const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile }) => {
   const [validAccountName, setValidAccountName] = useState(false);
   const [validUserName, setValidUserName] = useState(false);
   const [userNameFailedMsg, setUserNameFailedMsg] = useState('');
@@ -85,15 +85,7 @@ const ProfileInfoEdit = ({ setIsValidInputs, profile, setProfile }) => {
           disabled={true}
           placeholder="최대 4개까지 선택할 수 있습니다."
         />
-        <InputBox
-          warning={warning}
-          FailedMessage={FailedMessage}
-          title="취향"
-          id="interests"
-          disabled={true}
-          placeholder="최대 4개까지 선택할 수 있습니다."
-        />
-        <ProfileInterests setInfoText={setInfoText} />
+        <ProfileInterests introGenerator={introGenerator} />
       </div>
     </SProfileInfoEdit>
   );
