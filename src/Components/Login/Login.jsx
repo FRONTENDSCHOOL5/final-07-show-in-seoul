@@ -31,7 +31,6 @@ function Login() {
 
     // 이메일 형식 확인
     const validResult = await IsValidEmailAPI(email);
-    console.log(validResult);
 
     // 비밀번호 형식 확인
     if (!password || !validatePassword(password)) {

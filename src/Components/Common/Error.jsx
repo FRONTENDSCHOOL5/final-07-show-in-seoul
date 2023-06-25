@@ -43,7 +43,8 @@ const SError = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-
+  height: 100%;
+  margin: 0 auto;
   .error-text {
     color: #767676;
     font-size: 14px;

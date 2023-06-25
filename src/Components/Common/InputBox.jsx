@@ -10,11 +10,12 @@ const InputBox = props => {
       <input
         disabled={props.disabled}
         id={props.id}
-        className="input-content"
+        className={props.warning ? 'input-content warning' : 'input-content'}
         type={props.type}
         placeholder={props.placeholder}
         value={props.value}
         onChange={props.onChange}
+        onBlur={props.onBlur}
       />
       {props.FailedMessage && <p className="failedText">{props.FailedMessage}</p>}
     </SInputBox>
@@ -43,15 +44,26 @@ const SInputBox = styled.div`
     color: var(--gray);
   }
 
+  .input-content:focus {
+    border-bottom: 2px solid var(--disabled);
+    box-sizing: border-box;
+  }
+
   .input-label {
     color: var(--deepgray);
     font-size: 12px;
     position: absolute;
   }
 
+  .warning::placeholder {
+    color: var(--warning);
+  }
+
   .failedText {
-    margin: 12px 0 -7px -120px;
-    color: #fc6d6d;
-    font-size: 14px;
+    position: absolute;
+    color: var(--warning);
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
   }
 `;
