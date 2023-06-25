@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../Components/Common/Button';
 import ProfileInfoEdit from '../Components/Common/ProfileInfoEdit';
+import useFollow from '../API/useFollow';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SignUpAPI, LoginAPI } from '../API/User';
 import { Token, MyAccountName, UserInterestTags } from '../Atom/atom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { FollowAPI } from '../API/Follow';
 
 const ProfileSettingPage = () => {
+  const { FollowAPI } = useFollow();
   const navigate = useNavigate();
   const location = useLocation();
   const setToken = useSetRecoilState(Token);
@@ -37,44 +38,52 @@ const ProfileSettingPage = () => {
     setProfile({ ...profile, intro: count ? introText.slice(1) : '두루두루' });
   };
 
-  // const ConnectAdmin = async () => {
-  //   const response = await FollowAPI(profile.accountname);
-  //   console.log(response);
-  //   if (false) {
-  //     console.log('Admin 팔로우 에러');
-  //   }
-  // };
+  const followingAdmin = async () => {
+    const response = await FollowAPI(profile.accountname);
+    console.log(response);
+    if (response !== null) {
+      console.log('팔로잉 성공');
+    } else {
+      console.log('Admin 팔로우 에러');
+      navigate('/errorpage');
+    }
+  };
 
-  const signUpHandler = async e => {
-    e.preventDefault();
-    introGenerator();
+  const signUp = async () => {
     const signUpResponse = await SignUpAPI({ user: profile });
     if (signUpResponse.hasOwnProperty('user')) {
-      const loginResponse = await LoginAPI({ user: { email: profile.email, password: profile.password } });
-      if (loginResponse.hasOwnProperty('user')) {
-        setToken(loginResponse.user.token);
-        setMyAccountName(loginResponse.user.accountname);
-        const followResponse = await FollowAPI(profile.accountname);
-        if (followResponse.hasOwnProperty('user')) {
-          navigate('/mainpage');
-        } else {
-          console.log('Admin 팔로우 에러');
-          navigate('/errorpage');
-        }
-      } else {
-        console.log('회원가입 후 로그인 실패');
-        navigate('/errorpage');
-      }
+      console.log('회원가입 성공');
     } else {
       console.log('회원가입 실패');
       navigate('/errorpage');
     }
   };
 
+  const autoLogin = async () => {
+    const loginResponse = await LoginAPI({ user: { email: profile.email, password: profile.password } });
+    if (loginResponse.hasOwnProperty('user')) {
+      console.log('로그인 성공');
+      setToken(loginResponse.user.token);
+      setMyAccountName(loginResponse.user.accountname);
+    } else {
+      console.log('회원가입 후 로그인 실패');
+      navigate('/errorpage');
+    }
+  };
+
+  const signUpHandler = async e => {
+    e.preventDefault();
+    introGenerator();
+    await signUp();
+    await autoLogin();
+    await followingAdmin();
+    navigate('/mainpage');
+  };
+
   useEffect(() => {
     if (isValidInputs && profile.email && profile.password) {
       setBtnAble(true);
-    }
+    } else setBtnAble(false);
   }, [isValidInputs]);
 
   useEffect(() => {
