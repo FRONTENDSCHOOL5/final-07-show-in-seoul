@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import SearchContent from '../Components/Search/SearchContent';
+import Error from '../Components/Common/Error';
 import BottomNav from '../Components/Common/BottomNav';
 import { Show } from '../Atom/atom';
 import { useRecoilValue } from 'recoil';
@@ -18,19 +19,23 @@ const SearchPage = () => {
     <>
       {/* 상단바 input에서 값을 활용할 수 있도록 props로 setKeyword 전달*/}
       <TopBar leftEl={'search'} setKeyword={setKeyword} />
-      <SSearch>
-        <h1 className="a11y-hidden">행사 검색</h1>
-        <TotalCount page={'search'} data={searchResult} />
-        <ul className="searchResult">
-          {searchResult.map((data, i) => {
-            return (
-              <li key={i}>
-                <SearchContent data={data} keyword={keyword} />
-              </li>
-            );
-          })}
-        </ul>
-      </SSearch>
+      {searchResult.length !== 0 ? (
+        <SSearch>
+          <h1 className="a11y-hidden">행사 검색</h1>
+          <TotalCount page={'search'} data={searchResult} />
+          <ul className="searchResult">
+            {searchResult.map((data, i) => {
+              return (
+                <li key={i}>
+                  <SearchContent data={data} keyword={keyword} />
+                </li>
+              );
+            })}
+          </ul>
+        </SSearch>
+      ) : (
+        <Error text={'원하시는 검색 결과가 없습니다 :('} />
+      )}
       <BottomNav />
     </>
   );
