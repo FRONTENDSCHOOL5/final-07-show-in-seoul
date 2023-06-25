@@ -48,7 +48,7 @@ const PostPage = () => {
   console.log(postsData);
   return (
     <>
-      <TopBar rightEl="newPost" />
+      <TopBar />
       <SUl>
         {postsData.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)

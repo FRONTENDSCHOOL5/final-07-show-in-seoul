@@ -18,7 +18,7 @@ const PostDetailPage = () => {
 
   return (
     <>
-      <TopBar leftEl="back" rightEl="more" />
+      <TopBar leftEl="back" />
       <SPostDetailContent>
         <Post postsData={getPostsData} />
         <SCommentsWrapper>
@@ -59,10 +59,8 @@ const SPostDetailContent = styled.div`
     }
   }
   .postText {
-    margin-top: 380px;
+    margin-top: 390px;
     display: block;
-    border-top: 1px solid #dbdbdb;
-    padding-top: 10px;
   }
 `;
 
