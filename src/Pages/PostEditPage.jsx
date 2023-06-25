@@ -1,14 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
 import cancelButton from '../Assets/Icon/x.svg';
 // atom
 import { Token } from '../Atom/atom';
-// utils
-import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostEditPage = () => {
   const URL = 'https://api.mandarin.weniv.co.kr';
@@ -20,7 +18,7 @@ const PostEditPage = () => {
   console.log(postsData);
   console.log(postsDataArr);
 
-  // 업로드 버튼 클릭 시 실행, api에 게시글 등록
+  // 수정하기 버튼 클릭 시 실행, 게시물 수정 api 호출
   const postUpdate = async () => {
     try {
       const response = await fetch(URL + '/post/' + postsData.id, {
@@ -33,7 +31,7 @@ const PostEditPage = () => {
           post: {
             // textarea에 타이핑 되는 내용들
             content: `${textareaValue}!#%&@$^))+${postsDataArr[1]}!#%&@$^))+${postsDataArr[2]}!#%&@$^))+${postsDataArr[3]}!#%&@$^))+${postsDataArr[4]}!#%&@$^))+${postsDataArr[5]}!#%&@$^))+${postsDataArr[6]}!#%&@$^))+${postsDataArr[7]}!#%&@$^))+${postsDataArr[8]}!#%&@$^))+${postsDataArr[9]}`,
-            // 업로드한 사진
+            // 업로드할 사진
             image: postsData.image,
           },
         }),

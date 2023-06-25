@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
 import cancelButton from '../Assets/Icon/x.svg';
@@ -12,7 +12,6 @@ import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
   const URL = 'https://api.mandarin.weniv.co.kr';
-  const [type, setType] = useState('');
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);
@@ -61,75 +60,51 @@ const PostingPage = () => {
   return (
     <>
       <TopBar leftEl="back" />
-      {type === 'edit' ? (
-        <form>
-          <SPostingContent>
-            <button type="button" disabled={!textareaValue} className="uploadBtn">
-              수정하기
-            </button>
-            <UploadTextArea
-              className="uploadTextarea"
-              onChange={handleInputChange}
-              ref={textRef}
-              rows="10"
-              cols="33"
-              defaultValue={'수정할 내용'}
-              placeholder="게시글 입력하기.."></UploadTextArea>{' '}
+
+      <SForm>
+        <SPostingContent>
+          <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
+            업로드
+          </button>
+          <div className="showDatas">
             <ImageUploadDiv>
               <ul>
                 <li>
-                  <img id="imagePre" src={showData.main_img} alt=""></img>
+                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
                 </li>
               </ul>
             </ImageUploadDiv>
-          </SPostingContent>
-        </form>
-      ) : (
-        <SForm>
-          <SPostingContent>
-            <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
-              업로드
-            </button>
-            <div className="showDatas">
-              <ImageUploadDiv>
-                <ul>
-                  <li>
-                    <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
-                  </li>
-                </ul>
-              </ImageUploadDiv>
 
-              <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '210px' }}>
-                <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.CODENAME}</p>
-                <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
-                <p style={{ fontSize: '11px', marginTop: '6px' }}>
-                  {showData.GUNAME} | {showData.PLACE}
-                </p>
-                <div style={{ marginTop: '4px' }}>
-                  <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
-                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
-                </div>
-                <div style={{ marginTop: '4px' }}>
-                  <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
-                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
-                </div>
-                <div style={{ marginTop: '4px', borderBottom: '1px solid #dbdbdb', paddingBottom: '7px' }}>
-                  <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
-                  <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
-                </div>
+            <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '210px' }}>
+              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.CODENAME}</p>
+              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
+              <p style={{ fontSize: '11px', marginTop: '6px' }}>
+                {showData.GUNAME} | {showData.PLACE}
+              </p>
+              <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
+              </div>
+              <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
+              </div>
+              <div style={{ marginTop: '4px', borderBottom: '1px solid #dbdbdb', paddingBottom: '7px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
               </div>
             </div>
-            <UploadTextArea
-              required
-              className="uploadTextarea"
-              onChange={handleInputChange}
-              ref={textRef}
-              rows="8"
-              cols="33"
-              placeholder="게시글 입력하기.."></UploadTextArea>
-          </SPostingContent>
-        </SForm>
-      )}
+          </div>
+          <UploadTextArea
+            required
+            className="uploadTextarea"
+            onChange={handleInputChange}
+            ref={textRef}
+            rows="8"
+            cols="33"
+            placeholder="게시글 입력하기.."></UploadTextArea>
+        </SPostingContent>
+      </SForm>
     </>
   );
 };
