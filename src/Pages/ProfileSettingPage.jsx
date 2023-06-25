@@ -44,6 +44,7 @@ const ProfileSettingPage = () => {
 
   const signUpHandler = async e => {
     e.preventDefault();
+    introGenerator();
     const signUpResponse = await SignUpAPI({ user: profile });
     if (signUpResponse.hasOwnProperty('user')) {
       const loginResponse = await LoginAPI({ user: { email: profile.email, password: profile.password } });

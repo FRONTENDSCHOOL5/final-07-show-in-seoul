@@ -6,6 +6,8 @@ import ProfileTags from './ProfileTags';
 import { useEffect } from 'react';
 
 const ProfileInterests = ({ introGenerator }) => {
+
+const ProfileInterests = () => {
   const setUserInterestTags = useSetRecoilState(UserInterestTags);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const setUserInterestTagCount = useSetRecoilState(UserInterestTagCount);
