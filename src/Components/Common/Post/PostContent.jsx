@@ -52,9 +52,11 @@ const SPostContentA = styled.a`
     margin-top: 14px;
     height: 160px;
     .showDataWrapper {
-      margin-top: 12px;
       width: 200px;
       padding: 0px 10px 0px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
       .showTitle {
         overflow: hidden;
         white-space: nowrap;
