@@ -13,6 +13,7 @@ import { GetOtherProfileAPI } from '../../API/Profile';
 const Profile = ({ accountname }) => {
   const profileData = GetOtherProfileAPI(accountname);
   const getMyAccountName = useRecoilValue(MyAccountName);
+  const profileInterest = profileData.intro?.split(',');
 
   return (
     <>
@@ -28,7 +29,11 @@ const Profile = ({ accountname }) => {
         <SProfileId>{profileData.accountname}</SProfileId>
 
         {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
-        <div></div>
+        <div>
+          {profileInterest?.map(el => {
+            return <div>{el}</div>;
+          })}
+        </div>
         {/* 내 프로필이면 수정버튼이 있고 다른 유저 프로필이면 수정 버튼 없애주기 */}
         {accountname === getMyAccountName ? (
           <Link to="/profileeditpage">
