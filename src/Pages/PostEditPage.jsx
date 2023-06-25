@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
-import cancelButton from '../Assets/Icon/x.svg';
 // atom
 import { Token } from '../Atom/atom';
 
@@ -15,8 +14,7 @@ const PostEditPage = () => {
   const getMyToken = useRecoilValue(Token);
   const postsData = useLocation().state;
   const postsDataArr = postsData.content.split('!#%&@$^))+');
-  console.log(postsData);
-  console.log(postsDataArr);
+  const navigate = useNavigate();
 
   // 수정하기 버튼 클릭 시 실행, 게시물 수정 api 호출
   const postUpdate = async () => {
@@ -47,6 +45,8 @@ const PostEditPage = () => {
       return res;
     } catch (error) {
       console.error(error);
+    } finally {
+      navigate('/postpage');
     }
   };
 
@@ -133,6 +133,9 @@ const SPostingContent = styled.div`
     font-weight: normal;
     z-index: 10;
   }
+  .uploadBtn:disabled {
+    background-color: #dcb6b6;
+  }
   .showDatas {
     padding: 32px 16px 0px;
   }
@@ -152,25 +155,6 @@ const ImageUploadDiv = styled.div`
         border: none;
         border-radius: 15px;
       }
-      button {
-        width: 22px;
-        height: 22px;
-        position: absolute;
-        right: 3px;
-        top: 3px;
-        z-index: 10;
-        background: url(${cancelButton}) no-repeat center;
-      }
-    }
-  }
-  .uploadLabel {
-    .uploadImg {
-      position: relative;
-      margin-bottom: -70px;
-      margin-left: 308px;
-      cursor: pointer;
-    }
-    input {
     }
   }
 `;

@@ -21,11 +21,10 @@ const ProfileDetailPage = () => {
   const getMyAccountName = useRecoilValue(MyAccountName);
   console.log(getMyAccountName);
 
-  // 관심 태그 들고오기
-
   // 게시글 헤더를 눌렀을 때, 그 게시글 작성자의 계정 이름
   // 바텀 내비에서 눌렀을 경우도 있기 때문에 let으로 선언
   let otherAccountName = useLocation().state;
+
   // 게시글 페이지에서 바텀네비에서 프로필 버튼을 눌렀을 경우에는
   // 무조건 내 프로필로 가야해서 BottomNav.jsx에서 내 accountname 전달
   // 객체 형태로 전달되기 때문에 조건문 추가

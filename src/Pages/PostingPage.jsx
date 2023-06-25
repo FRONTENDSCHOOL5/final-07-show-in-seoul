@@ -1,10 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
-import cancelButton from '../Assets/Icon/x.svg';
 // atom
 import { Token } from '../Atom/atom';
 // utils
@@ -18,9 +17,10 @@ const PostingPage = () => {
   const showData = useLocation().state;
   const codeName = showCodeName(showData.CODENAME);
   const ShowState = showState((showData.STRTDATE, showData.END_DATE));
+  const navigate = useNavigate();
 
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
-  const postSubmit = async () => {
+  const postSubmit = async e => {
     try {
       const response = await fetch(URL + '/post', {
         method: 'POST',
@@ -48,6 +48,8 @@ const PostingPage = () => {
       return res;
     } catch (error) {
       console.error(error);
+    } finally {
+      navigate('/postpage');
     }
   };
 
@@ -120,7 +122,6 @@ const SForm = styled.form`
 `;
 
 const SPostingContent = styled.div`
-  /* margin: 32px 16px; */
   .uploadBtn {
     position: fixed;
     top: 8px;
@@ -133,6 +134,9 @@ const SPostingContent = styled.div`
     font-size: 14px;
     font-weight: normal;
     z-index: 10;
+  }
+  .uploadBtn:disabled {
+    background-color: #dcb6b6;
   }
   .showDatas {
     padding: 32px 16px 0px;
@@ -153,25 +157,6 @@ const ImageUploadDiv = styled.div`
         border: none;
         border-radius: 15px;
       }
-      button {
-        width: 22px;
-        height: 22px;
-        position: absolute;
-        right: 3px;
-        top: 3px;
-        z-index: 10;
-        background: url(${cancelButton}) no-repeat center;
-      }
-    }
-  }
-  .uploadLabel {
-    .uploadImg {
-      position: relative;
-      margin-bottom: -70px;
-      margin-left: 308px;
-      cursor: pointer;
-    }
-    input {
     }
   }
 `;
