@@ -22,18 +22,6 @@ const Post = ({ postsData }) => {
             {/* 게시물 내용물(텍스트와 사진) */}
             <PostContent postsData={postsData} />
           </Link>
-          {/* 공연 포스터 설명, 임시로 내용 직접 입력, 데이터 받아와서 수정 예정  */}
-          <div style={{ paddingLeft: '5px', paddingRight: '5px' }}>
-            <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>서초구</p>
-            <p style={{ fontSize: '14px', marginTop: '6px' }}>
-              [서초문화재단] 심산 영화관 뮤지컬 [빌리 엘리어트] 공연 실황
-            </p>
-            <p style={{ fontSize: '11px', marginTop: '6px' }}>서초구 | 서초문화재단 반포심산아트홀</p>
-            <div style={{ marginTop: '4px' }}>
-              <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
-              <span style={{ fontSize: '11px', marginLeft: '8px' }}>2023-10-10~2023-10-10</span>
-            </div>
-          </div>
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
           <PostContentButtons postsData={postsData} />
           {/* 게시물 맨 밑, 날짜 표시 */}

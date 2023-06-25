@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
@@ -27,7 +27,7 @@ const PostingPage = () => {
         body: JSON.stringify({
           post: {
             // textarea에 타이핑 되는 내용들
-            content: `${showData.title}^${showData.place}^${textareaValue}`,
+            content: `${showData.guname}^${showData.title}^${showData.place}^${showData.date}^${textareaValue}`,
             // 업로드한 사진
             image: showData.main_img,
           },
@@ -85,6 +85,13 @@ const PostingPage = () => {
             <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
               업로드
             </button>
+            <UploadTextArea
+              className="uploadTextarea"
+              onChange={handleInputChange}
+              ref={textRef}
+              rows="8"
+              cols="33"
+              placeholder="게시글 입력하기.."></UploadTextArea>
             <ImageUploadDiv>
               <ul>
                 <li>
@@ -92,25 +99,18 @@ const PostingPage = () => {
                 </li>
               </ul>
             </ImageUploadDiv>
-            <div style={{ textAlign: 'center' }} className="showDetail">
-              <br></br>
-              {showData.title}
-              <br></br>
-              {showData.guname}
-              <br></br>
-              {showData.place}
-              <br></br>
-              {showData.date}
-              <br></br>
-              {showData.use_trgt}
+            <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '230px' }}>
+              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.guname}</p>
+              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.title}</p>
+              <p style={{ fontSize: '11px', marginTop: '6px' }}>
+                {showData.guname} | {showData.place}
+              </p>
+              <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
+
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.date}</span>
+              </div>
             </div>
-            <UploadTextArea
-              className="uploadTextarea"
-              onChange={handleInputChange}
-              ref={textRef}
-              rows="10"
-              cols="33"
-              placeholder="게시글 입력하기.."></UploadTextArea>{' '}
           </SPostingContent>
         </form>
       )}
@@ -123,7 +123,7 @@ export default PostingPage;
 const SPostingContent = styled.div`
   margin: 32px 16px;
   .uploadBtn {
-    position: absolute;
+    position: fixed;
     top: 8px;
     margin-left: 268px;
     background-color: var(--main);
@@ -141,11 +141,12 @@ const ImageUploadDiv = styled.div`
 
   ul {
     li {
+      width: 100%;
       position: relative;
       img {
         width: 100%;
-        height: 228px;
-        object-fit: contain;
+        height: 430px;
+        object-fit: cover;
         border: none;
         border-radius: 15px;
       }

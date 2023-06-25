@@ -3,9 +3,12 @@ import styled, { css } from 'styled-components';
 
 const PostContent = ({ postsData }) => {
   // console.log(postsData);
+  // const postsDataArr = postsData.content.split('^');
+
   return (
     <>
       <SPostContentA>
+        {/* <p>{postsDataArr[4]}</p> */}
         <p>{postsData.content}</p>
         <ul>
           <li>
@@ -13,6 +16,16 @@ const PostContent = ({ postsData }) => {
           </li>
         </ul>
       </SPostContentA>
+      {/* 공연 포스터 설명, 임시로 내용 직접 입력, 데이터 받아와서 수정 예정  */}
+      <div style={{ paddingLeft: '5px', paddingRight: '5px' }}>
+        {/* <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{postsDataArr[1]}</p> */}
+        {/* <p style={{ fontSize: '14px', marginTop: '6px' }}>{postsDataArr[2]} </p> */}
+        {/* <p style={{ fontSize: '11px', marginTop: '6px' }}>{postsDataArr[3]}</p> */}
+        {/* <div style={{ marginTop: '4px' }}> */}
+        {/* <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span> */}
+        {/* <span style={{ fontSize: '11px', marginLeft: '8px' }}>{postsDataArr[4]}</span> */}
+        {/* </div> */}
+      </div>
     </>
   );
 };
