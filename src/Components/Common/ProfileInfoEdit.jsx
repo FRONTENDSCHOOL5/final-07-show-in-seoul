@@ -45,7 +45,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   useEffect(() => {
     if (validAccountName && validUserName) {
       setIsValidInputs(true);
-    }
+    } else setIsValidInputs(false);
   }, [validAccountName, validUserName]);
 
   return (
