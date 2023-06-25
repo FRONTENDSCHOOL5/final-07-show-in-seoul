@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import cancelButton from '../Assets/Icon/x.svg';
 import { Token } from '../Atom/atom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
@@ -19,6 +19,12 @@ const PostingPage = () => {
   console.log(codeName);
   const ShowState = showState((showData.STRTDATE, showData.END_DATE));
   console.log(ShowState);
+
+  // 업로드 버튼 클릭 시 게시글 등록되고 마이 프로필 페이지로 이동
+  const navigate = useNavigate();
+  const goToProfile = () => {
+    navigate('/postpage');
+  };
 
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postSubmit = async () => {
@@ -87,16 +93,9 @@ const PostingPage = () => {
       ) : (
         <form>
           <SPostingContent>
-            <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
+            <button type="button" disabled={!textareaValue} onClick={(postSubmit, goToProfile)} className="uploadBtn">
               업로드
             </button>
-            <UploadTextArea
-              className="uploadTextarea"
-              onChange={handleInputChange}
-              ref={textRef}
-              rows="8"
-              cols="33"
-              placeholder="게시글 입력하기.."></UploadTextArea>
             <ImageUploadDiv>
               <ul>
                 <li>
@@ -104,6 +103,10 @@ const PostingPage = () => {
                 </li>
               </ul>
             </ImageUploadDiv>
+            <div className="showTags">
+              <div style={{ fontSize: '9px' }}>{codeName}</div>
+              <div style={{ fontSize: '9px' }}>{ShowState}</div>
+            </div>
             <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '230px' }}>
               <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.GUNAME}</p>
               <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
@@ -122,11 +125,18 @@ const PostingPage = () => {
                 <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
                 <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
               </div>
-              <div style={{ marginTop: '4px' }}>
+              {/* <div style={{ marginTop: '4px' }}>
                 <span style={{ color: '#767676', fontSize: '11px' }}>이용요금</span>
                 <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_FEE}</span>
-              </div>
+              </div> */}
             </div>
+            <UploadTextArea
+              className="uploadTextarea"
+              onChange={handleInputChange}
+              ref={textRef}
+              rows="8"
+              cols="33"
+              placeholder="게시글 입력하기.."></UploadTextArea>
           </SPostingContent>
         </form>
       )}

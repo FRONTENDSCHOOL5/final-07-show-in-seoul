@@ -57,10 +57,27 @@ const SPostDetailContent = styled.div`
         width: 100%;
       }
     }
+    .showDataWrapper {
+      width: 100%;
+      padding-left: 8px;
+      .showTitle {
+        font-size: 14px;
+      }
+      .showPlace {
+        border-bottom: 0;
+        padding-bottom: 6px;
+      }
+      .useTrgt {
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 7px;
+      }
+    }
   }
   .postText {
-    margin-top: 390px;
+    margin-top: 380px;
+    margin-bottom: 10px;
     display: block;
+    padding: 0px 3px;
     overflow-x: scroll;
     text-overflow: visible;
     &::-webkit-scrollbar {

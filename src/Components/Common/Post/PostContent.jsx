@@ -16,14 +16,10 @@ const PostContent = ({ postsData }) => {
             </li>
           </ul>
           {/* 공연 포스터 설명, 임시로 내용 직접 입력, 데이터 받아와서 수정 예정  */}
-          <div className="showDataWrapper" style={{ paddingLeft: '5px', paddingRight: '5px' }}>
-            <div className="showTags">
-              <div style={{ fontSize: '9px' }}>{postsDataArr[1]}</div>
-              <div style={{ fontSize: '9px' }}>{postsDataArr[2]}</div>
-            </div>
-            <p style={{ color: 'salmon', fontSize: '10px', marginTop: '10px' }}>{postsDataArr[3]}</p>
-            <p style={{ fontSize: '12px', marginTop: '6px' }}>{postsDataArr[4]} </p>
-            <p style={{ fontSize: '9px', marginTop: '6px', borderBottom: '1px solid #dbdbdb', paddingBottom: '8px' }}>
+          <div className="showDataWrapper">
+            <p style={{ color: 'salmon', fontSize: '12px', marginTop: '10px' }}>{postsDataArr[1]}</p>
+            <p className="showTitle">{postsDataArr[4]} </p>
+            <p className="showPlace" style={{ fontSize: '9px', marginTop: '6px' }}>
               {postsDataArr[3]} | {postsDataArr[5]}
             </p>
             <div>
@@ -34,7 +30,7 @@ const PostContent = ({ postsData }) => {
               <span style={{ color: '#767676', fontSize: '9px' }}>공연일자</span>
               <span style={{ fontSize: '01px', marginLeft: '8px' }}>{postsDataArr[7]}</span>
             </div>
-            <div>
+            <div className="useTrgt">
               <span style={{ color: '#767676', fontSize: '9px' }}>이용대상</span>
               <span style={{ fontSize: '9px', marginLeft: '8px' }}>{postsDataArr[8]}</span>
             </div>
@@ -56,7 +52,23 @@ const SPostContentA = styled.a`
     margin-top: 14px;
     height: 160px;
     .showDataWrapper {
-      margin-top: 8px;
+      margin-top: 12px;
+      width: 200px;
+      padding: 0px 10px 0px 15px;
+      .showTitle {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      .showPlace {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 8px;
+      }
       .showTags {
         display: flex;
         gap: 10px;
@@ -81,11 +93,11 @@ const SPostContentA = styled.a`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-left: 3px;
-    margin-top: 17px;
+    margin: 17px 10px 0px 3px;
     word-break: break-all;
     line-height: 18px;
     white-space: pre;
+    padding-left: 2px;
   }
   // 게시물 사진 여러개일 경우를 대비하기 위해 ul로 감싼거
   ul {
