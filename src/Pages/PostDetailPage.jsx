@@ -62,6 +62,7 @@ const SPostDetailContent = styled.div`
       padding-left: 8px;
       .showTitle {
         font-size: 14px;
+        white-space: normal;
       }
       .showPlace {
         border-bottom: 0;
