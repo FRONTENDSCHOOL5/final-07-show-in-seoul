@@ -28,7 +28,7 @@ const useDataFiltering = (getShow, setShowData, interestTagCount, areaTagCount) 
       }
     }
     setShowData(resultData);
-  }, []);
+  }, [getShow, setShowData]);
 };
 
 export default useDataFiltering;
