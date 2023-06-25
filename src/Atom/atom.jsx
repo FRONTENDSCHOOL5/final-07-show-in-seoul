@@ -72,7 +72,7 @@ export const UserInterestTags = atom({
     ['뮤지컬/오페라', false],
     ['클래식', false],
   ],
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });
 
 export const InterestTags = atom({

@@ -5,6 +5,7 @@ import InputBox from './InputBox';
 import ProfileInterests from '../Profile/ProfileInterests';
 import { InfoWarning } from '../../Atom/atom';
 import { useRecoilValue } from 'recoil';
+import { useState, useEffect } from 'react';
 import { IsValidAccountAPI } from '../../API/User';
 
 const ProfileInfoEdit = ({ setIsValidInputs, profile, setProfile }) => {
@@ -12,6 +13,8 @@ const ProfileInfoEdit = ({ setIsValidInputs, profile, setProfile }) => {
   const [validUserName, setValidUserName] = useState(false);
   const [userNameFailedMsg, setUserNameFailedMsg] = useState('');
   const [AccountnameFailedMsg, setAccountnameFailedMsg] = useState('');
+  const [infoText, setInfoText] = useState('');
+  const [FailedMessage, setFailedMessage] = useState('');
   const warning = useRecoilValue(InfoWarning);
 
   const isValidAccountName = async () => {
@@ -82,7 +85,15 @@ const ProfileInfoEdit = ({ setIsValidInputs, profile, setProfile }) => {
           disabled={true}
           placeholder="최대 4개까지 선택할 수 있습니다."
         />
-        <ProfileInterests />
+        <InputBox
+          warning={warning}
+          FailedMessage={FailedMessage}
+          title="취향"
+          id="interests"
+          disabled={true}
+          placeholder="최대 4개까지 선택할 수 있습니다."
+        />
+        <ProfileInterests setInfoText={setInfoText} />
       </div>
     </SProfileInfoEdit>
   );
@@ -101,6 +112,6 @@ const SProfileInfoEdit = styled.div`
     align-items: center;
     height: 325px;
     margin-bottom: 50px;
-    gap: 30px;
+    gap: 20px;
   }
 `;
