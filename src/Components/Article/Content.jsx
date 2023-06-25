@@ -7,12 +7,12 @@ const Content = ({ data }) => {
   return (
     <SLink to="/ShowDetailPage" state={data}>
       <div className="imgBox">
-        <img src={data.main_img} alt="포스터 이미지" />
+        <img src={data.MAIN_IMG} alt="포스터 이미지" />
       </div>
-      <p>{data.guname}</p>
-      <h2>{data.title} </h2>
-      <p>{data.place}</p>
-      <p>{data.date}</p>
+      <p>{data.GUNAME}</p>
+      <h2>{data.TITLE} </h2>
+      <p>{data.PLACE}</p>
+      <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p>
       {/* <p>{showDateForm(data.STRTDATE, data.END_DATE)}</p> */}
     </SLink>
   );

@@ -5,7 +5,6 @@ import ShowDeatailTopBar from '../Components/Article/ShowDeatailTopBar';
 import ShowDetailInfo from '../Components/Article/ShowDetailInfo';
 import BottomNav from '../Components/Common/BottomNav';
 import { useNavigate } from 'react-router-dom';
-import useTokenCheck from '../Hook/useTokenCheck';
 
 const ShowDetailPage = () => {
   // useTokenCheck();
@@ -22,8 +21,8 @@ const ShowDetailPage = () => {
     <>
       <SShowDetail>
         <div className="shadowStyle" />
-        <ShowDeatailTopBar data={detailData} />
-        <div className="posterImg">{detailData && <img src={detailData.main_img} alt="포스터" />}</div>
+        <ShowDeatailTopBar />
+        <div className="posterImg">{detailData && <img src={detailData.MAIN_IMG} alt="포스터" />}</div>
         {detailData && <ShowDetailInfo detailData={detailData} />}
       </SShowDetail>
       <BottomNav />

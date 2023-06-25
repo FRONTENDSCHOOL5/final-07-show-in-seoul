@@ -30,7 +30,7 @@ const SearchInput = ({ setKeyword }) => {
   return (
     <SSearchInput>
       {/* onChange 이벤트가 발생하면 inputValue 변경 */}
-      <input placeholder="행사 검색" onKeyPress={handleKeyPress} />
+      <input placeholder="행사 검색" onKeyDown={handleKeyPress} />
       <TopBarBtn
         type="submit"
         onClick={e => submitButtonHandler(e, e.target.previousElementSibling.value)}

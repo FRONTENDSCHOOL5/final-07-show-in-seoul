@@ -12,13 +12,12 @@ import iconPostFill from '../../Assets/Icon/icon-post-fill.svg';
 import iconUserFill from '../../Assets/Icon/icon-user-fill.svg';
 import { Link, useLocation } from 'react-router-dom';
 
-import { atom, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { MyAccountName } from '../../Atom/atom';
 
 const BottomNav = () => {
   // 바텀 네비 프로필 눌렀을 경우, 프로필 디테일 페이지에 내 accountname을 전달해주기 위해서
   const GetMyAccountName = useRecoilValue(MyAccountName);
-  console.log(GetMyAccountName);
   // navigation 아이콘 데이터
   const iconList = [
     {
@@ -83,6 +82,7 @@ const NavList = styled.ul`
   border-top: solid 1px var(--gray);
   position: fixed;
   bottom: 0;
+  background-color: #fff;
   img {
     width: 24px;
     height: 24px;
