@@ -9,6 +9,13 @@ export const Token = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const AdminToken = atom({
+  key: 'AdminToken',
+  default:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTc1YjE2YjJjYjIwNTY2MzlhNTAyZSIsImV4cCI6MTY5MjgyNDg5NiwiaWF0IjoxNjg3NjQwODk2fQ.p3tt-R3M6CqIaMthHrJMGOft8No1sMoJBPrNrdu6lWo',
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const MyAccountName = atom({
   key: 'MyAccountName',
   default: '',
@@ -27,10 +34,15 @@ export const Show = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const ProfileTagCount = atom({
+export const UserInterestTagCount = atom({
   key: 'ProfileTagCount',
   default: 0,
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
+});
+
+export const InfoWarning = atom({
+  key: 'InfoWarning',
+  default: false,
 });
 
 export const CategoryInterestTagCount = atom({
@@ -45,7 +57,7 @@ export const CategoryAreaTagCount = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const ProfileTags = atom({
+export const UserInterestTags = atom({
   key: 'ProfileTags',
   default: [
     ['교육/체험', false],
