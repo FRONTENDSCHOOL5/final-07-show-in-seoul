@@ -48,4 +48,10 @@ const SInputBox = styled.div`
     font-size: 12px;
     position: absolute;
   }
+
+  .failedText {
+    margin: 12px 0 -7px -120px;
+    color: #fc6d6d;
+    font-size: 14px;
+  }
 `;
