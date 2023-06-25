@@ -59,7 +59,7 @@ const SButton = styled.button`
   // 미지정 시 main color, gray는 회원가입과 돌아가기, white는 글쓰기와 프로필 수정 버튼 스타일
   background: ${({ color }) => {
     if (color === 'gray') {
-      return '#DBDBDB';
+      return 'var(--deepgray)';
     } else if (color === 'white') {
       return '#FFFFFF';
     } else {

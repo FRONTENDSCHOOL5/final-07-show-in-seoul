@@ -31,7 +31,6 @@ function Login() {
 
     // 이메일 형식 확인
     const validResult = await IsValidEmailAPI(email);
-    console.log(validResult);
 
     // 비밀번호 형식 확인
     if (!password || !validatePassword(password)) {
@@ -89,17 +88,15 @@ const Sform = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 40px;
+  padding-top: 20px;
 
   button {
-    margin-top: -10px;
+    margin-top: 2px;
     margin-bottom: 15px;
   }
 
-  .failedText,
   .bothEmptyText {
-    margin-top: 10px;
-    margin-left: -120px;
+    margin: 12px 0 -7px -120px;
     color: #fc6d6d;
     font-size: 14px;
   }
