@@ -5,12 +5,16 @@ import TotalCount from '../Components/Article/TotalCount';
 import FeedContents from '../Components/Article/FeedContents';
 import BottomNav from '../Components/Common/BottomNav';
 import GetShowAPI from '../API/GetShowAPI';
-import { Show, IsLoginState } from '../Atom/atom';
-import { useRecoilState } from 'recoil';
+import { Show, IsLoginState, CategoryInterestTagCount, CategoryAreaTagCount } from '../Atom/atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 const MainPage = () => {
   const [getShow, setShow] = useRecoilState(Show);
   const [isLoginState, setIsLoginState] = useRecoilState(IsLoginState);
+  const interestTagCount = useRecoilValue(CategoryInterestTagCount);
+  const areaTagCount = useRecoilValue(CategoryAreaTagCount);
+
+  console.log(`tags count : ${interestTagCount} / ${areaTagCount}`);
 
   useMemo(() => {
     if (isLoginState === 'false') {
