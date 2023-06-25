@@ -21,7 +21,7 @@ const useDataFiltering = (getShow, setShowData, interestTagCount, areaTagCount) 
       if (areaTagCount) {
         trueList = areaTags.filter(el => el[1] === true).map(tag => tag[0]);
         resultData = [
-          ...getShow.filter(data => {
+          ...resultData.filter(data => {
             return trueList.some(tag => tag === data.GUNAME);
           }),
         ];
