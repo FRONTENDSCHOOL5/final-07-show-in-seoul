@@ -76,7 +76,7 @@ const SPostDetailContent = styled.div`
     }
   }
   .postText {
-    margin-top: 390px;
+    margin-top: 420px;
     margin-bottom: 10px;
     display: block;
     padding: 0px 3px;
