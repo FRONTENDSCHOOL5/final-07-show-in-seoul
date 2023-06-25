@@ -10,7 +10,7 @@ import Login from '../Components/Login/Login';
 
 const LoginPage = () => {
   return (
-    <SContainer>
+    <SContainer className="fadeIn">
       <img src={logoImage} alt="로고 이미지" className="logo" />
       <section className="modal">
         <div className="login-form">
@@ -37,6 +37,15 @@ const LoginPage = () => {
   );
 };
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const slideUpModal = keyframes`
   0% {
     transform: translateY(100%);
@@ -56,6 +65,7 @@ const SContainer = styled.div`
   margin-top: -48px;
   justify-content: space-between;
   background-color: var(--main);
+  animation: ${fadeIn} 1.2s linear forwards;
 
   .logo {
     margin-top: 110px;
@@ -71,7 +81,7 @@ const SContainer = styled.div`
     height: 390px;
     border-radius: 20px 20px 0 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation: ${slideUpModal} 2s ease-out;
+    animation: ${slideUpModal} 1s ease-out;
   }
 
   .login-form {

@@ -6,11 +6,11 @@ const AlertModal = ({ children, onConfirm, onCancel, confirmText = '', cancelTex
     <div className="modal">
       <p className="message">{children}</p>
       <div className="btn-container">
-        <button className="confirm-btn" onClick={onConfirm}>
-          {confirmText}
-        </button>
         <button className="cancel-btn" onClick={onCancel}>
           {cancelText}
+        </button>
+        <button className="confirm-btn" onClick={onConfirm}>
+          {confirmText}
         </button>
       </div>
     </div>
@@ -63,8 +63,8 @@ const SOverlay = styled.div`
   }
 
   .confirm-btn {
-    border-right: 1px solid #d4d4d4;
-    border-radius: 0 0 0 10px;
+    border-left: 1px solid #d4d4d4;
+    border-radius: 0 0 10px 0;
     color: #961f1f;
 
     &:hover {
@@ -73,7 +73,7 @@ const SOverlay = styled.div`
   }
 
   .cancel-btn {
-    border-radius: 0 0 10px 0;
+    border-radius: 0 0 0 10px;
 
     &:hover {
       background-color: #ddd;
