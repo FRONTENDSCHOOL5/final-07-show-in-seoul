@@ -10,9 +10,9 @@ const PostContent = ({ postsData }) => {
     <>
       <SPostContentA>
         <div className="showPost">
-          <ul>
-            <li>
-              <img src={postsData.image} alt=""></img>
+          <ul className="postUl">
+            <li className="postImg">
+              <img className="postImg" src={postsData.image} alt=""></img>
             </li>
           </ul>
           {/* 공연 포스터 설명, 임시로 내용 직접 입력, 데이터 받아와서 수정 예정  */}

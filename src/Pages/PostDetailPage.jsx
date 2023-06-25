@@ -19,14 +19,16 @@ const PostDetailPage = () => {
   return (
     <>
       <TopBar leftEl="back" rightEl="more" />
-      <Post postsData={getPostsData} />
-      <SContainer>
+      <SPostDetailContent>
+        <Post postsData={getPostsData} />
         <SCommentsWrapper>
           <Comments />
           <Comments />
           <Comments />
           <Comments />
         </SCommentsWrapper>
+      </SPostDetailContent>
+      <SContainer>
         <SCommentDiv name="" action="" method="">
           <img src={LogoGraySmall} alt="" />
           <form>
@@ -41,6 +43,29 @@ const PostDetailPage = () => {
 
 export default PostDetailPage;
 
+const SPostDetailContent = styled.div`
+  height: calc(100vh - 109px);
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .showPost {
+    display: block;
+    .postUl {
+      .postImg {
+        height: 400px;
+        width: 100%;
+      }
+    }
+  }
+  .postText {
+    margin-top: 380px;
+    display: block;
+    border-top: 1px solid #dbdbdb;
+    padding-top: 10px;
+  }
+`;
+
 const SContainer = styled.div`
   position: absolute;
   bottom: 0;
@@ -50,11 +75,6 @@ const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
   padding: 12px 16px;
   width: 390px;
-  height: calc(100vh - 590px);
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const SCommentDiv = styled.div`
