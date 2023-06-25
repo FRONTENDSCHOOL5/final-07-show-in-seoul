@@ -61,6 +61,11 @@ const SPostDetailContent = styled.div`
   .postText {
     margin-top: 390px;
     display: block;
+    overflow-x: scroll;
+    text-overflow: visible;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 

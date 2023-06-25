@@ -53,7 +53,7 @@ const SPostContentA = styled.a`
   .showPost {
     display: flex;
     height: 200px;
-    margin-top: 16px;
+    margin-top: 14px;
     height: 160px;
     .showDataWrapper {
       margin-top: 8px;
@@ -77,14 +77,15 @@ const SPostContentA = styled.a`
   .postText {
     font-size: 14px;
     font-weight: 400;
-    white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
     padding-left: 3px;
     margin-top: 17px;
+    word-break: break-all;
+    line-height: 18px;
+    white-space: pre;
   }
   // 게시물 사진 여러개일 경우를 대비하기 위해 ul로 감싼거
   ul {
