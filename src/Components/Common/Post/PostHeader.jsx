@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 // 이미지
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
 import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
 // recoil
-import { Token, MyAccountName } from '../../../Atom/atom';
+import { MyAccountName } from '../../../Atom/atom';
 
 const PostHeader = ({ postsData }) => {
   // console.log(postsData);
+  const getMyAccounName = useRecoilValue(MyAccountName);
+  console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ const PostHeader = ({ postsData }) => {
             <SPostUserId>{accountname}</SPostUserId>
           </div>
         </Link>
-        <button onClick={goToPostEdit}></button>
+        {accountname === getMyAccounName ? <button onClick={goToPostEdit}></button> : <button></button>}
       </SPostHeaderDiv>
     </>
   );
