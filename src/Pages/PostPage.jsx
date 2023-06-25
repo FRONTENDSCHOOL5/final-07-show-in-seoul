@@ -29,8 +29,7 @@ const PostPage = () => {
           headers: {
             'Content-type': 'application/json',
             Authorization:
-              // 원래 관리자 토큰을 넣어야함, 지금은 임시로 charlie 토큰 넣었음
-              // charlie가 팔로우하는 유저들의 게시글이 불러와질 것이다.
+              // 관리자 토큰
               'Bearer ' + getAdminToken,
           },
         };
