@@ -9,6 +9,13 @@ export const Token = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const AdminToken = atom({
+  key: 'AdminToken',
+  default:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTc1YjE2YjJjYjIwNTY2MzlhNTAyZSIsImV4cCI6MTY5MjgyNDg5NiwiaWF0IjoxNjg3NjQwODk2fQ.p3tt-R3M6CqIaMthHrJMGOft8No1sMoJBPrNrdu6lWo',
+  effects_UNSTABLE: [persistAtom],
+});
+
 export const MyAccountName = atom({
   key: 'MyAccountName',
   default: '',
