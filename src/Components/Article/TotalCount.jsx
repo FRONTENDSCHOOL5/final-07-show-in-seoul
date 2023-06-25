@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { InterestTags, AreaTags, CategoryInterestTagCount, CategoryAreaTagCount } from '../../Atom/atom';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 
-const TotalCount = ({ page, data }) => {
+const TotalCount = ({ page, data, totalData, setData }) => {
   const resetInterestTags = useResetRecoilState(InterestTags);
   const resetAreaTags = useResetRecoilState(AreaTags);
   const setInterestTagCount = useSetRecoilState(CategoryInterestTagCount);
@@ -19,6 +19,7 @@ const TotalCount = ({ page, data }) => {
     resetAreaTags();
     setInterestTagCount(0);
     setAreaTagCount(0);
+    setData(totalData);
   };
 
   return (
