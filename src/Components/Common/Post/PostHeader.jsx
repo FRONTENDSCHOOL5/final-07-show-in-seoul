@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
 import { Link, useNavigate } from 'react-router-dom';
 
 // 이미지
@@ -14,6 +13,10 @@ const PostHeader = ({ postsData }) => {
   // console.log(postsData);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
+  const navigate = useNavigate();
+  const goToPostEdit = () => {
+    navigate('/posteditpage', { state: postsData });
+  };
 
   return (
     <>
@@ -26,7 +29,7 @@ const PostHeader = ({ postsData }) => {
             <SPostUserId>{accountname}</SPostUserId>
           </div>
         </Link>
-        <button></button>
+        <button onClick={goToPostEdit}></button>
       </SPostHeaderDiv>
     </>
   );

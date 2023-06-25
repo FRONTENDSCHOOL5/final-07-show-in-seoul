@@ -14,10 +14,8 @@ import { AdminToken } from '../Atom/atom';
 
 const PostPage = () => {
   const getAdminToken = useRecoilValue(AdminToken);
-  // console.log(profileData.author.intro);
 
   // 내가 팔로한 유저들의 게시글 정보 불러오는 api
-  // const getMyToken = useRecoilValue(Token);
   const URL = 'https://api.mandarin.weniv.co.kr';
   const GetPostFeed = () => {
     const [feedData, setFeedData] = useState([]);
@@ -48,7 +46,6 @@ const PostPage = () => {
   };
 
   const postsData = GetPostFeed();
-  console.log(postsData);
   return (
     <>
       <TopBar />

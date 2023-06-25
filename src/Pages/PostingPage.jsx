@@ -17,11 +17,8 @@ const PostingPage = () => {
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);
   const showData = useLocation().state;
-  console.log(showData);
   const codeName = showCodeName(showData.CODENAME);
-  console.log(codeName);
   const ShowState = showState((showData.STRTDATE, showData.END_DATE));
-  console.log(ShowState);
 
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postSubmit = async () => {
@@ -138,6 +135,7 @@ const PostingPage = () => {
 };
 
 export default PostingPage;
+
 const SForm = styled.form`
   height: calc(100vh - 48px);
   overflow-y: scroll;
