@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PostContent = ({ postsData }) => {
-  console.log(postsData);
+  // console.log(postsData);
   const postsDataArr = postsData.content.split('!#%&@$^))+');
-  console.log(postsDataArr);
+  // console.log(postsDataArr);
 
   return (
     <>
@@ -19,7 +19,7 @@ const PostContent = ({ postsData }) => {
           <div className="showDataWrapper">
             <p style={{ color: 'salmon', fontSize: '12px', marginTop: '10px' }}>{postsDataArr[1]}</p>
             <p className="showTitle">{postsDataArr[4]} </p>
-            <p className="showPlace" style={{ fontSize: '9px', marginTop: '6px' }}>
+            <p className="showPlace" style={{ fontSize: '9px' }}>
               {postsDataArr[3]} | {postsDataArr[5]}
             </p>
             <div>
@@ -68,6 +68,7 @@ const SPostContentA = styled.a`
         overflow: hidden;
         border-bottom: 1px solid #dbdbdb;
         padding-bottom: 8px;
+        margin-top: 6px;
       }
       .showTags {
         display: flex;

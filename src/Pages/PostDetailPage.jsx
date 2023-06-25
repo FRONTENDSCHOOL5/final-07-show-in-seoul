@@ -65,6 +65,7 @@ const SPostDetailContent = styled.div`
         white-space: normal;
       }
       .showPlace {
+        margin-top: 9px;
         border-bottom: 0;
         padding-bottom: 6px;
       }
@@ -75,7 +76,7 @@ const SPostDetailContent = styled.div`
     }
   }
   .postText {
-    margin-top: 400px;
+    margin-top: 390px;
     margin-bottom: 10px;
     display: block;
     padding: 0px 3px;
