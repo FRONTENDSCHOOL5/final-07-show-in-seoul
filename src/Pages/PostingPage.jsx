@@ -5,6 +5,7 @@ import TopBar from '../Components/Common/TopBar';
 import cancelButton from '../Assets/Icon/x.svg';
 import { Token } from '../Atom/atom';
 import { useLocation } from 'react-router-dom';
+import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
   const URL = 'https://api.mandarin.weniv.co.kr';
@@ -14,6 +15,10 @@ const PostingPage = () => {
   const getMyToken = useRecoilValue(Token);
   const showData = useLocation().state;
   console.log(showData);
+  const codeName = showCodeName(showData.CODENAME);
+  console.log(codeName);
+  const ShowState = showState((showData.STRTDATE, showData.END_DATE));
+  console.log(ShowState);
 
   // 업로드 버튼 클릭 시 실행, api에 게시글 등록
   const postSubmit = async () => {
@@ -27,9 +32,9 @@ const PostingPage = () => {
         body: JSON.stringify({
           post: {
             // textarea에 타이핑 되는 내용들
-            content: `${showData.guname}^${showData.title}^${showData.place}^${showData.date}^${textareaValue}`,
+            content: `${textareaValue}!#%&@$^))+${codeName}!#%&@$^))+${ShowState}!#%&@$^))+${showData.GUNAME}!#%&@$^))+${showData.TITLE}!#%&@$^))+${showData.PLACE}!#%&@$^))+${showData.RGSTDATE}!#%&@$^))+${showData.DATE}!#%&@$^))+${showData.USE_TRGT}!#%&@$^))+${showData.USE_FEE}`,
             // 업로드한 사진
-            image: showData.main_img,
+            image: showData.MAIN_IMG,
           },
         }),
       });
@@ -95,20 +100,31 @@ const PostingPage = () => {
             <ImageUploadDiv>
               <ul>
                 <li>
-                  <img id="imagePre" src={showData.main_img} alt=""></img>
+                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
                 </li>
               </ul>
             </ImageUploadDiv>
             <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '230px' }}>
-              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.guname}</p>
-              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.title}</p>
+              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.GUNAME}</p>
+              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
               <p style={{ fontSize: '11px', marginTop: '6px' }}>
-                {showData.guname} | {showData.place}
+                {showData.GUNAME} | {showData.PLACE}
               </p>
               <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
+              </div>
+              <div style={{ marginTop: '4px' }}>
                 <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
-
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.date}</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
+              </div>
+              <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
+              </div>
+              <div style={{ marginTop: '4px' }}>
+                <span style={{ color: '#767676', fontSize: '11px' }}>이용요금</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_FEE}</span>
               </div>
             </div>
           </SPostingContent>

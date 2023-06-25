@@ -45,7 +45,7 @@ const SPostSection = styled.section`
 
 // 게시물 내용물 감싼거
 const SPostContentDiv = styled.div`
-  margin-left: 54px;
+  /* margin-left: 54px; */
 `;
 
 // 게시물 맨 밑, 날짜 표시
