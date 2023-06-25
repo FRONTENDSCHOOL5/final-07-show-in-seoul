@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { AdminToken } from '../Atom/atom';
 const URL = 'https://api.mandarin.weniv.co.kr';
 
-const FollowAPI = async accountname => {
+const FollowAPI = async ({ accountname }) => {
   const getAdminToken = useRecoilValue(AdminToken);
 
   try {
@@ -14,7 +14,7 @@ const FollowAPI = async accountname => {
       },
     };
 
-    const response = await fetch(URL + '/profile/' + accountname + '/follow', req);
+    const response = await fetch(URL + '/profile/' + { accountname } + '/follow', req);
 
     if (!response.ok) throw new Error('Admin 팔로우 에러');
 

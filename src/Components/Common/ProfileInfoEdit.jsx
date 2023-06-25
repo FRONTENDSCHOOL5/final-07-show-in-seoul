@@ -5,7 +5,6 @@ import InputBox from './InputBox';
 import ProfileInterests from '../Profile/ProfileInterests';
 import { InfoWarning } from '../../Atom/atom';
 import { useRecoilValue } from 'recoil';
-import { useState, useEffect } from 'react';
 import { IsValidAccountAPI } from '../../API/User';
 
 const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile }) => {
@@ -13,8 +12,6 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   const [validUserName, setValidUserName] = useState(false);
   const [userNameFailedMsg, setUserNameFailedMsg] = useState('');
   const [AccountnameFailedMsg, setAccountnameFailedMsg] = useState('');
-  const [infoText, setInfoText] = useState('');
-  const [FailedMessage, setFailedMessage] = useState('');
   const warning = useRecoilValue(InfoWarning);
 
   const isValidAccountName = async () => {
@@ -104,6 +101,6 @@ const SProfileInfoEdit = styled.div`
     align-items: center;
     height: 325px;
     margin-bottom: 50px;
-    gap: 20px;
+    gap: 30px;
   }
 `;

@@ -37,10 +37,13 @@ const ProfileSettingPage = () => {
     setProfile({ ...profile, intro: count ? introText.slice(1) : '두루두루' });
   };
 
-  const connectAdmin = async () => {
-    const response = await FollowAPI(profile.accountname);
-    console.log(response);
-  };
+  // const ConnectAdmin = async () => {
+  //   const response = await FollowAPI(profile.accountname);
+  //   console.log(response);
+  //   if (false) {
+  //     console.log('Admin 팔로우 에러');
+  //   }
+  // };
 
   const signUpHandler = async e => {
     e.preventDefault();
@@ -51,8 +54,13 @@ const ProfileSettingPage = () => {
       if (loginResponse.hasOwnProperty('user')) {
         setToken(loginResponse.user.token);
         setMyAccountName(loginResponse.user.accountname);
-        connectAdmin();
-        navigate('/mainpage');
+        const followResponse = await FollowAPI(profile.accountname);
+        if (followResponse.hasOwnProperty('user')) {
+          navigate('/mainpage');
+        } else {
+          console.log('Admin 팔로우 에러');
+          navigate('/errorpage');
+        }
       } else {
         console.log('회원가입 후 로그인 실패');
         navigate('/errorpage');
