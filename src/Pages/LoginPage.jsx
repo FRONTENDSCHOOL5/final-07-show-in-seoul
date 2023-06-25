@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../Components/Common/Button';
 import logoImage from '../Assets/Img/logo.svg';
@@ -37,17 +37,28 @@ const LoginPage = () => {
   );
 };
 
+const slideUpModal = keyframes`
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 export default LoginPage;
 
 const SContainer = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: -48px;
+  justify-content: space-between;
   background-color: var(--main);
 
   .logo {
-    margin-top: 100px;
+    margin-top: 110px;
   }
 
   .modal {
@@ -57,8 +68,10 @@ const SContainer = styled.div`
     justify-content: center;
     background-color: #ffffff;
     width: 100%;
-    margin-top: 100px;
+    height: 390px;
     border-radius: 20px 20px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation: ${slideUpModal} 2s ease-out;
   }
 
   .login-form {
@@ -70,6 +83,6 @@ const SContainer = styled.div`
     display: flex;
     cursor: pointer;
     gap: 40px;
-    margin: 25px 0 0 10px;
+    margin: 25px 0 0 19px;
   }
 `;
