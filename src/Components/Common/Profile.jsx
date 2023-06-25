@@ -13,17 +13,22 @@ import { GetOtherProfileAPI } from '../../API/Profile';
 const Profile = ({ accountname }) => {
   const profileData = GetOtherProfileAPI(accountname);
   const getMyAccountName = useRecoilValue(MyAccountName);
-  const profileInterest = profileData.intro?.split(',');
-
+  // console.log(profileData);
+  console.log(profileData.intro?.split(','));
+  let profileInterest;
+  if (profileData.intro?.split(',')[0] !== '') {
+    profileInterest = profileData.intro?.split(',');
+  }
+  console.log(profileInterest);
   return (
     <>
       <SProfileSection>
         {/* 프로필 데이터에서 이미지가 기본 이미지라면 쇼인 기본 이미지로 바꿔준다 */}
         {profileData.image === 'https://api.mandarin.weniv.co.kr/1687375894455.png' ? (
-          <img src={basicProfileLogo}></img>
+          <img src={basicProfileLogo} alt=""></img>
         ) : (
           // 기본 이미지가 아니라면 유저가 설정한 프로필 이미지 넣어준다.
-          <img src={profileData.image}></img>
+          <img src={profileData.image} alt=""></img>
         )}
         <SProfileName>{profileData.username}</SProfileName>
         <SProfileId>{profileData.accountname}</SProfileId>
@@ -53,7 +58,7 @@ export default Profile;
 const SProfileSection = styled.section`
   width: 390px;
   text-align: center;
-  padding-bottom: 16px;
+  margin-bottom: 10px;
   // 프로필 이미지
   img {
     width: 90px;
@@ -66,16 +71,15 @@ const SProfileSection = styled.section`
     display: flex;
     gap: 5px;
     justify-content: center;
-    margin: 10px 0 16px;
-
     div {
       font-size: 12px;
       border-radius: 20px;
-      background-color: #961f1f;
+      background-color: var(--main);
       color: #ffffff;
       height: 21px;
       line-height: 21px;
       padding: 0 10px;
+      margin: 0 0 16px;
     }
   }
 `;
@@ -93,4 +97,5 @@ const SProfileId = styled.p`
   font-weight: 400;
   color: rgba(118, 118, 118, 1);
   margin-top: 6px;
+  margin-bottom: 16px;
 `;

@@ -19,7 +19,7 @@ import { GetUserPostAPI } from '../API/PostAPI';
 const ProfileDetailPage = () => {
   // 리코일에 저장된, 지금 로그인 한 계정 이름
   const getMyAccountName = useRecoilValue(MyAccountName);
-  console.log(getMyAccountName);
+  // console.log(getMyAccountName);
 
   // 게시글 헤더를 눌렀을 때, 그 게시글 작성자의 계정 이름
   // 바텀 내비에서 눌렀을 경우도 있기 때문에 let으로 선언
