@@ -50,6 +50,7 @@ const SPostHeaderDiv = styled.div`
     // 게시물 작성자 이름과 아이디 감싼거
     div {
       margin-left: 12px;
+      width: 250px;
     }
   }
   // 게시물 수정/삭제 모달 띄워주는 버튼
@@ -58,8 +59,7 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 240px;
-    margin-top: 10px;
+    margin-left: 35px;
   }
 `;
 
