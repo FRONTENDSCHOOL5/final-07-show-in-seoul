@@ -6,11 +6,16 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
+import Modal from '../Components/Modal/Modal';
+import AlertModal from '../Components/Modal/Alert';
 
 // recoil
-import { Token } from '../Atom/atom';
+import { AdminToken } from '../Atom/atom';
 
 const PostPage = () => {
+  const getAdminToken = useRecoilValue(AdminToken);
+  // console.log(profileData.author.intro);
+
   // 내가 팔로한 유저들의 게시글 정보 불러오는 api
   // const getMyToken = useRecoilValue(Token);
   const URL = 'https://api.mandarin.weniv.co.kr';
@@ -26,8 +31,7 @@ const PostPage = () => {
             Authorization:
               // 원래 관리자 토큰을 넣어야함, 지금은 임시로 charlie 토큰 넣었음
               // charlie가 팔로우하는 유저들의 게시글이 불러와질 것이다.
-              'Bearer ' +
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzZkOGRkYjJjYjIwNTY2MzJkMDE0ZiIsImV4cCI6MTY5MDY5NDUzMCwiaWF0IjoxNjg1NTEwNTMwfQ.IMMrE38HEj0wKkpBScEVd046lUSEYrluamzyMYxNu5k',
+              'Bearer ' + getAdminToken,
           },
         };
         const response = await fetch(URL + '/post/feed', req);
@@ -48,7 +52,7 @@ const PostPage = () => {
   console.log(postsData);
   return (
     <>
-      <TopBar rightEl="newPost" />
+      <TopBar />
       <SUl>
         {postsData.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
@@ -59,6 +63,8 @@ const PostPage = () => {
         )}
       </SUl>
       <BottomNav />
+      {/* <Modal style={{ display: 'none' }} children="신고하기"></Modal> */}
+      {/* <AlertModal confirmText="확인" children="게시글을 신고할까요?"></AlertModal> */}
     </>
   );
 };
@@ -66,7 +72,7 @@ const PostPage = () => {
 export default PostPage;
 
 const SUl = styled.ul`
-  height: calc(100vh - 108px);
+  height: calc(100vh - 77px);
   overflow-y: scroll;
   padding-top: 4px;
   &::-webkit-scrollbar {

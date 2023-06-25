@@ -23,7 +23,7 @@ const Post = ({ postsData }) => {
             <PostContent postsData={postsData} />
           </Link>
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
-          <PostContentButtons />
+          <PostContentButtons postsData={postsData} />
           {/* 게시물 맨 밑, 날짜 표시 */}
           <SPostContentDate>2020년 10월 21일</SPostContentDate>
         </SPostContentDiv>
@@ -45,7 +45,7 @@ const SPostSection = styled.section`
 
 // 게시물 내용물 감싼거
 const SPostContentDiv = styled.div`
-  margin-left: 54px;
+  /* margin-left: 54px; */
 `;
 
 // 게시물 맨 밑, 날짜 표시
@@ -53,6 +53,6 @@ const SPostContentDate = styled.p`
   font-size: 10px;
   font-weight: 400;
   color: #767676;
-  margin-top: 15px;
+  margin-top: 12px;
   cursor: pointer;
 `;

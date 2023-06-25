@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { styled, css } from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
@@ -18,15 +18,17 @@ const PostDetailPage = () => {
 
   return (
     <>
-      <TopBar leftEl="back" rightEl="more" />
-      <Post postsData={getPostsData} />
-      <SContainer>
+      <TopBar leftEl="back" />
+      <SPostDetailContent>
+        <Post postsData={getPostsData} />
         <SCommentsWrapper>
           <Comments />
           <Comments />
           <Comments />
           <Comments />
         </SCommentsWrapper>
+      </SPostDetailContent>
+      <SContainer>
         <SCommentDiv name="" action="" method="">
           <img src={LogoGraySmall} alt="" />
           <form>
@@ -41,6 +43,50 @@ const PostDetailPage = () => {
 
 export default PostDetailPage;
 
+const SPostDetailContent = styled.div`
+  height: calc(100vh - 90px);
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .showPost {
+    display: block;
+    .postUl {
+      .postImg {
+        height: 400px;
+        width: 100%;
+      }
+    }
+    .showDataWrapper {
+      width: 100%;
+      padding-left: 8px;
+      .showTitle {
+        font-size: 14px;
+        white-space: normal;
+      }
+      .showPlace {
+        border-bottom: 0;
+        padding-bottom: 6px;
+      }
+      .useTrgt {
+        border-bottom: 1px solid #dbdbdb;
+        padding-bottom: 7px;
+      }
+    }
+  }
+  .postText {
+    margin-top: 400px;
+    margin-bottom: 10px;
+    display: block;
+    padding: 0px 3px;
+    overflow-x: scroll;
+    text-overflow: visible;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`;
+
 const SContainer = styled.div`
   position: absolute;
   bottom: 0;
@@ -48,13 +94,8 @@ const SContainer = styled.div`
 
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
-  padding: 16px;
+  padding: 12px 16px;
   width: 390px;
-  height: calc(100vh - 510px);
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const SCommentDiv = styled.div`
@@ -62,6 +103,11 @@ const SCommentDiv = styled.div`
   border-top: 1px solid #dbdbdb;
   display: flex;
   align-items: center;
+  width: 390px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+
   img {
     width: 36px;
     height: 36px;

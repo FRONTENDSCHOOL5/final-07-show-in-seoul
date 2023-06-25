@@ -1,19 +1,22 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import iconHeart from '../../../Assets/Icon/icon-heart.svg';
 import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.svg';
 import iconComment from '../../../Assets/Icon/icon-message-circle.svg';
 
-const PostContentButtons = () => {
+const PostContentButtons = ({ postsData }) => {
   return (
     <>
       <SPostContentBtns>
         <SContentHeartBtn>
           <span>58</span>
         </SContentHeartBtn>
-        <SContentCommentBtn>
-          <span>12</span>
-        </SContentCommentBtn>
+        <Link to="/postdetailpage" state={postsData}>
+          <SContentCommentBtn>
+            <span>12</span>
+          </SContentCommentBtn>
+        </Link>
       </SPostContentBtns>
     </>
   );

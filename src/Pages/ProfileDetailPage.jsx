@@ -21,6 +21,8 @@ const ProfileDetailPage = () => {
   const getMyAccountName = useRecoilValue(MyAccountName);
   console.log(getMyAccountName);
 
+  // 관심 태그 들고오기
+
   // 게시글 헤더를 눌렀을 때, 그 게시글 작성자의 계정 이름
   // 바텀 내비에서 눌렀을 경우도 있기 때문에 let으로 선언
   let otherAccountName = useLocation().state;
@@ -39,9 +41,9 @@ const ProfileDetailPage = () => {
     // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
       {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
-      <Profile accountname={otherAccountName} />
-      <PostLayoutButtons />
-      <SUl>
+      <SProfileWrapper>
+        <Profile accountname={otherAccountName} />
+        <PostLayoutButtons />
         {postsData.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
@@ -49,7 +51,7 @@ const ProfileDetailPage = () => {
             게시글이 존재하지 않습니다.
           </li>
         )}
-      </SUl>
+      </SProfileWrapper>
       <BottomNav />
     </>
   );
@@ -57,8 +59,8 @@ const ProfileDetailPage = () => {
 
 export default ProfileDetailPage;
 
-const SUl = styled.ul`
-  height: calc(100vh - 401.5px);
+const SProfileWrapper = styled.div`
+  height: calc(100vh - 77px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

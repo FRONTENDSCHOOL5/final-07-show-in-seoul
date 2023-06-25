@@ -7,11 +7,17 @@ import iconLogo from '../../Assets/Icon/logo-text.svg';
 import iconArrow from '../../Assets/Icon/icon-arrow-left.svg';
 import iconLogout from '../../Assets/Icon/icon-logout.svg';
 import iconMore from '../../Assets/Icon/icon-more-vertical.svg';
+import { useNavigate } from 'react-router-dom';
 
 // 왼쪽 요소 : 미입력시 기본 값 쇼인서울 로고
 const LeftEl = ({ leftEl, setKeyword }) => {
+  // 뒤로가기 기능
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
   if (leftEl === 'back') {
-    return <TopBarBtn icon={iconArrow} altTxt={'뒤로가기'} />;
+    return <TopBarBtn icon={iconArrow} altTxt={'뒤로가기'} onClick={handleClick} />;
   } else if (leftEl === 'search') {
     return <SearchInput setKeyword={setKeyword} />;
   } else {
@@ -65,7 +71,7 @@ const SHeader = styled.header`
   box-sizing: border-box;
   position: fixed;
   top: 0;
-	background-color: #fff;
+  background-color: #fff;
   #showLogo {
     width: 103px;
   }
