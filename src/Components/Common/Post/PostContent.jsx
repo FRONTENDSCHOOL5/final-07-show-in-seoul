@@ -72,6 +72,11 @@ const SPostContentA = styled.a`
         padding-bottom: 8px;
         margin-top: 6px;
       }
+      .useTrgt {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
       .showTags {
         display: flex;
         gap: 10px;
