@@ -39,9 +39,9 @@ const ProfileDetailPage = () => {
     // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
       {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
-      <Profile accountname={otherAccountName} />
-      <PostLayoutButtons />
-      <SUl>
+      <SProfileWrapper>
+        <Profile accountname={otherAccountName} />
+        <PostLayoutButtons />
         {postsData.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
@@ -49,7 +49,7 @@ const ProfileDetailPage = () => {
             게시글이 존재하지 않습니다.
           </li>
         )}
-      </SUl>
+      </SProfileWrapper>
       <BottomNav />
     </>
   );
@@ -57,8 +57,8 @@ const ProfileDetailPage = () => {
 
 export default ProfileDetailPage;
 
-const SUl = styled.ul`
-  height: calc(100vh - 401.5px);
+const SProfileWrapper = styled.div`
+  height: calc(100vh - 109px);
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

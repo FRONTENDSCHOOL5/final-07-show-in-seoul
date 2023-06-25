@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
+import Modal from '../Components/Modal/Modal';
+import Alert from '../Components/Modal/Alert';
 
 // recoil
 import { Token } from '../Atom/atom';
@@ -59,6 +61,8 @@ const PostPage = () => {
         )}
       </SUl>
       <BottomNav />
+      {/* <Modal style={{ display: 'none' }} children="신고하기"></Modal> */}
+      <Alert confirmText="확인" children="게시글을 신고할까요?" onCancel></Alert>
     </>
   );
 };

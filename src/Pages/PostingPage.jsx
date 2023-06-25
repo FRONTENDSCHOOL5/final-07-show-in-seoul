@@ -1,10 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
+// 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
 import cancelButton from '../Assets/Icon/x.svg';
+// atom
 import { Token } from '../Atom/atom';
-import { useLocation, useNavigate } from 'react-router-dom';
+// utils
 import { showCodeName, showState } from '../Utils/showDetailFunction';
 
 const PostingPage = () => {
@@ -125,10 +128,6 @@ const PostingPage = () => {
                 <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
                 <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
               </div>
-              {/* <div style={{ marginTop: '4px' }}>
-                <span style={{ color: '#767676', fontSize: '11px' }}>이용요금</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_FEE}</span>
-              </div> */}
             </div>
             <UploadTextArea
               className="uploadTextarea"
