@@ -94,10 +94,4 @@ const Sform = styled.form`
     margin-top: 2px;
     margin-bottom: 15px;
   }
-
-  .bothEmptyText {
-    margin: 12px 0 -7px -120px;
-    color: #fc6d6d;
-    font-size: 14px;
-  }
 `;
