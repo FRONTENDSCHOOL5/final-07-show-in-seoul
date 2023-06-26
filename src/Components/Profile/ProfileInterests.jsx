@@ -5,11 +5,16 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ProfileTags from './ProfileTags';
 import { useEffect } from 'react';
 
-const ProfileInterests = ({ introGenerator }) => {
+const ProfileInterests = ({ currentTags, introGenerator }) => {
   const setUserInterestTags = useSetRecoilState(UserInterestTags);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const setUserInterestTagCount = useSetRecoilState(UserInterestTagCount);
   const getUserInterestTagCount = useRecoilValue(UserInterestTagCount);
+
+  // const updateCurrentTags = () => {
+  //   let count = 0;
+  //   setUserInterestTags(() => {});
+  // };
 
   useEffect(() => {
     if (getUserInterestTagCount !== 0) introGenerator();

@@ -14,6 +14,8 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   const [AccountnameFailedMsg, setAccountnameFailedMsg] = useState('');
   const warning = useRecoilValue(InfoWarning);
 
+  console.log(profile);
+
   const isValidAccountName = async () => {
     const regExp = /^[a-zA-Z0-9_\.]*$/;
     if (!regExp.test(profile.accountname)) {
@@ -55,10 +57,10 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
       </div>
       <div className="profile-edit-info">
         <InputBox
+          value={profile.username}
           title="사용자 이름"
           id="userNamee"
           onChange={e => {
-            console.log(profile);
             setProfile({ ...profile, username: e.target.value });
           }}
           placeholder="2~10자 이내여야 합니다."
@@ -66,6 +68,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
           onBlur={isValidUserName}
         />
         <InputBox
+          value={profile.accountname}
           title="계정 ID"
           id="accountId"
           onChange={e => {
@@ -82,7 +85,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
           disabled={true}
           placeholder="최대 4개까지 선택할 수 있습니다."
         />
-        <ProfileInterests introGenerator={introGenerator} />
+        <ProfileInterests currentTags={profile.intro} introGenerator={introGenerator} />
       </div>
     </SProfileInfoEdit>
   );
