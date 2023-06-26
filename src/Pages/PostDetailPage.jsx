@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { styled, css } from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { useLocation } from 'react-router-dom';
+import { Token } from '../Atom/atom';
+// 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
-import LogoGraySmall from '../Assets/Icon/logo-gray-small.svg';
-import { useRecoilValue } from 'recoil';
-import { Token } from '../Atom/atom';
-import { useLocation } from 'react-router-dom';
+import CommentsForm from '../Components/Post/CommentsForm';
 
 const PostDetailPage = () => {
   const URL = 'https://api.mandarin.weniv.co.kr';
@@ -14,6 +15,7 @@ const PostDetailPage = () => {
 
   const getPostsData = useLocation().state;
   const postsId = getPostsData.id;
+  console.log(getPostsData);
 
   const GetPostComments = () => {
     const [commentData, setCommentData] = useState([]);
@@ -34,12 +36,11 @@ const PostDetailPage = () => {
     };
     useEffect(() => {
       getPostComments();
-    }, []);
+    }, [getPostsData]);
     return commentData;
   };
 
   const postsComments = GetPostComments();
-  console.log(postsComments);
 
   return (
     <>
@@ -56,11 +57,7 @@ const PostDetailPage = () => {
       </SPostDetailContent>
       <SContainer>
         <SCommentDiv name="" action="" method="">
-          <img src={LogoGraySmall} alt="" />
-          <form>
-            <textarea placeholder="댓글 입력하기..."></textarea>
-            <button type="submit">게시</button>
-          </form>
+          <CommentsForm postsData={getPostsData} postsId={postsId} />
         </SCommentDiv>
       </SContainer>
     </>
