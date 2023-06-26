@@ -9,12 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 const PostDetailPage = () => {
   const getPostsData = useLocation().state;
-  console.log(getPostsData);
-  // 댓글 가져오기
-
-  // 댓글 작성하기
-
-  // 댓글 수정하기
+  // console.log(getPostsData);
 
   return (
     <>
@@ -51,6 +46,7 @@ const SPostDetailContent = styled.div`
   }
   .showPost {
     display: block;
+    height: auto;
     .postUl {
       .postImg {
         height: 400px;
@@ -76,8 +72,8 @@ const SPostDetailContent = styled.div`
     }
   }
   .postText {
-    margin-top: 420px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: block;
     padding: 0px 3px;
     overflow-x: scroll;
