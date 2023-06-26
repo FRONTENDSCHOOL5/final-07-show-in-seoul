@@ -19,10 +19,10 @@ const SearchPage = () => {
     <>
       {/* 상단바 input에서 값을 활용할 수 있도록 props로 setKeyword 전달*/}
       <TopBar leftEl={'search'} setKeyword={setKeyword} />
+      <TotalCount page={'search'} data={searchResult} />
       {searchResult.length !== 0 ? (
         <SSearch>
           <h1 className="a11y-hidden">행사 검색</h1>
-          <TotalCount page={'search'} data={searchResult} />
           <ul className="searchResult">
             {searchResult.map((data, i) => {
               return (

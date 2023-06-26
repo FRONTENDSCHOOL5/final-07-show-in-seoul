@@ -60,7 +60,7 @@ const SShowDtailInfo = styled.section`
     margin-bottom: 7px;
     text-align: center;
     div {
-      font-size: 14px;
+      font-size: 12px;
       padding: 5px 10px;
       background-color: var(--main);
       color: white;

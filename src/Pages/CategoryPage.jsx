@@ -25,7 +25,7 @@ const CategoryPage = () => {
           <CategoryHeader title="기간" />
           <CategoryPeriod />
         </section> */}
-        <Button navigate="/mainpage" size="Large">
+        <Button navigate={'/mainpage'} stateValue={'filtering'} size="Large">
           필터 적용하기
         </Button>
       </SCategoryPage>
