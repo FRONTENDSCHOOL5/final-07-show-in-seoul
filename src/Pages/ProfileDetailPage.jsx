@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // 공통 컴포넌트
 import Profile from '../Components/Common/Profile';
 import PostLayoutButtons from '../Components/Common/Post/PostLayoutButtons';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
+import AlertModal from '../Components/Modal/Alert';
 
 // recoil
 import { MyAccountName } from '../Atom/atom';
@@ -37,19 +38,40 @@ const ProfileDetailPage = () => {
 
   const postsData = GetUserPostAPI(otherAccountName);
 
+  // 탑바 뒤로가기
+  const navigate = useNavigate();
+  const arrow = () => {
+    navigate(-1);
+  };
+
+  // 탑바 로그아웃 버튼
+  const [isLogout, setIsLogout] = useState(false);
+  const closeModal = () => {
+    setIsLogout(false);
+  };
+  const openModal = () => [setIsLogout(true)];
   return (
     // getMyAcoountName과 accountname이 같을 경우,
     // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
     // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
-      <STopBar>
-        <button className="arrowBtn">
-          <img src={arrowSVG} alt="" />
-        </button>
-        <button className="logoutBtn">
-          <img src={logoutSVG} alt="" />
-        </button>
-      </STopBar>
+      {getMyAccountName === otherAccountName ? (
+        <STopBar>
+          <button onClick={arrow} className="arrowBtn">
+            <img src={arrowSVG} alt="" />
+          </button>
+          <button onClick={openModal} className="logoutBtn">
+            <img src={logoutSVG} alt="" />
+          </button>
+        </STopBar>
+      ) : (
+        <STopBar>
+          <button onClick={arrow} className="arrowBtn">
+            <img src={arrowSVG} alt="" />
+          </button>
+        </STopBar>
+      )}
+
       <SProfileWrapper>
         <Profile accountname={otherAccountName} />
         <PostLayoutButtons />
@@ -61,6 +83,11 @@ const ProfileDetailPage = () => {
           </li>
         )}
       </SProfileWrapper>
+      {isLogout && (
+        <AlertModal confirmText="로그아웃" onConfirm={closeModal} onCancel={closeModal}>
+          로그아웃 하시겠어요?
+        </AlertModal>
+      )}
       <BottomNav />
     </>
   );
