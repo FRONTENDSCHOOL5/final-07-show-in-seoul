@@ -65,7 +65,7 @@ const PostDetailPage = () => {
           {postsComments?.length > 0 ? (
             postsComments.map(postsComments => <Comments postsComments={postsComments} />)
           ) : (
-            <p>댓글이 존재하지 않습니다.</p>
+            <p style={{ display: 'none' }}>댓글이 존재하지 않습니다.</p>
           )}
         </SCommentsWrapper>
       </SPostDetailContent>
