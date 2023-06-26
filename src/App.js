@@ -24,10 +24,31 @@ function App() {
       <GlobalStyle />
       <LayoutStyle>
         <Routes>
-          <Route path="/" element={<SplashPage />} />
           <Route path="/*" element={<ErrorPage />} />
-          <Route path="/loginpage" element={<LoginPage />} />
-          <Route path="/signuppage" element={<SignupPage />} />
+          <Route
+            path="/"
+            element={
+              <RequireAuth to="/mainpage">
+                <SplashPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/loginpage"
+            element={
+              <RequireAuth to="/mainpage">
+                <LoginPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/signuppage"
+            element={
+              <RequireAuth to="/mainpage">
+                <SignupPage />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/errorpage"
             element={

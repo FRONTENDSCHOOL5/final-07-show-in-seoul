@@ -6,7 +6,9 @@ import { IsLoginState } from '../Atom/atom';
 const RequireAuth = ({ children, to }) => {
   const isAlreadyLogin = useRecoilValue(IsLoginState);
 
-  if (isAlreadyLogin) {
+  if (to === '/mainpage' && isAlreadyLogin) {
+    return <Navigate to={to} replace />;
+  } else if (!isAlreadyLogin) {
     return <Navigate to={to} replace />;
   }
   return children;
