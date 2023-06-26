@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import TotalCount from '../Components/Article/TotalCount';
@@ -18,10 +18,12 @@ const MainPage = () => {
   const interestTagCount = useRecoilValue(CategoryInterestTagCount);
   const areaTagCount = useRecoilValue(CategoryAreaTagCount);
 
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [showData, setShowData] = useState([]);
   const location = useLocation();
 
   useMemo(() => {
+    // 로그인 이후 최초 접속 시 API 통신
     if (isLoginState === 'false') {
       const fetchData = async () => {
         try {
@@ -36,6 +38,11 @@ const MainPage = () => {
     }
   }, [isLoginState]);
 
+  // 첫번째 렌더링에 skeleton 보여주기 위한 조건
+  useEffect(() => {
+    setIsFirstRender(false);
+  }, []);
+
   // 태그 선택값 확인 후 결과 값 showData에 담기
   useDataFiltering(getShow, setShowData, interestTagCount, areaTagCount);
   console.log('showData 메인피드 렌더링...', showData);
@@ -44,15 +51,17 @@ const MainPage = () => {
     <>
       <TopBar />
       <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} />
-      {showData.length !== 0 ? (
+      {isFirstRender ? (
+        <Skeleton />
+      ) : showData.length !== 0 ? (
         <SectionLayout>
           <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
           {getShow && <FeedContents showInfo={showData} location={location.state} />}
         </SectionLayout>
-      ) : location.state !== 'filtering' ? (
-        <Skeleton />
-      ) : (
+      ) : location.state === 'filtering' ? (
         <Error text={'원하시는 필터링 결과가 없습니다 :('} buttonStyle={'category'} />
+      ) : (
+        <Skeleton />
       )}
       <BottomNav />
     </>
