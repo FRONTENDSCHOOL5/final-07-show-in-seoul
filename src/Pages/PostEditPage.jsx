@@ -6,24 +6,21 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import TopBar from '../Components/Common/TopBar';
 // atom
 import { Token } from '../Atom/atom';
-// utils
-import { showCodeName, showState } from '../Utils/showDetailFunction';
 
-const PostingPage = () => {
+const PostEditPage = () => {
   const URL = 'https://api.mandarin.weniv.co.kr';
   const [textareaValue, setTextareaValue] = useState('');
   const textRef = useRef();
   const getMyToken = useRecoilValue(Token);
-  const showData = useLocation().state;
-  const codeName = showCodeName(showData.CODENAME);
-  const ShowState = showState((showData.STRTDATE, showData.END_DATE));
+  const postsData = useLocation().state;
+  const postsDataArr = postsData.content.split('!#%&@$^))+');
   const navigate = useNavigate();
 
-  // 업로드 버튼 클릭 시 실행, api에 게시글 등록
-  const postSubmit = async e => {
+  // 수정하기 버튼 클릭 시 실행, 게시물 수정 api 호출
+  const postUpdate = async () => {
     try {
-      const response = await fetch(URL + '/post', {
-        method: 'POST',
+      const response = await fetch(URL + '/post/' + postsData.id, {
+        method: 'PUT',
         headers: {
           Authorization: 'Bearer ' + getMyToken,
           'Content-type': 'application/json',
@@ -31,9 +28,9 @@ const PostingPage = () => {
         body: JSON.stringify({
           post: {
             // textarea에 타이핑 되는 내용들
-            content: `${textareaValue}!#%&@$^))+${codeName}!#%&@$^))+${ShowState}!#%&@$^))+${showData.GUNAME}!#%&@$^))+${showData.TITLE}!#%&@$^))+${showData.PLACE}!#%&@$^))+${showData.RGSTDATE}!#%&@$^))+${showData.DATE}!#%&@$^))+${showData.USE_TRGT}!#%&@$^))+${showData.USE_FEE}`,
-            // 업로드한 사진
-            image: showData.MAIN_IMG,
+            content: `${textareaValue}!#%&@$^))+${postsDataArr[1]}!#%&@$^))+${postsDataArr[2]}!#%&@$^))+${postsDataArr[3]}!#%&@$^))+${postsDataArr[4]}!#%&@$^))+${postsDataArr[5]}!#%&@$^))+${postsDataArr[6]}!#%&@$^))+${postsDataArr[7]}!#%&@$^))+${postsDataArr[8]}!#%&@$^))+${postsDataArr[9]}`,
+            // 업로드할 사진
+            image: postsData.image,
           },
         }),
       });
@@ -62,42 +59,42 @@ const PostingPage = () => {
   return (
     <>
       <TopBar leftEl="back" />
-
       <SForm>
         <SPostingContent>
-          <button type="button" disabled={!textareaValue} onClick={postSubmit} className="uploadBtn">
-            업로드
+          <button type="button" disabled={!textareaValue} onClick={postUpdate} className="uploadBtn">
+            수정하기
           </button>
           <div className="showDatas">
             <ImageUploadDiv>
               <ul>
                 <li>
-                  <img id="imagePre" src={showData.MAIN_IMG} alt=""></img>
+                  <img id="imagePre" src={postsData.image} alt=""></img>
                 </li>
               </ul>
             </ImageUploadDiv>
 
             <div style={{ paddingLeft: '5px', paddingRight: '5px', marginTop: '210px' }}>
-              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{showData.CODENAME}</p>
-              <p style={{ fontSize: '14px', marginTop: '6px' }}>{showData.TITLE}</p>
+              <p style={{ color: 'salmon', fontSize: '12px', marginTop: '7px' }}>{postsDataArr[1]}</p>
+              <p style={{ fontSize: '14px', marginTop: '6px' }}>{postsDataArr[4]}</p>
               <p style={{ fontSize: '11px', marginTop: '6px' }}>
-                {showData.GUNAME} | {showData.PLACE}
+                {postsDataArr[3]} | {postsDataArr[5]}
               </p>
               <div style={{ marginTop: '4px' }}>
                 <span style={{ color: '#767676', fontSize: '11px' }}>신청일자</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.RGSTDATE}</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{postsDataArr[6]}</span>
               </div>
               <div style={{ marginTop: '4px' }}>
                 <span style={{ color: '#767676', fontSize: '11px' }}>공연일자</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.DATE}</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{postsDataArr[7]}</span>
               </div>
               <div style={{ marginTop: '4px', borderBottom: '1px solid #dbdbdb', paddingBottom: '7px' }}>
                 <span style={{ color: '#767676', fontSize: '11px' }}>이용대상</span>
-                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{showData.USE_TRGT}</span>
+                <span style={{ fontSize: '11px', marginLeft: '8px' }}>{postsDataArr[8]}</span>
               </div>
             </div>
           </div>
           <UploadTextArea
+            defaultValue={postsDataArr[0]}
             required
             className="uploadTextarea"
             onChange={handleInputChange}
@@ -111,7 +108,7 @@ const PostingPage = () => {
   );
 };
 
-export default PostingPage;
+export default PostEditPage;
 
 const SForm = styled.form`
   height: calc(100vh - 48px);
@@ -122,6 +119,7 @@ const SForm = styled.form`
 `;
 
 const SPostingContent = styled.div`
+  /* margin: 32px 16px; */
   .uploadBtn {
     position: fixed;
     top: 8px;

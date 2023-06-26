@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 // 이미지
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
 import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
 // recoil
-import { Token, MyAccountName } from '../../../Atom/atom';
+import { MyAccountName } from '../../../Atom/atom';
 
 const PostHeader = ({ postsData }) => {
   // console.log(postsData);
+  const getMyAccounName = useRecoilValue(MyAccountName);
+  console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
+  const navigate = useNavigate();
+  const goToPostEdit = () => {
+    navigate('/posteditpage', { state: postsData });
+  };
 
   return (
     <>
@@ -26,7 +32,7 @@ const PostHeader = ({ postsData }) => {
             <SPostUserId>{accountname}</SPostUserId>
           </div>
         </Link>
-        <button></button>
+        {accountname === getMyAccounName ? <button onClick={goToPostEdit}></button> : <button></button>}
       </SPostHeaderDiv>
     </>
   );
@@ -50,6 +56,7 @@ const SPostHeaderDiv = styled.div`
     // 게시물 작성자 이름과 아이디 감싼거
     div {
       margin-left: 12px;
+      width: 250px;
     }
   }
   // 게시물 수정/삭제 모달 띄워주는 버튼
@@ -58,8 +65,7 @@ const SPostHeaderDiv = styled.div`
     width: 18px;
     height: 18px;
     background: url(${iconSmallMore}) no-repeat center;
-    margin-left: 240px;
-    margin-top: 10px;
+    margin-left: 35px;
   }
 `;
 

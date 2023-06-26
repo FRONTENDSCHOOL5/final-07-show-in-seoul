@@ -8,6 +8,7 @@ import MainPage from './Pages/MainPage';
 import PostDetailPage from './Pages/PostDetailPage';
 import PostingPage from './Pages/PostingPage';
 import PostPage from './Pages/PostPage';
+import PostEditPage from './Pages/PostEditPage';
 import ProfileEditPage from './Pages/ProfileEditPage';
 import ProfileDetailPage from './Pages/ProfileDetailPage';
 import ProfileSettingPage from './Pages/ProfileSettingPage';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/postpage" element={<PostPage />} />
           <Route path="/postingpage" element={<PostingPage />} />
           <Route path="/postdetailpage" element={<PostDetailPage />} />
+          <Route path="/posteditpage" element={<PostEditPage />} />
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/errorpage" element={<ErrorPage />} />
           <Route path="/categorypage" element={<CategoryPage />} />

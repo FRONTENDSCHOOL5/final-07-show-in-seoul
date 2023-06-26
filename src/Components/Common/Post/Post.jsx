@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 // postsData는 PostPage에서 관리자가 팔로우한 유저의 게시글들의 정보를 전달한 것이다.
 // profileData에서 전달하는 postsData는 게시글 작성자의 게시글들의 정보이다.
 const Post = ({ postsData }) => {
-  // console.log(postsData);
+  const postYearMonth = postsData.createdAt.split('-');
+  const postYear = postYearMonth[0];
+  const postMonth = postYearMonth[1];
+  const postDay = postYearMonth[2].split('T')[0];
 
   return (
     <>
@@ -25,7 +28,9 @@ const Post = ({ postsData }) => {
           {/* 게시물 밑, 좋아요와 댓글 버튼 */}
           <PostContentButtons postsData={postsData} />
           {/* 게시물 맨 밑, 날짜 표시 */}
-          <SPostContentDate>2020년 10월 21일</SPostContentDate>
+          <SPostContentDate>
+            {postYear}년 {postMonth}월 {postDay}일
+          </SPostContentDate>
         </SPostContentDiv>
       </SPostSection>
     </>
