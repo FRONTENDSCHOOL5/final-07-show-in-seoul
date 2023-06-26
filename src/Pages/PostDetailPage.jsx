@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled, css } from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
 import LogoGraySmall from '../Assets/Icon/logo-gray-small.svg';
-
+import { useRecoilValue } from 'recoil';
+import { Token } from '../Atom/atom';
 import { useLocation } from 'react-router-dom';
 
 const PostDetailPage = () => {
+  const URL = 'https://api.mandarin.weniv.co.kr';
+  const getMyToken = useRecoilValue(Token);
+
   const getPostsData = useLocation().state;
-  // console.log(getPostsData);
+  const postsId = getPostsData.id;
+
+  const GetPostComments = () => {
+    const [commentData, setCommentData] = useState([]);
+    const getPostComments = async () => {
+      try {
+        const response = await fetch(URL + '/post/' + postsId + '/comments', {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + getMyToken,
+            'Content-type': 'application/json',
+          },
+        });
+        const res = await response.json();
+        setCommentData(res.comments);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    useEffect(() => {
+      getPostComments();
+    }, []);
+    return commentData;
+  };
+
+  const postsComments = GetPostComments();
+  console.log(postsComments);
 
   return (
     <>
@@ -17,10 +47,11 @@ const PostDetailPage = () => {
       <SPostDetailContent>
         <Post postsData={getPostsData} />
         <SCommentsWrapper>
-          <Comments />
-          <Comments />
-          <Comments />
-          <Comments />
+          {postsComments?.length > 0 ? (
+            postsComments.map(postsComments => <Comments postsComments={postsComments} />)
+          ) : (
+            <p>댓글이 존재하지 않습니다.</p>
+          )}
         </SCommentsWrapper>
       </SPostDetailContent>
       <SContainer>
