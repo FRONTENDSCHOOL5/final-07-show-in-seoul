@@ -47,6 +47,7 @@ const CommentsForm = ({ postsId, postsData }) => {
       <img src={LogoGraySmall} alt="" />
       <form>
         <textarea onChange={handleInputChange} ref={textRef} required placeholder="댓글 입력하기..."></textarea>
+
         <button type="button" disabled={!textareaValue} onClick={postComment}>
           게시
         </button>

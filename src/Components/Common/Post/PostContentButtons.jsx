@@ -14,7 +14,7 @@ const PostContentButtons = ({ postsData }) => {
         </SContentHeartBtn>
         <Link to="/postdetailpage" state={postsData}>
           <SContentCommentBtn>
-            <span>12</span>
+            <span>{postsData.comments.length}</span>
           </SContentCommentBtn>
         </Link>
       </SPostContentBtns>
