@@ -13,7 +13,7 @@ import { MyAccountName } from '../../../Atom/atom';
 const PostHeader = ({ postsData }) => {
   // console.log(postsData);
   const getMyAccounName = useRecoilValue(MyAccountName);
-  console.log(getMyAccounName);
+  // console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
   const navigate = useNavigate();

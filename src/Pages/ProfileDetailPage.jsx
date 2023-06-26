@@ -43,7 +43,7 @@ const ProfileDetailPage = () => {
       <SProfileWrapper>
         <Profile accountname={otherAccountName} />
         <PostLayoutButtons />
-        {postsData.length > 0 ? (
+        {postsData?.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
           <li style={{ display: 'none' }} className="noContent">
