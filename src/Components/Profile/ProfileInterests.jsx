@@ -11,14 +11,29 @@ const ProfileInterests = ({ currentTags, introGenerator }) => {
   const setUserInterestTagCount = useSetRecoilState(UserInterestTagCount);
   const getUserInterestTagCount = useRecoilValue(UserInterestTagCount);
 
-  // const updateCurrentTags = () => {
-  //   let count = 0;
-  //   setUserInterestTags(() => {});
-  // };
+  const updateCurrentTags = () => {
+    let count = 0;
+    setUserInterestTags(() => {
+      const newArr = [];
+      getUserInterestTags.map((el, idx) => {
+        newArr.push(el.slice());
+        if (currentTags.indexOf(el[0]) !== -1) {
+          count++;
+          newArr[idx].push(!newArr[idx].pop());
+        }
+      });
+      return newArr;
+    });
+    setUserInterestTagCount(count);
+  };
 
   useEffect(() => {
     if (getUserInterestTagCount !== 0) introGenerator();
   }, [getUserInterestTagCount]);
+
+  useEffect(() => {
+    updateCurrentTags();
+  }, []);
 
   return (
     <SProfileInterests>
