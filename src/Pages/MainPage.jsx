@@ -21,8 +21,6 @@ const MainPage = () => {
   const [showData, setShowData] = useState([]);
   const location = useLocation();
 
-  console.log('location state: ', location.state);
-
   useMemo(() => {
     if (isLoginState === 'false') {
       const fetchData = async () => {
@@ -38,11 +36,8 @@ const MainPage = () => {
     }
   }, [isLoginState]);
 
-  console.log('getShow : ', getShow);
-
   // 태그 선택값 확인 후 결과 값 showData에 담기
   useDataFiltering(getShow, setShowData, interestTagCount, areaTagCount);
-
   console.log('showData 메인피드 렌더링...', showData);
 
   return (
