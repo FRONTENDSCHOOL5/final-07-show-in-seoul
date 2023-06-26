@@ -25,7 +25,7 @@ const PostDetailPage = () => {
 
   const getPostsData = useLocation().state;
   const postsId = getPostsData.id;
-  console.log(getPostsData);
+  // console.log(getPostsData);
 
   const GetPostComments = () => {
     const [commentData, setCommentData] = useState([]);
