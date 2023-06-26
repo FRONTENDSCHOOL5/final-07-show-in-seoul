@@ -44,7 +44,7 @@ const ProfileDetailPage = () => {
     navigate(-1);
   };
 
-  // 탑바 로그아웃 버튼
+  // 탑바 로그아웃 버튼 모달 연결
   const [isLogout, setIsLogout] = useState(false);
   const closeModal = () => {
     setIsLogout(false);
