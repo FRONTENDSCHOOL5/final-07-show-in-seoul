@@ -14,12 +14,12 @@ const Profile = ({ accountname }) => {
   const profileData = GetOtherProfileAPI(accountname);
   const getMyAccountName = useRecoilValue(MyAccountName);
   // console.log(profileData);
-  console.log(profileData.intro?.split(','));
+  // console.log(profileData.intro?.split(','));
   let profileInterest;
   if (profileData.intro?.split(',')[0] !== '') {
     profileInterest = profileData.intro?.split(',');
   }
-  console.log(profileInterest);
+  // console.log(profileInterest);
   return (
     <>
       <SProfileSection>

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // 공통 컴포넌트
-import TopBar from '../Components/Common/TopBar';
 import Profile from '../Components/Common/Profile';
 import PostLayoutButtons from '../Components/Common/Post/PostLayoutButtons';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
+import AlertModal from '../Components/Modal/Alert';
 
 // recoil
 import { MyAccountName } from '../Atom/atom';
@@ -15,6 +15,10 @@ import { useRecoilValue } from 'recoil';
 
 // API
 import { GetUserPostAPI } from '../API/PostAPI';
+
+// assets
+import logoutSVG from '../Assets/Icon/icon-logout.svg';
+import arrowSVG from '../Assets/Icon/icon-arrow-left.svg';
 
 const ProfileDetailPage = () => {
   // 리코일에 저장된, 지금 로그인 한 계정 이름
@@ -34,16 +38,44 @@ const ProfileDetailPage = () => {
 
   const postsData = GetUserPostAPI(otherAccountName);
 
+  // 탑바 뒤로가기
+  const navigate = useNavigate();
+  const arrow = () => {
+    navigate(-1);
+  };
+
+  // 탑바 로그아웃 버튼 모달 연결
+  const [isLogout, setIsLogout] = useState(false);
+  const closeModal = () => {
+    setIsLogout(false);
+  };
+  const openModal = () => [setIsLogout(true)];
   return (
     // getMyAcoountName과 accountname이 같을 경우,
     // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
     // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
-      {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
+      {getMyAccountName === otherAccountName ? (
+        <STopBar>
+          <button onClick={arrow} className="arrowBtn">
+            <img src={arrowSVG} alt="" />
+          </button>
+          <button onClick={openModal} className="logoutBtn">
+            <img src={logoutSVG} alt="" />
+          </button>
+        </STopBar>
+      ) : (
+        <STopBar>
+          <button onClick={arrow} className="arrowBtn">
+            <img src={arrowSVG} alt="" />
+          </button>
+        </STopBar>
+      )}
+
       <SProfileWrapper>
         <Profile accountname={otherAccountName} />
         <PostLayoutButtons />
-        {postsData.length > 0 ? (
+        {postsData?.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
           <li style={{ display: 'none' }} className="noContent">
@@ -51,12 +83,38 @@ const ProfileDetailPage = () => {
           </li>
         )}
       </SProfileWrapper>
+      {isLogout && (
+        <AlertModal confirmText="로그아웃" onConfirm={closeModal} onCancel={closeModal}>
+          로그아웃 하시겠어요?
+        </AlertModal>
+      )}
       <BottomNav />
     </>
   );
 };
 
 export default ProfileDetailPage;
+
+const STopBar = styled.div`
+  width: 390px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: solid 1px var(--gray);
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  button {
+    width: 22px;
+    height: 22px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+`;
 
 const SProfileWrapper = styled.div`
   height: calc(100vh - 77px);
