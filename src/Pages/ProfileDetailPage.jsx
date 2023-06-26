@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 
 // 공통 컴포넌트
-import TopBar from '../Components/Common/TopBar';
 import Profile from '../Components/Common/Profile';
 import PostLayoutButtons from '../Components/Common/Post/PostLayoutButtons';
 import Post from '../Components/Common/Post/Post';
@@ -15,6 +14,10 @@ import { useRecoilValue } from 'recoil';
 
 // API
 import { GetUserPostAPI } from '../API/PostAPI';
+
+// assets
+import logoutSVG from '../Assets/Icon/icon-logout.svg';
+import arrowSVG from '../Assets/Icon/icon-arrow-left.svg';
 
 const ProfileDetailPage = () => {
   // 리코일에 저장된, 지금 로그인 한 계정 이름
@@ -39,7 +42,14 @@ const ProfileDetailPage = () => {
     // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
     // 다를 경우, 다른 유저 프로필이니 로그아웃 버튼을 없앤다
     <>
-      {getMyAccountName === otherAccountName ? <TopBar leftEl="back" rightEl="logout" /> : <TopBar leftEl="back" />}
+      <STopBar>
+        <button className="arrowBtn">
+          <img src={arrowSVG} alt="" />
+        </button>
+        <button className="logoutBtn">
+          <img src={logoutSVG} alt="" />
+        </button>
+      </STopBar>
       <SProfileWrapper>
         <Profile accountname={otherAccountName} />
         <PostLayoutButtons />
@@ -57,6 +67,27 @@ const ProfileDetailPage = () => {
 };
 
 export default ProfileDetailPage;
+
+const STopBar = styled.div`
+  width: 390px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: solid 1px var(--gray);
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  button {
+    width: 22px;
+    height: 22px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+`;
 
 const SProfileWrapper = styled.div`
   height: calc(100vh - 77px);
