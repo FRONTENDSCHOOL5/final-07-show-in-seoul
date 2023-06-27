@@ -30,7 +30,7 @@ const MainPage = () => {
     if (isLoginState === 1) {
       const fetchData = async () => {
         try {
-          await GetShowAPI(getShow, setShow);
+          await GetShowAPI(setShow);
         } catch (error) {
           console.error(error);
         }
