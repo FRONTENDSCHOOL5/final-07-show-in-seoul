@@ -14,8 +14,6 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   const [AccountnameFailedMsg, setAccountnameFailedMsg] = useState('');
   const warning = useRecoilValue(InfoWarning);
 
-  console.log(profile);
-
   const isValidAccountName = async () => {
     const regExp = /^[a-zA-Z0-9_\.]*$/;
     if (!regExp.test(profile.accountname)) {
@@ -24,7 +22,6 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
       return;
     }
     const response = await IsValidAccountAPI(profile.accountname);
-    console.log(response);
     if (response.message === '사용 가능한 계정ID 입니다.') {
       setValidAccountName(true);
       setAccountnameFailedMsg('');
@@ -45,15 +42,20 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   };
 
   useEffect(() => {
+    console.log('123123');
     if (validAccountName && validUserName) {
+      console.log('456');
       setIsValidInputs(true);
-    } else setIsValidInputs(false);
+    } else {
+      console.log('789');
+      setIsValidInputs(false);
+    }
   }, [validAccountName, validUserName]);
 
   return (
     <SProfileInfoEdit>
       <div className="profile-edit-header">
-        <ProfileImageEdit />
+        <ProfileImageEdit profile={profile} setProfile={setProfile} />
       </div>
       <div className="profile-edit-info">
         <InputBox
@@ -85,7 +87,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
           disabled={true}
           placeholder="최대 4개까지 선택할 수 있습니다."
         />
-        <ProfileInterests currentTags={profile.intro} introGenerator={introGenerator} />
+        <ProfileInterests profile={profile} introGenerator={introGenerator} />
       </div>
     </SProfileInfoEdit>
   );

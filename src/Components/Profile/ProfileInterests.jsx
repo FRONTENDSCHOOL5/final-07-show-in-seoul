@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import ProfileTags from './ProfileTags';
 import { useEffect } from 'react';
 
-const ProfileInterests = ({ currentTags, introGenerator }) => {
+const ProfileInterests = ({ profile, introGenerator }) => {
   const setUserInterestTags = useSetRecoilState(UserInterestTags);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const setUserInterestTagCount = useSetRecoilState(UserInterestTagCount);
@@ -15,13 +15,15 @@ const ProfileInterests = ({ currentTags, introGenerator }) => {
     let count = 0;
     setUserInterestTags(() => {
       const newArr = [];
-      getUserInterestTags.map((el, idx) => {
+      getUserInterestTags.forEach((el, idx) => {
         newArr.push(el.slice());
-        if (currentTags.indexOf(el[0]) !== -1) {
+        if (profile.intro.indexOf(el[0]) !== -1) {
           count++;
-          newArr[idx].push(!newArr[idx].pop());
+          newArr[idx].pop();
+          newArr[idx].push(true);
         }
       });
+      console.log(newArr);
       return newArr;
     });
     setUserInterestTagCount(count);
@@ -33,7 +35,7 @@ const ProfileInterests = ({ currentTags, introGenerator }) => {
 
   useEffect(() => {
     updateCurrentTags();
-  }, []);
+  }, [profile]);
 
   return (
     <SProfileInterests>

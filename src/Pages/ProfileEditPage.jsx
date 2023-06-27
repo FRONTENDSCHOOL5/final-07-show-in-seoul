@@ -53,15 +53,18 @@ const ProfileEditPage = () => {
 
   const getProfile = async () => {
     const oldProfile = await GetMyProfileAPI();
-    console.log(oldProfile);
 
-    setProfile({ ...profile, username: oldProfile.user.username });
-    setProfile({ ...profile, accountname: oldProfile.user.accountname });
-    setProfile({ ...profile, intro: oldProfile.user.intro });
-    setProfile({ ...profile, image: oldProfile.user.image });
+    setProfile({
+      ...profile,
+      username: oldProfile.user.username,
+      accountname: oldProfile.user.accountname,
+      intro: oldProfile.user.intro,
+      image: oldProfile.user.image,
+    });
   };
 
   useEffect(() => {
+    console.log('!!!!!!!!!!!!!!!!!!2222');
     if (isValidInputs) {
       setBtnAble(true);
     } else setBtnAble(false);
@@ -69,16 +72,19 @@ const ProfileEditPage = () => {
 
   useEffect(() => {
     getProfile();
-    console.log(profile);
+    console.log('!!!!!!!!!!!!!!!!!!!!1');
+    // setBtnAble(true);
   }, []);
 
   return (
     <>
       <TopBar leftEl="back" />
       <SProfileEdit onSubmit={profileEditHandler}>
-        <Button disabled={!btnAble} size="SMedium">
-          업로드
-        </Button>
+        <div className="upload-btn">
+          <Button disabled={!btnAble} size="SMedium">
+            업로드
+          </Button>
+        </div>
         <ProfileInfoEdit
           profile={profile}
           setProfile={setProfile}
@@ -98,7 +104,7 @@ const SProfileEdit = styled.form`
   text-align: center;
   position: relative;
 
-  button {
+  .upload-btn {
     position: absolute;
     right: 15px;
     top: -40px;
