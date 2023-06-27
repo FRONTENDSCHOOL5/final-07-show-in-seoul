@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
-
 import styled from 'styled-components';
-
 import { Token } from '../../../Atom/atom';
+
 // assets
 import iconHeart from '../../../Assets/Icon/icon-heart.svg';
 import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.svg';
@@ -15,9 +14,9 @@ const PostContentButtons = ({ postsData }) => {
   const getMyToken = useRecoilValue(Token);
 
   const [likeValid, setLikeValid] = useState(postsData?.hearted);
-  // console.log(likeValid);
   const [likeCount, setLikeCount] = useState(postsData?.heartCount);
 
+  // 좋아요 기능
   const heartBtnClick = async e => {
     e.preventDefault();
     try {
