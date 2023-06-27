@@ -59,8 +59,6 @@ const PostPage = () => {
         )}
       </SUl>
       <BottomNav />
-      {/* <Modal style={{ display: 'none' }} children="신고하기"></Modal> */}
-      {/* <AlertModal confirmText="확인" children="게시글을 신고할까요?"></AlertModal> */}
     </>
   );
 };
