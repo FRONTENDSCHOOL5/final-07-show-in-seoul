@@ -19,7 +19,7 @@ const SearchPage = () => {
   useEffect(() => {
     if (keyword) {
       setSearchResult(getShow.filter(obj => obj.TITLE.includes(keyword)));
-    } else if (keyword === undefined) {
+    } else if (keyword === '') {
       setSearchResult([]);
     }
   }, [keyword]);

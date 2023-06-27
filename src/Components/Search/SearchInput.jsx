@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TopBarBtn from '../Common/TopBarBtn';
 import iconSearch from '../../Assets/Icon/icon-search.svg';
@@ -6,23 +6,21 @@ import iconSearch from '../../Assets/Icon/icon-search.svg';
 const SearchInput = ({ setKeyword }) => {
   const [inputValue, setInputValue] = useState('');
 
+  // 검색아이콘 핸들러
   const submitButtonHandler = e => {
-    // 버튼 클릭시 다른이벤트는 중지하고 입력값을 새로운 키워드로 설정
     e.preventDefault();
-    console.log(inputValue);
-    if (inputValue === '') {
-      return;
-    }
     setKeyword(inputValue);
   };
 
+  // 인풋 핸들러
   const submitKeyDownHandler = e => {
     if (e.key === 'Enter') {
       submitButtonHandler(e);
     }
   };
 
-  const handleChange = e => {
+  // value 핸들러
+  const valueChangeHandler = e => {
     setInputValue(e.target.value);
   };
 
@@ -33,7 +31,7 @@ const SearchInput = ({ setKeyword }) => {
         type="text"
         placeholder="행사 검색"
         onKeyDown={submitKeyDownHandler}
-        onChange={handleChange}
+        onChange={valueChangeHandler}
         value={inputValue}
       />
       <TopBarBtn type="submit" onClick={submitButtonHandler} icon={iconSearch} alt={'검색'} />
