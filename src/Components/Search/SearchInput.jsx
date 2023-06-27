@@ -10,15 +10,20 @@ const SearchInput = ({ setKeyword }) => {
   // newKeyword 값이 변하고, 이전 키워드와 현재 키워드가 일치하지 않을 때에만 변경
   useEffect(() => {
     if (newKeyword !== prevKeyword) {
+      console.log(`newKeyword : ${newKeyword} , prevKeyword : ${prevKeyword}`);
       setKeyword(newKeyword); // 새로운 키워드를 부모 컴포넌트로 전달하여 처리
       setPrevKeyword(newKeyword); // 이전 키워드를 갱신
     }
   }, [newKeyword]);
 
-  const submitButtonHandler = (e, inputValue) => {
+  const submitButtonHandler = e => {
     // 버튼 클릭시 다른이벤트는 중지하고 입력값을 새로운 키워드로 설정
     e.preventDefault();
-    setNewKeyword(inputValue);
+    console.log(e.target);
+    if (e.target.value === '') {
+      return;
+    }
+    setNewKeyword(e.target.value);
   };
 
   const handleKeyPress = e => {
@@ -28,12 +33,12 @@ const SearchInput = ({ setKeyword }) => {
   };
 
   return (
-    <SSearchInput>
+    <SSearchInput onSubmit={submitButtonHandler}>
       {/* onChange 이벤트가 발생하면 inputValue 변경 */}
-      <input placeholder="행사 검색" onKeyDown={handleKeyPress} />
+      <input type="text" placeholder="행사 검색" onKeyDown={handleKeyPress} />
       <TopBarBtn
         type="submit"
-        onClick={e => submitButtonHandler(e, e.target.previousElementSibling.value)}
+        // onClick={e => submitButtonHandler(e, e.target.previousElementSibling.value)}
         icon={iconSearch}
         alt={'검색'}
       />

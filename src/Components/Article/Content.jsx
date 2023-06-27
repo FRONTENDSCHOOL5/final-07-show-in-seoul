@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { showDateForm } from '../../Utils/showDetailFunction';
 
 const Content = ({ data }) => {
+  const keyword = null;
+
   return (
-    <SLink to="/ShowDetailPage" state={data}>
+    <SLink to="/ShowDetailPage" state={[data, keyword]}>
       <div className="imgBox">
         <img src={data.MAIN_IMG} alt="포스터 이미지" />
       </div>
