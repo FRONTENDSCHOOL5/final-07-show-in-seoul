@@ -5,24 +5,44 @@ import { useRecoilValue } from 'recoil';
 
 // 이미지
 import iconSmallMore from '../../../Assets/Icon/s-icon-more-vertical.svg';
-import basicProfileImg from '../../../Assets/Img/basic-profile-img.svg';
 
 // recoil
-import { MyAccountName } from '../../../Atom/atom';
+import { MyAccountName, Token } from '../../../Atom/atom';
 
 //
 import Modal from '../../Modal/Modal';
 import AlertModal from '../../Modal/Alert';
 
 const PostHeader = ({ postsData }) => {
+  const URL = 'https://api.mandarin.weniv.co.kr';
   // console.log(postsData);
   const getMyAccounName = useRecoilValue(MyAccountName);
+  const getMyToken = useRecoilValue(Token);
+
   // console.log(getMyAccounName);
   const accountname = postsData.author?.accountname;
   const username = postsData.author?.username;
   const navigate = useNavigate();
   const goToPostEdit = () => {
     navigate('/posteditpage', { state: postsData });
+  };
+
+  const postDelete = async () => {
+    try {
+      const req = {
+        method: 'DELETE',
+        headers: {
+          Authorization: 'Bearer ' + getMyToken,
+          'Content-type': 'application/json',
+        },
+      };
+      const response = await fetch(URL + '/post/' + postsData.id, req);
+      const data = await response.json();
+      console.log(data);
+      closeModal();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   // 모달 연결
@@ -95,7 +115,7 @@ const PostHeader = ({ postsData }) => {
           </AlertModal>
         )}
         {isDeleteModalVisible && (
-          <AlertModal confirmText="삭제" onConfirm={closeModal} onCancel={closeModal}>
+          <AlertModal confirmText="삭제" onConfirm={postDelete} onCancel={closeModal}>
             게시글을 삭제할까요?
           </AlertModal>
         )}
