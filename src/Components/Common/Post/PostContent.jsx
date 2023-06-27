@@ -104,7 +104,7 @@ const SPostContentA = styled.a`
     margin: 17px 10px 0px 3px;
     word-break: break-all;
     line-height: 18px;
-    white-space: pre;
+    white-space: pre-wrap;
     padding-left: 2px;
   }
   // 게시물 사진 여러개일 경우를 대비하기 위해 ul로 감싼거
