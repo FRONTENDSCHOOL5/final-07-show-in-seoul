@@ -5,7 +5,7 @@ import ProfileInfoEdit from '../Components/Common/ProfileInfoEdit';
 import useFollow from '../API/useFollow';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SignUpAPI, LoginAPI } from '../API/User';
-import { Token, MyAccountName, UserInterestTags } from '../Atom/atom';
+import { Token, MyAccountName, UserInterestTags, IsLoginState } from '../Atom/atom';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 
 const ProfileSettingPage = () => {
@@ -14,6 +14,7 @@ const ProfileSettingPage = () => {
   const location = useLocation();
   const setToken = useSetRecoilState(Token);
   const setMyAccountName = useSetRecoilState(MyAccountName);
+  const setIsLoginState = useSetRecoilState(IsLoginState);
   const getUserInterestTags = useRecoilValue(UserInterestTags);
   const [btnAble, setBtnAble] = useState(false);
   const [isValidInputs, setIsValidInputs] = useState(false);
@@ -77,6 +78,7 @@ const ProfileSettingPage = () => {
     await signUp();
     await autoLogin();
     await followingAdmin();
+    setIsLoginState(1);
     navigate('/mainpage');
   };
 

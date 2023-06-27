@@ -45,9 +45,7 @@ const PostContentButtons = ({ postsData }) => {
   return (
     <>
       <SPostContentBtns>
-        <SContentHeartBtn>
-          <span>{postDetail.heartCount}</span>
-        </SContentHeartBtn>
+        <SContentHeartBtn>{/* <span>{postDetail.heartCount}</span> */}</SContentHeartBtn>
         <Link to="/postdetailpage" state={postsData}>
           <SContentCommentBtn>
             <span>{postDetail.commentCount}</span>

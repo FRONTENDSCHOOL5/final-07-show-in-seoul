@@ -22,9 +22,10 @@ export const MyAccountName = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+// 0: 로그아웃상태, 1: 로그인은 했지만 데이터 안받은 상태, 2: 데이터까지 받은 상태
 export const IsLoginState = atom({
   key: 'IsLoginState',
-  default: 'false',
+  default: 0,
   effects_UNSTABLE: [persistAtom],
 });
 

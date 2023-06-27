@@ -1,4 +1,4 @@
-import React, { useState, useMemo,useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import TotalCount from '../Components/Article/TotalCount';
@@ -27,7 +27,7 @@ const MainPage = () => {
 
   useMemo(() => {
     // 로그인 이후 최초 접속 시 API 통신
-    if (isLoginState === 'false') {
+    if (isLoginState === 1) {
       const fetchData = async () => {
         try {
           await GetShowAPI(setShow);
@@ -37,7 +37,7 @@ const MainPage = () => {
       };
       fetchData();
       console.log('useMemo 데이터 가져오기 실행...');
-      setIsLoginState(true);
+      setIsLoginState(2);
     }
   }, [isLoginState]);
 
@@ -65,14 +65,14 @@ const MainPage = () => {
     <>
       <TopBar />
 
-          <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} />
+      <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} />
       {isFirstRender ? (
         <Skeleton />
       ) : showData.length !== 0 ? (
         <SectionLayout ref={sectionLayoutRef} scrollPosition={scrollPosition} onScroll={handleScroll}>
           <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
           {getShow && <FeedContents showInfo={showData} location={location.state} />}
-      <div className="top-btn" onClick={handleScrollTop}>
+          <div className="top-btn" onClick={handleScrollTop}>
             <img src={topBtn} alt="Scroll to Top" />
           </div>
         </SectionLayout>
