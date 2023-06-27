@@ -27,7 +27,9 @@ const PostHeader = ({ postsData }) => {
     navigate('/posteditpage', { state: postsData });
   };
 
-  const postDelete = async () => {
+  const postDelete = async e => {
+    e.preventDefault();
+
     try {
       const req = {
         method: 'DELETE',

@@ -11,15 +11,11 @@ const ShowDeatailTopBar = ({ data }) => {
     navigate('/mainpage', { state: null });
   };
 
-  const goToPosting = () => {
-    navigate('/postingpage', { state: data });
-  };
-
   return (
     <SShowDetailTopBar>
       <div className="topBtns">
         <TopBarBtn id="arrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} onClick={handleClick} />
-        <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} onClick={goToPosting} />
+        <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} />
       </div>
     </SShowDetailTopBar>
   );
