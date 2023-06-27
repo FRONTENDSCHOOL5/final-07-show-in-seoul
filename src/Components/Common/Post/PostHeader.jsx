@@ -67,7 +67,7 @@ const PostHeader = ({ postsData }) => {
       <SPostHeaderDiv>
         <Link className="wrapper" to="/profiledetailpage" state={postsData.author?.accountname}>
           {/* 프로필 이미지 api로 받아와서 수정해야함 */}
-          <img src={basicProfileImg} alt="" />
+          <img src={postsData.author.image} alt="" />
           <div>
             <SPostUserName>{username}</SPostUserName>
             <SPostUserId>{accountname}</SPostUserId>
