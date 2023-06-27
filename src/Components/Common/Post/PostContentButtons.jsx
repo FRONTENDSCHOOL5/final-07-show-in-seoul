@@ -14,6 +14,31 @@ const PostContentButtons = ({ postsData }) => {
   const URL = 'https://api.mandarin.weniv.co.kr';
   const getMyToken = useRecoilValue(Token);
 
+  const [likeValid, setLikeValid] = useState(postsData?.hearted);
+  // console.log(likeValid);
+  const [likeCount, setLikeCount] = useState(postsData?.heartCount);
+  const heartBtnClick = async e => {
+    e.preventDefault();
+    try {
+      const req = {
+        method: `${likeValid ? 'DELETE' : 'POST'}`,
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: 'Bearer ' + getMyToken,
+        },
+      };
+      const response = await fetch(URL + `/post/${postsData.id}/${likeValid ? 'unheart' : 'heart'}`, req);
+      const data = await response.json();
+      // console.log(data);
+      setLikeCount(data.post.heartCount);
+      setLikeValid(data.post.hearted);
+      // console.log(data.post.heartCount);
+      // console.log(data.post.hearted);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const GetPost = () => {
     const [post, setPost] = useState([]);
 
@@ -45,7 +70,9 @@ const PostContentButtons = ({ postsData }) => {
   return (
     <>
       <SPostContentBtns>
-        <SContentHeartBtn>{/* <span>{postDetail.heartCount}</span> */}</SContentHeartBtn>
+        <SContentHeartBtn likeValid={likeValid} onClick={heartBtnClick}>
+          <span>{postDetail.heartCount}</span>
+        </SContentHeartBtn>
         <Link to="/postdetailpage" state={postsData}>
           <SContentCommentBtn>
             <span>{postDetail.commentCount}</span>
@@ -76,7 +103,7 @@ const SPostContentBtns = styled.div`
 
 // 게시물 밑, 하트 버튼에게만 줘야하는 css
 const SContentHeartBtn = styled.button`
-  background: url(${iconHeart}) no-repeat center;
+  background-image: ${props => (props.likeValid ? `url(${iconHeartPink})` : `url(${iconHeart})`)};
   &:hover {
     background-image: url(${iconHeartPink});
   }
