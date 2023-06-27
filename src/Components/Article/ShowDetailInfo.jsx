@@ -36,9 +36,12 @@ const ShowDetailInfo = ({ detailData }) => {
         </ul>
       </div>
 
-      <Link to={detailData.ORG_LINK}>
-        <Button size="Large">상세페이지 이동하기</Button>
-      </Link>
+      <Button size="Large">
+        <Link to={detailData.ORG_LINK}>상세 페이지</Link>
+        <Link to="/postingpage" state={detailData}>
+          후기 작성
+        </Link>
+      </Button>
     </SShowDtailInfo>
   );
 };
@@ -97,5 +100,22 @@ const SShowDtailInfo = styled.section`
   }
   button {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px 10px 20px;
+  }
+  a {
+    flex: 1;
+    position: relative;
+    &:nth-child(2)::before {
+      content: '';
+      position: absolute;
+      top: 60%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 130%;
+      background-color: #ccc;
+    }
   }
 `;
