@@ -22,7 +22,6 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
       return;
     }
     const response = await IsValidAccountAPI(profile.accountname);
-    console.log(response);
     if (response.message === '사용 가능한 계정ID 입니다.') {
       setValidAccountName(true);
       setAccountnameFailedMsg('');
@@ -43,22 +42,27 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   };
 
   useEffect(() => {
+    console.log('123123');
     if (validAccountName && validUserName) {
+      console.log('456');
       setIsValidInputs(true);
-    } else setIsValidInputs(false);
+    } else {
+      console.log('789');
+      setIsValidInputs(false);
+    }
   }, [validAccountName, validUserName]);
 
   return (
     <SProfileInfoEdit>
       <div className="profile-edit-header">
-        <ProfileImageEdit />
+        <ProfileImageEdit profile={profile} setProfile={setProfile} />
       </div>
       <div className="profile-edit-info">
         <InputBox
+          value={profile.username}
           title="사용자 이름"
           id="userNamee"
           onChange={e => {
-            console.log(profile);
             setProfile({ ...profile, username: e.target.value });
           }}
           placeholder="2~10자 이내여야 합니다."
@@ -66,6 +70,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
           onBlur={isValidUserName}
         />
         <InputBox
+          value={profile.accountname}
           title="계정 ID"
           id="accountId"
           onChange={e => {
@@ -82,7 +87,7 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
           disabled={true}
           placeholder="최대 4개까지 선택할 수 있습니다."
         />
-        <ProfileInterests introGenerator={introGenerator} />
+        <ProfileInterests profile={profile} introGenerator={introGenerator} />
       </div>
     </SProfileInfoEdit>
   );

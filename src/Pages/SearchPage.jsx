@@ -4,6 +4,8 @@ import TopBar from '../Components/Common/TopBar';
 import SearchContent from '../Components/Search/SearchContent';
 import Error from '../Components/Common/Error';
 import BottomNav from '../Components/Common/BottomNav';
+import TopBtn from '../Components/Common/TopBtn';
+import useScrollToTop from '../Hook/useScrollToTop';
 import { Show } from '../Atom/atom';
 import { useRecoilValue } from 'recoil';
 import TotalCount from '../Components/Article/TotalCount';
@@ -26,6 +28,9 @@ const SearchPage = () => {
 
   console.log('검색페이지 렌더링...');
 
+  // scroll to top
+  const scrollController = useScrollToTop();
+
   return (
     <>
       {/* 상단바 input에서 값을 활용할 수 있도록 props로 setKeyword 전달*/}
@@ -45,6 +50,7 @@ const SearchPage = () => {
       ) : (
         <Error text={'원하시는 검색 결과가 없습니다 :('} />
       )}
+      <TopBtn scrollPosition={scrollController.scrollPosition} sectionLayoutRef={scrollController.sectionLayoutRef} />
       <BottomNav />
     </>
   );
