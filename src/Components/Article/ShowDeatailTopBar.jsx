@@ -8,7 +8,7 @@ import iconShare from '../../Assets/Icon/icon-share.svg';
 const ShowDeatailTopBar = ({ data }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(-1);
+    navigate('/mainpage', { state: null });
   };
 
   const goToPosting = () => {

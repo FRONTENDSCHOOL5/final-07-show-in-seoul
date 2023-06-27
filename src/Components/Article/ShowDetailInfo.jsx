@@ -36,7 +36,7 @@ const ShowDetailInfo = ({ detailData }) => {
         </ul>
       </div>
 
-      <Link to={detailData.ORG_LINK}>
+      <Link to={detailData.ORG_LINK} target="_blank">
         <Button size="Large">상세페이지 이동하기</Button>
       </Link>
     </SShowDtailInfo>
@@ -60,7 +60,7 @@ const SShowDtailInfo = styled.section`
     margin-bottom: 7px;
     text-align: center;
     div {
-      font-size: 14px;
+      font-size: 12px;
       padding: 5px 10px;
       background-color: var(--main);
       color: white;
