@@ -29,14 +29,12 @@ const PostHeader = ({ postsData }) => {
   const [isSModalVisible, setIsSModalVisible] = useState(false);
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [isReporModalVisible, setIsReporModalVisible] = useState(false);
 
   // 모달 닫아주는
   const closeModal = () => {
     setIsSModalVisible(false);
     setIsOtherSModalVisible(false);
     setIsDeleteModalVisible(false);
-    setIsReporModalVisible(false);
   };
   // 게시글이 내 거일때 열어주는 모달
   const openSModal = () => {
@@ -50,11 +48,6 @@ const PostHeader = ({ postsData }) => {
   const handeleDelete = () => {
     setIsSModalVisible(false);
     setIsDeleteModalVisible(true);
-  };
-  // 신고
-  const handleReport = () => {
-    setIsOtherSModalVisible(false);
-    setIsReporModalVisible(true);
   };
 
   return (
@@ -82,17 +75,12 @@ const PostHeader = ({ postsData }) => {
         )}
         {isOtherSModalVisible && (
           <Modal onCancel={closeModal}>
-            <p onClick={handleReport}>신고</p>
+            <p onClick={closeModal}>신고</p>
           </Modal>
         )}
         {isDeleteModalVisible && (
           <AlertModal confirmText="삭제" onConfirm={closeModal} onCancel={closeModal}>
             게시글을 삭제할까요?
-          </AlertModal>
-        )}
-        {isReporModalVisible && (
-          <AlertModal confirmText="신고" onConfirm={closeModal} onCancel={closeModal}>
-            게시글을 신고할까요?
           </AlertModal>
         )}
       </SPostHeaderDiv>
