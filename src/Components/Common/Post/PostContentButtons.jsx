@@ -17,6 +17,7 @@ const PostContentButtons = ({ postsData }) => {
   const [likeValid, setLikeValid] = useState(postsData?.hearted);
   // console.log(likeValid);
   const [likeCount, setLikeCount] = useState(postsData?.heartCount);
+
   const heartBtnClick = async e => {
     e.preventDefault();
     try {
@@ -70,8 +71,8 @@ const PostContentButtons = ({ postsData }) => {
   return (
     <>
       <SPostContentBtns>
-        <SContentHeartBtn likeValid={likeValid} onClick={heartBtnClick}>
-          <span>{postDetail.heartCount}</span>
+        <SContentHeartBtn likeValid={likeValid} type="button" onClick={heartBtnClick}>
+          <span>{likeCount}</span>
         </SContentHeartBtn>
         <Link to="/postdetailpage" state={postsData}>
           <SContentCommentBtn>
