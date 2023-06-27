@@ -26,15 +26,15 @@ const PostHeader = ({ postsData }) => {
   };
 
   // 모달 연결
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSModalVisible, setIsSModalVisible] = useState(false);
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [isReporModalVisible, setIsReporModalVisible] = useState(false);
 
-  // alert 모달 닫아주는
+  // 모달 닫아주는
   const closeModal = () => {
-    setIsModalVisible(false);
+    setIsSModalVisible(false);
+    setIsOtherSModalVisible(false);
     setIsDeleteModalVisible(false);
     setIsReporModalVisible(false);
   };
@@ -45,11 +45,6 @@ const PostHeader = ({ postsData }) => {
   // 게시글이 다른 유저일 때 열어주는 모달
   const openSOtherModal = () => {
     setIsOtherSModalVisible(true);
-  };
-  // 수정
-  const handleEdit = () => {
-    setIsSModalVisible(false);
-    setIsModalVisible(true);
   };
   // 삭제
   const handeleDelete = () => {
@@ -80,20 +75,15 @@ const PostHeader = ({ postsData }) => {
           <button className="postSet" onClick={openSOtherModal}></button>
         )}
         {isSModalVisible && (
-          <Modal>
+          <Modal onCancel={closeModal}>
             <p onClick={handeleDelete}>삭제</p>
-            <p onClick={handleEdit}>수정</p>
+            <p onClick={goToPostEdit}>수정</p>
           </Modal>
         )}
         {isOtherSModalVisible && (
-          <Modal>
+          <Modal onCancel={closeModal}>
             <p onClick={handleReport}>신고</p>
           </Modal>
-        )}
-        {isModalVisible && (
-          <AlertModal confirmText="수정" onConfirm={goToPostEdit} onCancel={closeModal}>
-            게시글을 수정할까요?
-          </AlertModal>
         )}
         {isDeleteModalVisible && (
           <AlertModal confirmText="삭제" onConfirm={closeModal} onCancel={closeModal}>
