@@ -4,6 +4,8 @@ import TopBar from '../Components/Common/TopBar';
 import SearchContent from '../Components/Search/SearchContent';
 import Error from '../Components/Common/Error';
 import BottomNav from '../Components/Common/BottomNav';
+import TopBtn from '../Components/Common/TopBtn';
+import useScrollToTop from '../Hook/useScrollToTop';
 import { Show } from '../Atom/atom';
 import { useRecoilValue } from 'recoil';
 import TotalCount from '../Components/Article/TotalCount';
@@ -15,13 +17,16 @@ const SearchPage = () => {
   // 키워드에 값이 없으면 빈 배열 반환, 있으면 해당 키워드 검색
   const searchResult = keyword ? showInfo.filter(obj => obj.TITLE.includes(keyword)) : [];
 
+  // scroll to top
+  const scrollController = useScrollToTop();
+
   return (
     <>
       {/* 상단바 input에서 값을 활용할 수 있도록 props로 setKeyword 전달*/}
       <TopBar leftEl={'search'} setKeyword={setKeyword} />
       <TotalCount page={'search'} data={searchResult} />
       {searchResult.length !== 0 ? (
-        <SSearch>
+        <SSearch ref={scrollController.sectionLayoutRef} onScroll={scrollController.handleScroll}>
           <h1 className="a11y-hidden">행사 검색</h1>
           <ul className="searchResult">
             {searchResult.map((data, i) => {
@@ -36,6 +41,7 @@ const SearchPage = () => {
       ) : (
         <Error text={'원하시는 검색 결과가 없습니다 :('} />
       )}
+      <TopBtn scrollPosition={scrollController.scrollPosition} sectionLayoutRef={scrollController.sectionLayoutRef} />
       <BottomNav />
     </>
   );

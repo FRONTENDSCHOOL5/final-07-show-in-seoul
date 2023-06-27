@@ -8,6 +8,7 @@ import PostLayoutButtons from '../Components/Common/Post/PostLayoutButtons';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
 import AlertModal from '../Components/Modal/Alert';
+import TopBtn from '../Components/Common/TopBtn';
 
 // recoil
 import { MyAccountName } from '../Atom/atom';
@@ -19,6 +20,9 @@ import { GetUserPostAPI } from '../API/PostAPI';
 // assets
 import logoutSVG from '../Assets/Icon/icon-logout.svg';
 import arrowSVG from '../Assets/Icon/icon-arrow-left.svg';
+
+// hooks
+import useScrollToTop from '../Hook/useScrollToTop';
 
 const ProfileDetailPage = () => {
   // 리코일에 저장된, 지금 로그인 한 계정 이름
@@ -50,6 +54,10 @@ const ProfileDetailPage = () => {
     setIsLogout(false);
   };
   const openModal = () => [setIsLogout(true)];
+
+  // scroll to top
+  const scrollController = useScrollToTop();
+
   return (
     // getMyAcoountName과 accountname이 같을 경우,
     // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
@@ -72,7 +80,7 @@ const ProfileDetailPage = () => {
         </STopBar>
       )}
 
-      <SProfileWrapper>
+      <SProfileWrapper ref={scrollController.sectionLayoutRef} onScroll={scrollController.handleScroll}>
         <Profile accountname={otherAccountName} />
         <PostLayoutButtons />
         {postsData?.length > 0 ? (
@@ -88,6 +96,7 @@ const ProfileDetailPage = () => {
           로그아웃 하시겠어요?
         </AlertModal>
       )}
+      <TopBtn scrollPosition={scrollController.scrollPosition} sectionLayoutRef={scrollController.sectionLayoutRef} />
       <BottomNav />
     </>
   );
