@@ -102,7 +102,7 @@ const SPostContentA = styled.a`
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 17px 10px 0px 3px;
-    word-break: break-all;
+    word-break: keep-all;
     line-height: 18px;
     white-space: pre-wrap;
     padding-left: 2px;
