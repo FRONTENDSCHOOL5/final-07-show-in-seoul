@@ -25,7 +25,6 @@ const PostDetailPage = () => {
 
   const getPostsData = useLocation().state;
   const postsId = getPostsData.id;
-  // console.log(getPostsData);
 
   const GetPostComments = () => {
     const [commentData, setCommentData] = useState([]);
@@ -51,6 +50,7 @@ const PostDetailPage = () => {
   };
 
   const postsComments = GetPostComments();
+  console.log(postsComments);
 
   return (
     <>
@@ -63,7 +63,9 @@ const PostDetailPage = () => {
         <Post postsData={getPostsData} />
         <SCommentsWrapper>
           {postsComments?.length > 0 ? (
-            postsComments.map(postsComments => <Comments postsComments={postsComments} />)
+            postsComments.map(postsComments => (
+              <Comments postsData={getPostsData} postsId={postsId} postsComments={postsComments} />
+            ))
           ) : (
             <p style={{ display: 'none' }}>댓글이 존재하지 않습니다.</p>
           )}

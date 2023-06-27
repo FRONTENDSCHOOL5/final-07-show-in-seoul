@@ -73,7 +73,6 @@ const PostHeader = ({ postsData }) => {
             <SPostUserId>{accountname}</SPostUserId>
           </div>
         </Link>
-        {/* {accountname === getMyAccounName ? <button onClick={goToPostEdit}></button> : <button></button>} */}
         {accountname === getMyAccounName ? (
           <button className="postSet" onClick={openSModal}></button>
         ) : (
