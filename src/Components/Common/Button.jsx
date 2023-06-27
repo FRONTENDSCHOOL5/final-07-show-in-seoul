@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const Button = ({ size, children, active, disabled, color, navigate }) => {
+const Button = ({ size, children, active, disabled, color, navigate, stateValue }) => {
   const navi = useNavigate();
 
   const handleClick = () => {
     if (navigate) {
-      navigate === '-1' ? navi(-1) : navi(navigate);
+      navigate === '-1' ? navi(-1) : navi(navigate, { state: stateValue });
     }
   };
 

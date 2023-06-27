@@ -1,15 +1,17 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo,useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import TotalCount from '../Components/Article/TotalCount';
 import FeedContents from '../Components/Article/FeedContents';
 import Error from '../Components/Common/Error';
 import BottomNav from '../Components/Common/BottomNav';
+import Skeleton from '../Components/Common/Skeleton';
 import GetShowAPI from '../API/GetShowAPI';
 import topBtn from '../Assets/Img/topbtn.svg';
 import { Show, IsLoginState, CategoryInterestTagCount, CategoryAreaTagCount } from '../Atom/atom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import useDataFiltering from '../Hook/useDataFiltering';
+import { useLocation } from 'react-router-dom';
 
 const MainPage = () => {
   const [getShow, setShow] = useRecoilState(Show);
@@ -17,11 +19,14 @@ const MainPage = () => {
   const interestTagCount = useRecoilValue(CategoryInterestTagCount);
   const areaTagCount = useRecoilValue(CategoryAreaTagCount);
 
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [showData, setShowData] = useState([]);
+  const location = useLocation();
 
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useMemo(() => {
+    // 로그인 이후 최초 접속 시 API 통신
     if (isLoginState === 'false') {
       const fetchData = async () => {
         try {
@@ -34,7 +39,12 @@ const MainPage = () => {
       console.log('useMemo 데이터 가져오기 실행...');
       setIsLoginState(true);
     }
-  }, [getShow, showData]);
+  }, [isLoginState]);
+
+  // 첫번째 렌더링에 skeleton 보여주기 위한 조건
+  useEffect(() => {
+    setIsFirstRender(false);
+  }, []);
 
   useDataFiltering(getShow, setShowData, interestTagCount, areaTagCount);
 
@@ -49,22 +59,27 @@ const MainPage = () => {
     setScrollPosition(0);
   };
 
-  console.log('메인피드 렌더링...', showData);
+  console.log('showData 메인피드 렌더링...', showData);
 
   return (
     <>
       <TopBar />
-      {showData.length !== 0 ? (
+
+          <TotalCount data={showData} totalData={getShow} setData={setShowData} location={location} />
+      {isFirstRender ? (
+        <Skeleton />
+      ) : showData.length !== 0 ? (
         <SectionLayout ref={sectionLayoutRef} scrollPosition={scrollPosition} onScroll={handleScroll}>
           <h1 className="a11y-hidden">서울시 문화행사 정보</h1>
-          <TotalCount data={showData} totalData={getShow} setData={setShowData} />
-          {getShow && <FeedContents showInfo={showData} />}
-          <div className="top-btn" onClick={handleScrollTop}>
+          {getShow && <FeedContents showInfo={showData} location={location.state} />}
+      <div className="top-btn" onClick={handleScrollTop}>
             <img src={topBtn} alt="Scroll to Top" />
           </div>
         </SectionLayout>
-      ) : (
+      ) : location.state === 'filtering' ? (
         <Error text={'원하시는 필터링 결과가 없습니다 :('} buttonStyle={'category'} />
+      ) : (
+        <Skeleton />
       )}
       <BottomNav />
     </>

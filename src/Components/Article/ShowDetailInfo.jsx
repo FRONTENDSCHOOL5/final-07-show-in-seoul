@@ -37,7 +37,7 @@ const ShowDetailInfo = ({ detailData }) => {
       </div>
 
       <Button size="Large">
-        <Link to={detailData.ORG_LINK}>상세 페이지</Link>
+        <Link to={detailData.ORG_LINK} target="_blank">상세 페이지</Link>
         <Link to="/postingpage" state={detailData}>
           후기 작성
         </Link>
@@ -63,7 +63,7 @@ const SShowDtailInfo = styled.section`
     margin-bottom: 7px;
     text-align: center;
     div {
-      font-size: 14px;
+      font-size: 12px;
       padding: 5px 10px;
       background-color: var(--main);
       color: white;

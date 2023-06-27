@@ -1,25 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import ProfileImg from '../../Assets/Icon/logo-gray-small.svg';
 import MoreIcon from '../../Assets/Icon/icon-more-vertical.svg';
 
-const Comments = () => {
+const Comments = ({ postsComments }) => {
+  const commentDate = postsComments.createdAt.split('T');
+
   return (
     <SComments>
       <div className="comment-wrap">
         <div className="comment-profile">
-          <img src={ProfileImg} alt="ProfileImg" />
+          <img src={postsComments.author.image} alt="ProfileImg" />
         </div>
         <div>
           <div className="comment-title">
-            <div className="commment-name">서귀포시 무슨</div>
-            <div className="comment-time">5분 전</div>
+            <div className="commment-name">{postsComments.author.username}</div>
+            <div className="comment-time">{commentDate[0]}</div>
           </div>
-          <div className="comment-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus quae deserunt ex molestiae natus eos
-            optio fugiat quos vero reprehenderit ut tempora dignissimos, numquam eaque mollitia, nam totam alias
-            aspernatur.
-          </div>
+          <div className="comment-text">{postsComments.content}</div>
         </div>
         <div className="commentSetting">
           <button className="commentSetBtn">

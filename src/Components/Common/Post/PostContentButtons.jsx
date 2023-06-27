@@ -1,20 +1,56 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
+
+import styled from 'styled-components';
+
+import { Token } from '../../../Atom/atom';
+// assets
 import iconHeart from '../../../Assets/Icon/icon-heart.svg';
 import iconHeartPink from '../../../Assets/Icon/icon-heart-fill-pink.svg';
 import iconComment from '../../../Assets/Icon/icon-message-circle.svg';
 
 const PostContentButtons = ({ postsData }) => {
+  const URL = 'https://api.mandarin.weniv.co.kr';
+  const getMyToken = useRecoilValue(Token);
+
+  const GetPost = () => {
+    const [post, setPost] = useState([]);
+
+    const getPost = async () => {
+      try {
+        const req = {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: 'Bearer ' + getMyToken,
+          },
+        };
+        const response = await fetch(URL + '/post/' + postsData.id, req);
+        const data = await response.json();
+        // console.log(data.post);
+        setPost(data.post);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    useEffect(() => {
+      getPost();
+    }, [post]);
+    return post;
+  };
+
+  const postDetail = GetPost();
+
   return (
     <>
       <SPostContentBtns>
         <SContentHeartBtn>
-          <span>58</span>
+          <span>{postDetail.heartCount}</span>
         </SContentHeartBtn>
         <Link to="/postdetailpage" state={postsData}>
           <SContentCommentBtn>
-            <span>12</span>
+            <span>{postDetail.commentCount}</span>
           </SContentCommentBtn>
         </Link>
       </SPostContentBtns>

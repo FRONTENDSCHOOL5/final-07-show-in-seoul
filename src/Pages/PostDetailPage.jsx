@@ -1,35 +1,77 @@
-import React from 'react';
-import { styled, css } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { styled } from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { useLocation } from 'react-router-dom';
+import { Token } from '../Atom/atom';
+// 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import Comments from '../Components/Post/Comments';
-import LogoGraySmall from '../Assets/Icon/logo-gray-small.svg';
-
-import { useLocation } from 'react-router-dom';
+import CommentsForm from '../Components/Post/CommentsForm';
+// assets
+import arrowSVG from '../Assets/Icon/icon-arrow-left.svg';
 
 const PostDetailPage = () => {
+  // 탑바 뒤로가기
+  const navigate = useNavigate();
+  const arrow = () => {
+    navigate('/postpage');
+  };
+
+  const URL = 'https://api.mandarin.weniv.co.kr';
+  const getMyToken = useRecoilValue(Token);
+
   const getPostsData = useLocation().state;
+  const postsId = getPostsData.id;
   // console.log(getPostsData);
+
+  const GetPostComments = () => {
+    const [commentData, setCommentData] = useState([]);
+    const getPostComments = async () => {
+      try {
+        const response = await fetch(URL + '/post/' + postsId + '/comments', {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + getMyToken,
+            'Content-type': 'application/json',
+          },
+        });
+        const res = await response.json();
+        setCommentData(res.comments);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    useEffect(() => {
+      getPostComments();
+    }, [getPostsData]);
+    return commentData;
+  };
+
+  const postsComments = GetPostComments();
 
   return (
     <>
-      <TopBar leftEl="back" />
+      <STopBar>
+        <button onClick={arrow} className="arrowBtn">
+          <img src={arrowSVG} alt="" />
+        </button>
+      </STopBar>
       <SPostDetailContent>
         <Post postsData={getPostsData} />
         <SCommentsWrapper>
-          <Comments />
-          <Comments />
-          <Comments />
-          <Comments />
+          {postsComments?.length > 0 ? (
+            postsComments.map(postsComments => <Comments postsComments={postsComments} />)
+          ) : (
+            <p style={{ display: 'none' }}>댓글이 존재하지 않습니다.</p>
+          )}
         </SCommentsWrapper>
       </SPostDetailContent>
       <SContainer>
         <SCommentDiv name="" action="" method="">
-          <img src={LogoGraySmall} alt="" />
-          <form>
-            <textarea placeholder="댓글 입력하기..."></textarea>
-            <button type="submit">게시</button>
-          </form>
+          <CommentsForm postsData={getPostsData} postsId={postsId} />
         </SCommentDiv>
       </SContainer>
     </>
@@ -135,6 +177,31 @@ const SCommentDiv = styled.div`
       height: 26px;
       margin-left: 16px;
       font-size: 14px;
+      color: black;
+    }
+    button:disabled {
+      color: #dbdbdb;
+    }
+  }
+`;
+
+const STopBar = styled.div`
+  width: 390px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: solid 1px var(--gray);
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  button {
+    width: 22px;
+    height: 22px;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 `;

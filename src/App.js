@@ -16,6 +16,7 @@ import SearchPage from './Pages/SearchPage';
 import ShowDetailPage from './Pages/ShowDetailPage';
 import SignupPage from './Pages/SignupPage';
 import LayoutStyle from './Styles/LayoutStyle';
+import RequireAuth from './Route/RequireAuth';
 
 function App() {
   return (
@@ -23,22 +24,127 @@ function App() {
       <GlobalStyle />
       <LayoutStyle>
         <Routes>
-          <Route path="/" element={<SplashPage />} />
           <Route path="/*" element={<ErrorPage />} />
-          <Route path="/loginpage" element={<LoginPage />} />
-          <Route path="/signuppage" element={<SignupPage />} />
-          <Route path="/searchpage" element={<SearchPage />} />
-          <Route path="/showdetailpage" element={<ShowDetailPage />} />
-          <Route path="/profilesettingpage" element={<ProfileSettingPage />} />
-          <Route path="/profileeditpage" element={<ProfileEditPage />} />
-          <Route path="/profiledetailpage" element={<ProfileDetailPage />} />
-          <Route path="/postpage" element={<PostPage />} />
-          <Route path="/postingpage" element={<PostingPage />} />
-          <Route path="/postdetailpage" element={<PostDetailPage />} />
-          <Route path="/posteditpage" element={<PostEditPage />} />
-          <Route path="/mainpage" element={<MainPage />} />
-          <Route path="/errorpage" element={<ErrorPage />} />
-          <Route path="/categorypage" element={<CategoryPage />} />
+          <Route
+            path="/"
+            element={
+              <RequireAuth to="/mainpage">
+                <SplashPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/loginpage"
+            element={
+              <RequireAuth to="/mainpage">
+                <LoginPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/signuppage"
+            element={
+              <RequireAuth to="/mainpage">
+                <SignupPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/errorpage"
+            element={
+              <RequireAuth to="/">
+                <ErrorPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/searchpage"
+            element={
+              <RequireAuth to="/">
+                <SearchPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/showdetailpage"
+            element={
+              <RequireAuth to="/">
+                <ShowDetailPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profilesettingpage"
+            element={
+              <RequireAuth to="/signuppage">
+                <ProfileSettingPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profileeditpage"
+            element={
+              <RequireAuth to="/">
+                <ProfileEditPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profiledetailpage"
+            element={
+              <RequireAuth to="/">
+                <ProfileDetailPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/postpage"
+            element={
+              <RequireAuth to="/">
+                <PostPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/postingpage"
+            element={
+              <RequireAuth to="/">
+                <PostingPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/postdetailpage"
+            element={
+              <RequireAuth to="/">
+                <PostDetailPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/posteditpage"
+            element={
+              <RequireAuth to="/">
+                <PostEditPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/mainpage"
+            element={
+              <RequireAuth to="/">
+                <MainPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/categorypage"
+            element={
+              <RequireAuth to="/">
+                <CategoryPage />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </LayoutStyle>
     </>
