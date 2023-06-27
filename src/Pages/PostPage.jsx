@@ -6,14 +6,19 @@ import styled from 'styled-components';
 import TopBar from '../Components/Common/TopBar';
 import Post from '../Components/Common/Post/Post';
 import BottomNav from '../Components/Common/BottomNav';
-import Modal from '../Components/Modal/Modal';
-import AlertModal from '../Components/Modal/Alert';
+import TopBtn from '../Components/Common/TopBtn';
 
 // recoil
 import { AdminToken } from '../Atom/atom';
 
+// hooks
+import useScrollToTop from '../Hook/useScrollToTop';
+
 const PostPage = () => {
   const getAdminToken = useRecoilValue(AdminToken);
+
+  // scroll to top
+  const scrollController = useScrollToTop();
 
   // 내가 팔로한 유저들의 게시글 정보 불러오는 api
   const URL = 'https://api.mandarin.weniv.co.kr';
@@ -49,7 +54,7 @@ const PostPage = () => {
   return (
     <>
       <TopBar />
-      <SUl>
+      <SUl ref={scrollController.sectionLayoutRef} onScroll={scrollController.handleScroll}>
         {postsData.length > 0 ? (
           postsData.map(postsData => <Post postsData={postsData} />)
         ) : (
@@ -58,6 +63,7 @@ const PostPage = () => {
           </li>
         )}
       </SUl>
+      <TopBtn scrollPosition={scrollController.scrollPosition} sectionLayoutRef={scrollController.sectionLayoutRef} />
       <BottomNav />
     </>
   );
