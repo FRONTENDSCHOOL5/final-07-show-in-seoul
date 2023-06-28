@@ -11,12 +11,9 @@ const Comments = ({ postsComments, postsId, postsData }) => {
   const commentId = postsComments.id;
   const URL = 'https://api.mandarin.weniv.co.kr';
   const getMyToken = useRecoilValue(Token);
-  const navigate = useNavigate();
   const getMyAccountName = useRecoilValue(MyAccountName);
   const commentAccountName = postsComments.author.accountname;
-
-  // 댓글 모달 연결
-
+  const navigate = useNavigate();
   // 댓글 삭제 기능
   const DeleteComment = async () => {
     try {
@@ -32,9 +29,12 @@ const Comments = ({ postsComments, postsId, postsData }) => {
       setIsSModalVisible(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      navigate('/postdetailpage', { state: postsData });
     }
   };
 
+  // 댓글 모달 연결
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isSModalVisible, setIsSModalVisible] = useState(false);
   // 댓글이 내 거일때 열어주는 모달
@@ -109,6 +109,7 @@ const SComments = styled.div`
     width: 36px;
     height: 36px;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .comment-title {

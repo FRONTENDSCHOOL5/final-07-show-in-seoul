@@ -31,7 +31,10 @@ const Profile = ({ accountname }) => {
           <img src={profileData.image} alt=""></img>
         )}
         <SProfileName>{profileData.username}</SProfileName>
-        <SProfileId>{profileData.accountname}</SProfileId>
+        <SProfileId>
+          <span>@_</span>
+          {profileData.accountname}
+        </SProfileId>
 
         {/* api에서 들고오는 관심 리스트 묶어주는 div   */}
         <div>
@@ -65,6 +68,7 @@ const SProfileSection = styled.section`
     height: 90px;
     border-radius: 50%;
     margin: 30px auto 0;
+    object-fit: cover;
   }
   // 프로필 관심 목록
   div {

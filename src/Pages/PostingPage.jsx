@@ -125,7 +125,7 @@ const SPostingContent = styled.div`
   .uploadBtn {
     position: fixed;
     top: 8px;
-    margin-left: 268px;
+    margin-left: 278px;
     background-color: var(--main);
     color: white;
     width: 90px;

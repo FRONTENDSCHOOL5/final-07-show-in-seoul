@@ -72,8 +72,8 @@ const PostDetailPage = () => {
         </SCommentsWrapper>
       </SPostDetailContent>
       <SContainer>
-        <SCommentDiv name="" action="" method="">
-          <CommentsForm postsData={getPostsData} postsId={postsId} />
+        <SCommentDiv>
+          <CommentsForm postsComments={postsComments} postsData={getPostsData} postsId={postsId} />
         </SCommentDiv>
       </SContainer>
     </>
@@ -135,7 +135,7 @@ const SContainer = styled.div`
 
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
-  padding: 12px 16px;
+  padding: 12px 16px 18px;
   width: 390px;
 `;
 
@@ -153,6 +153,8 @@ const SCommentDiv = styled.div`
     width: 36px;
     height: 36px;
     margin-left: 16px;
+    object-fit: cover;
+    border-radius: 50%;
   }
   form {
     margin-left: 18px;

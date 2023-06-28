@@ -25,7 +25,6 @@ const SLayoutButtons = styled.div`
     flex-grow: 1;
     flex-basis: auto;
     border-top: 1px solid var(--gray);
-    border-bottom: 1px solid var(--gray);
     box-sizing: border-box;
   }
 `;
@@ -33,9 +32,11 @@ const SLayoutButtons = styled.div`
 const SListButton = styled.button`
   border-right: 1px solid var(--gray);
   background: url(${ListOn}) no-repeat center;
+  border-bottom: 1px solid var(--deepgray);
 `;
 
 const SGridButton = styled.button`
   border-left: none;
   background: url(${AlbumOff}) no-repeat center;
+  border-bottom: 1px solid var(--gray);
 `;

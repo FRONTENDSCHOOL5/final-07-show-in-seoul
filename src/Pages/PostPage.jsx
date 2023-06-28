@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
@@ -36,7 +37,7 @@ const PostPage = () => {
               'Bearer ' + getAdminToken,
           },
         };
-        const response = await fetch(URL + '/post/feed', req);
+        const response = await fetch(URL + '/post/feed/?limit=100', req);
         const data = await response.json();
         setFeedData(data.posts);
         if (!response.ok) throw new Error('내가 팔로우 하는 유저들 게시글 불러오기 에러');
