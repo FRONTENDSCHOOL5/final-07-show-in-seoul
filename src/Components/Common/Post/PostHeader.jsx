@@ -44,6 +44,8 @@ const PostHeader = ({ postsData }) => {
       closeModal();
     } catch (e) {
       console.error(e);
+    } finally {
+      navigate('/postpage');
     }
   };
 
@@ -80,7 +82,10 @@ const PostHeader = ({ postsData }) => {
           <img src={postsData.author.image} alt="" />
           <div>
             <SPostUserName>{username}</SPostUserName>
-            <SPostUserId>{accountname}</SPostUserId>
+            <SPostUserId>
+              <span>@_</span>
+              {accountname}
+            </SPostUserId>
           </div>
         </Link>
         {accountname === getMyAccounName ? (
@@ -123,6 +128,7 @@ const SPostHeaderDiv = styled.div`
       width: 42px;
       height: 42px;
       border-radius: 50%;
+      object-fit: cover;
     }
     // 게시물 작성자 이름과 아이디 감싼거
     div {
