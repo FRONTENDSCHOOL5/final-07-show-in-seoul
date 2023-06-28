@@ -15,7 +15,7 @@ const CommentsForm = ({ postsId, postsData }) => {
 
   const handleInputChange = e => {
     setTextareaValue(e.target.value);
-    console.log(textareaValue);
+    // console.log(textareaValue);
   };
 
   const postComment = async e => {
@@ -33,7 +33,7 @@ const CommentsForm = ({ postsId, postsData }) => {
         }),
       });
       const res = await response.json();
-      console.log(res);
+      // console.log(res);
       textRef.current.value = '';
       setTextareaValue('');
     } catch (error) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ListOff from '../../../Assets/Icon/icon-post-list-off.svg';
+import ListOn from '../../../Assets/Icon/icon-post-list-on.svg';
 import AlbumOff from '../../../Assets/Icon/icon-post-album-off.svg';
 
 const PostLayoutButtons = () => {
@@ -32,7 +32,7 @@ const SLayoutButtons = styled.div`
 
 const SListButton = styled.button`
   border-right: 1px solid var(--gray);
-  background: url(${ListOff}) no-repeat center;
+  background: url(${ListOn}) no-repeat center;
 `;
 
 const SGridButton = styled.button`
