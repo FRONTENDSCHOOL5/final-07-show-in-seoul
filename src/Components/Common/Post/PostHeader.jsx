@@ -80,7 +80,10 @@ const PostHeader = ({ postsData }) => {
           <img src={postsData.author.image} alt="" />
           <div>
             <SPostUserName>{username}</SPostUserName>
-            <SPostUserId>{accountname}</SPostUserId>
+            <SPostUserId>
+              <span>@_</span>
+              {accountname}
+            </SPostUserId>
           </div>
         </Link>
         {accountname === getMyAccounName ? (
