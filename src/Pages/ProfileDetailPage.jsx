@@ -23,6 +23,7 @@ import arrowSVG from '../Assets/Icon/icon-arrow-left.svg';
 
 // hooks
 import useScrollToTop from '../Hook/useScrollToTop';
+import useAtomReset from '../Hook/useAtomReset';
 
 const ProfileDetailPage = () => {
   // 리코일에 저장된, 지금 로그인 한 계정 이름
@@ -58,6 +59,9 @@ const ProfileDetailPage = () => {
   // scroll to top
   const scrollController = useScrollToTop();
 
+  // 로그아웃시 recoil atom 초기화 할 Hook
+  const showInSeoulLogout = useAtomReset();
+
   return (
     // getMyAcoountName과 accountname이 같을 경우,
     // 내 프로필이라는 의미니 탑바에 로그아웃 버튼이 있어야 한다
@@ -92,7 +96,7 @@ const ProfileDetailPage = () => {
         )}
       </SProfileWrapper>
       {isLogout && (
-        <AlertModal confirmText="로그아웃" onConfirm={closeModal} onCancel={closeModal}>
+        <AlertModal confirmText="로그아웃" onConfirm={showInSeoulLogout} onCancel={closeModal}>
           로그아웃 하시겠어요?
         </AlertModal>
       )}

@@ -64,16 +64,16 @@ const ProfileEditPage = () => {
   };
 
   useEffect(() => {
-    console.log('!!!!!!!!!!!!!!!!!!2222');
     if (isValidInputs) {
       setBtnAble(true);
-    } else setBtnAble(false);
+    } else {
+      setBtnAble(false);
+    }
   }, [isValidInputs]);
 
   useEffect(() => {
     getProfile();
-    console.log('!!!!!!!!!!!!!!!!!!!!1');
-    // setBtnAble(true);
+    setIsValidInputs(true);
   }, []);
 
   return (

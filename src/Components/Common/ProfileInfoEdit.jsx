@@ -3,19 +3,27 @@ import styled from 'styled-components';
 import ProfileImageEdit from './ProfileImageEdit';
 import InputBox from './InputBox';
 import ProfileInterests from '../Profile/ProfileInterests';
-import { InfoWarning } from '../../Atom/atom';
+import { InfoWarning, MyAccountName } from '../../Atom/atom';
 import { useRecoilValue } from 'recoil';
 import { IsValidAccountAPI } from '../../API/User';
 
 const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile }) => {
-  const [validAccountName, setValidAccountName] = useState(false);
-  const [validUserName, setValidUserName] = useState(false);
+  const [validAccountName, setValidAccountName] = useState(true);
+  const [validUserName, setValidUserName] = useState(true);
   const [userNameFailedMsg, setUserNameFailedMsg] = useState('');
   const [AccountnameFailedMsg, setAccountnameFailedMsg] = useState('');
   const warning = useRecoilValue(InfoWarning);
+  const myAccountName = useRecoilValue(MyAccountName);
 
   const isValidAccountName = async () => {
-    const regExp = /^[a-zA-Z0-9_\.]*$/;
+    const regExp = /^[a-zA-Z0-9_.]*$/;
+
+    if (myAccountName === profile.accountname) {
+      setValidAccountName(true);
+      setAccountnameFailedMsg('');
+      return;
+    }
+
     if (!regExp.test(profile.accountname)) {
       setValidAccountName(false);
       setAccountnameFailedMsg('영문, 숫자, 특수문자(_),(.)만 사용 가능합니다.');
@@ -42,12 +50,9 @@ const ProfileInfoEdit = ({ introGenerator, setIsValidInputs, profile, setProfile
   };
 
   useEffect(() => {
-    console.log('123123');
     if (validAccountName && validUserName) {
-      console.log('456');
       setIsValidInputs(true);
     } else {
-      console.log('789');
       setIsValidInputs(false);
     }
   }, [validAccountName, validUserName]);

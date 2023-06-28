@@ -48,17 +48,15 @@ const PostHeader = ({ postsData }) => {
   };
 
   // 모달 연결
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSModalVisible, setIsSModalVisible] = useState(false);
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [isReporModalVisible, setIsReporModalVisible] = useState(false);
 
-  // alert 모달 닫아주는
+  // 모달 닫아주는
   const closeModal = () => {
-    setIsModalVisible(false);
+    setIsSModalVisible(false);
+    setIsOtherSModalVisible(false);
     setIsDeleteModalVisible(false);
-    setIsReporModalVisible(false);
   };
   // 게시글이 내 거일때 열어주는 모달
   const openSModal = () => {
@@ -68,20 +66,10 @@ const PostHeader = ({ postsData }) => {
   const openSOtherModal = () => {
     setIsOtherSModalVisible(true);
   };
-  // 수정
-  const handleEdit = () => {
-    setIsSModalVisible(false);
-    setIsModalVisible(true);
-  };
   // 삭제
   const handeleDelete = () => {
     setIsSModalVisible(false);
     setIsDeleteModalVisible(true);
-  };
-  // 신고
-  const handleReport = () => {
-    setIsOtherSModalVisible(false);
-    setIsReporModalVisible(true);
   };
 
   return (
@@ -101,29 +89,19 @@ const PostHeader = ({ postsData }) => {
           <button className="postSet" onClick={openSOtherModal}></button>
         )}
         {isSModalVisible && (
-          <Modal>
+          <Modal onCancel={closeModal}>
             <p onClick={handeleDelete}>삭제</p>
-            <p onClick={handleEdit}>수정</p>
+            <p onClick={goToPostEdit}>수정</p>
           </Modal>
         )}
         {isOtherSModalVisible && (
-          <Modal>
-            <p onClick={handleReport}>신고</p>
+          <Modal onCancel={closeModal}>
+            <p onClick={closeModal}>신고</p>
           </Modal>
-        )}
-        {isModalVisible && (
-          <AlertModal confirmText="수정" onConfirm={goToPostEdit} onCancel={closeModal}>
-            게시글을 수정할까요?
-          </AlertModal>
         )}
         {isDeleteModalVisible && (
           <AlertModal confirmText="삭제" onConfirm={postDelete} onCancel={closeModal}>
             게시글을 삭제할까요?
-          </AlertModal>
-        )}
-        {isReporModalVisible && (
-          <AlertModal confirmText="신고" onConfirm={closeModal} onCancel={closeModal}>
-            게시글을 신고할까요?
           </AlertModal>
         )}
       </SPostHeaderDiv>

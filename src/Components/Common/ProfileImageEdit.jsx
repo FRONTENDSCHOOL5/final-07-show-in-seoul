@@ -36,7 +36,7 @@ const SProfileImageEdit = styled.div`
   img {
     width: 130px;
     height: 130px;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 50%;
   }
 
@@ -48,7 +48,6 @@ const SProfileImageEdit = styled.div`
     .upload-label {
       cursor: pointer;
       img {
-        object-fit: fill;
         width: 40px;
         height: 40px;
       }

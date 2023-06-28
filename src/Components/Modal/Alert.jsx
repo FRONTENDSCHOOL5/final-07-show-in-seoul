@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const AlertModal = ({ children, onConfirm, onCancel, confirmText = '', cancelText = '취소' }) => (
   <SOverlay>
+    <div className="background" onClick={onCancel}></div>
     <div className="modal">
       <p className="message">{children}</p>
       <div className="btn-container">
@@ -25,12 +26,20 @@ const SOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  .background {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 252px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -38,7 +47,6 @@ const SOverlay = styled.div`
     display: flex;
     flex-direction: column;
   }
-
   .message {
     flex: 1;
     text-align: center;
