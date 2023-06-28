@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import error from '../../Assets/Img/error.svg';
+import error from '../../Assets/Img/newError.svg';
 import Button from './Button';
 
 const Error = ({ text, buttonStyle }) => {
@@ -45,6 +45,11 @@ const SError = styled.div`
   gap: 20px;
   height: 100%;
   margin: 0 auto;
+  .error-img {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+  }
+
   .error-text {
     color: #767676;
     font-size: 14px;
