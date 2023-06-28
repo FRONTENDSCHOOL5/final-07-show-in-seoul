@@ -65,6 +65,7 @@ const SProfileSection = styled.section`
     height: 90px;
     border-radius: 50%;
     margin: 30px auto 0;
+    object-fit: cover;
   }
   // 프로필 관심 목록
   div {
