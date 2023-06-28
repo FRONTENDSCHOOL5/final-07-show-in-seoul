@@ -14,6 +14,10 @@ const TotalCount = ({ page, data, totalData, setData, location }) => {
     totalTitle = '검색결과';
   }
 
+  if (data === 'first') {
+    data = [];
+  }
+
   const resetTags = () => {
     resetInterestTags();
     resetAreaTags();

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ShowDetailPage = () => {
   // useTokenCheck();
-  const detailData = useLocation().state;
+  const [detailData, keyword] = useLocation().state;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const ShowDetailPage = () => {
     <>
       <SShowDetail>
         <div className="shadowStyle" />
-        <ShowDeatailTopBar data={detailData} />
+        <ShowDeatailTopBar data={detailData} keyword={keyword} />
         <div className="posterImg">{detailData && <img src={detailData.MAIN_IMG} alt="포스터" />}</div>
         {detailData && <ShowDetailInfo detailData={detailData} />}
       </SShowDetail>
