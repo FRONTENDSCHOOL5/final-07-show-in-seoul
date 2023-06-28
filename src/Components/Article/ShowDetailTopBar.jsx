@@ -19,7 +19,7 @@ const ShowDeatailTopBar = ({ data, keyword }) => {
     <SShowDetailTopBar>
       <div className="topBtns">
         <TopBarBtn id="arrowWhite" icon={iconArrowWhite} altTxt={'뒤로가기'} onClick={handleClick} />
-        <TopBarBtn icon={iconShare} altTxt={'뒤로가기'} />
+        <TopBarBtn cursor="unset" icon={iconShare} altTxt={'뒤로가기'} />
       </div>
     </SShowDetailTopBar>
   );

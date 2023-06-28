@@ -73,7 +73,9 @@ const SHeader = styled.header`
   top: 0;
   background-color: #fff;
   #showLogo {
-    width: 103px;
+    padding-top: 3px;
+    width: 115px;
+    height: 28px;
   }
   form {
     width: 100%;

@@ -13,7 +13,6 @@ export default TopBarBtn;
 
 const SIconBtn = styled.button`
   cursor: ${cursor => cursor.cursor};
-
   img {
     width: 24px;
     height: 24px;
