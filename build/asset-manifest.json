@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.40b4d8a3.js",
+    "main.js": "/static/js/main.d82cd7b8.js",
     "static/media/naver.svg": "/static/media/naver.efdf118ce31accb3dfeb80c21e314f27.svg",
     "static/media/logo.svg": "/static/media/logo.2c111b7e7d1a04c1b73b15612da4cf2d.svg",
     "static/media/splash-letter.svg": "/static/media/splash-letter.0334738b53e4663916808a81998c0323.svg",
@@ -41,9 +41,9 @@
     "static/media/icon-arrow-left.svg": "/static/media/icon-arrow-left.9423d1c1d777718fa6f78baeb652db59.svg",
     "static/media/icon-arrow-white.svg": "/static/media/icon-arrow-white.43502f66024df4ca88efa2adc559187f.svg",
     "static/media/splash-eye.svg": "/static/media/splash-eye.c0e7f097653fc58e85ea09a3177b5f0f.svg",
-    "main.40b4d8a3.js.map": "/static/js/main.40b4d8a3.js.map"
+    "main.d82cd7b8.js.map": "/static/js/main.d82cd7b8.js.map"
   },
   "entrypoints": [
-    "static/js/main.40b4d8a3.js"
+    "static/js/main.d82cd7b8.js"
   ]
 }
