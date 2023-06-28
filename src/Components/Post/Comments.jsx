@@ -5,6 +5,7 @@ import { Token, MyAccountName } from '../../Atom/atom';
 import MoreIcon from '../../Assets/Icon/icon-more-vertical.svg';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
+import AlertModal from '../Modal/Alert';
 
 const Comments = ({ postsComments, postsId, postsData }) => {
   const commentDate = postsComments.createdAt.split('T');
@@ -14,8 +15,6 @@ const Comments = ({ postsComments, postsId, postsData }) => {
   const navigate = useNavigate();
   const getMyAccountName = useRecoilValue(MyAccountName);
   const commentAccountName = postsComments.author.accountname;
-
-  // 댓글 모달 연결
 
   // 댓글 삭제 기능
   const DeleteComment = async () => {
@@ -29,7 +28,7 @@ const Comments = ({ postsComments, postsId, postsData }) => {
       });
       const res = await response.json();
       // console.log(res);
-      setIsSModalVisible(false);
+      setIsDeleteModalVisible(false);
     } catch (error) {
       console.error(error);
     }
@@ -37,6 +36,7 @@ const Comments = ({ postsComments, postsId, postsData }) => {
 
   const [isOtherSModalVisible, setIsOtherSModalVisible] = useState(false);
   const [isSModalVisible, setIsSModalVisible] = useState(false);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   // 댓글이 내 거일때 열어주는 모달
   const openSModal = () => {
     setIsSModalVisible(true);
@@ -47,8 +47,16 @@ const Comments = ({ postsComments, postsId, postsData }) => {
   };
   // a 모달 닫아주는
   const closeModal = () => {
+    setIsSModalVisible(false);
     setIsOtherSModalVisible(false);
+    setIsDeleteModalVisible(false);
   };
+  // 삭제
+  const handeleDelete = () => {
+    setIsSModalVisible(false);
+    setIsDeleteModalVisible(true);
+  };
+
   return (
     <SComments>
       <div className="comment-wrap">
@@ -77,14 +85,19 @@ const Comments = ({ postsComments, postsId, postsData }) => {
         </div>
       </div>
       {isSModalVisible && (
-        <Modal>
-          <p onClick={DeleteComment}>삭제</p>
+        <Modal onCancel={closeModal}>
+          <p onClick={handeleDelete}>삭제</p>
         </Modal>
       )}
       {isOtherSModalVisible && (
-        <Modal>
+        <Modal onCancel={closeModal}>
           <p onClick={closeModal}>신고</p>
         </Modal>
+      )}
+      {isDeleteModalVisible && (
+        <AlertModal confirmText="삭제" onConfirm={DeleteComment} onCancel={closeModal}>
+          댓글을 삭제할까요?
+        </AlertModal>
       )}
     </SComments>
   );
