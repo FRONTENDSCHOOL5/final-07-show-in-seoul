@@ -50,7 +50,7 @@ const PostDetailPage = () => {
   };
 
   const postsComments = GetPostComments();
-  console.log(postsComments);
+  // console.log(postsComments);
 
   return (
     <>

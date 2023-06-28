@@ -28,7 +28,7 @@ const Comments = ({ postsComments, postsId, postsData }) => {
         },
       });
       const res = await response.json();
-      console.log(res);
+      // console.log(res);
       setIsSModalVisible(false);
     } catch (error) {
       console.error(error);
