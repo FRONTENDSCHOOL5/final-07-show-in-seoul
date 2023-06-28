@@ -30,18 +30,18 @@ const MainPage = () => {
 
   useMemo(() => {
     // 로그인 이후 최초 접속 시 API 통신
-    // if (isLoginState === 1) {
-    const fetchData = async () => {
-      try {
-        await GetShowAPI(setShow);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-    console.log('useMemo 데이터 가져오기 실행...');
-    setIsLoginState(2);
-    // }
+    if (isLoginState === 1) {
+      const fetchData = async () => {
+        try {
+          await GetShowAPI(setShow);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+      console.log('useMemo 데이터 가져오기 실행...');
+      setIsLoginState(2);
+    }
   }, [isLoginState]);
 
   // 첫번째 렌더링에 skeleton 보여주기 위한 조건
