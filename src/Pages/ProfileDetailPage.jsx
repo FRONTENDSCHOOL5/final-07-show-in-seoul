@@ -132,6 +132,7 @@ const STopBar = styled.div`
 const SProfileWrapper = styled.div`
   height: calc(100vh - 77px);
   overflow-y: scroll;
+  padding-bottom: 20px;
   &::-webkit-scrollbar {
     display: none;
   }

@@ -76,6 +76,7 @@ const SUl = styled.ul`
   height: calc(100vh - 77px);
   overflow-y: scroll;
   padding-top: 4px;
+  padding-bottom: 20px;
   &::-webkit-scrollbar {
     display: none;
   }
