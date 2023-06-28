@@ -1,7 +1,15 @@
 # 🎆 SHOW in Seoul 🎆
 
+<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/23f27e98-92b7-45dd-b814-2eb14c1ca95e" alt="목업이미지" >
+
 ## 프로젝트 소개 및 개요
->서울시
+>**SHOW in Seoul**은 서울시 **문화행사 정보와 그에 대한 후기**를 한눈에 볼 수 있는 모바일 서비스입니다.
+>
+>문화 행사 공공 API를 활용하여 **매일 업데이트**되는 행사 정보를 볼 수 있으며
+>
+>지역구, 취향에 따른 **카테고리**를 선택하여 원하는 정보만 **필터링**하여 보다 쉽고 편리하게 행사 정보를 확인할 수 있습니다.  
+
+</br> 
 
 🔗배포 URL : `test`
 
@@ -126,17 +134,16 @@
 
 ✨ 협업 : <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=Discord&logoColor=white"/>
 
-
 </br>
 
 ### [정보 구조도]
 
-<img width="800" alt="정보구조도" src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/25a9b51e-c4e3-49bf-8941-d2038ebe4538">
+<img alt="정보구조도" src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/25a9b51e-c4e3-49bf-8941-d2038ebe4538">
 
 </br>
 
 ### [개발 환경]
-코드 충돌을 줄이고 브랜치 관리가 용이한 Git Flow 방식을 사용하여 페이지/기능 별 브랜치를 만들고
+코드 충돌을 줄이고 브랜치 관리가 용이한 **Git Flow** 방식을 사용하여 페이지/기능 별 브랜치를 만들고
 각자 작업 브랜치를 따로 생성하여, 페이지 브랜치로 PR 및 Merge를 진행합니다.
 
 </br>
@@ -158,6 +165,131 @@
 </br>
 
 ## 4. 폴더 구조
+
+<details>
+<summary>📁</summary>
+  
+```
++---public
+|       favicon.ico
+|       index.html
+|
+\---src
+    |   App.js
+    |   index.js
+    |
+    +---API
+    |       Comment.jsx
+    |       GetShowAPI.jsx
+    |       Image.jsx
+    |       Like.jsx
+    |       PostAPI.jsx
+    |       Profile.jsx
+    |       useFollow.jsx
+    |       useProfile.jsx
+    |       User.jsx
+    |
+    +---Assets
+    |   +---Icon
+    |   |   |
+    |   |   \---skeleton
+    |   |
+    |   \---Img
+    |
+    +---Atom
+    |       atom.jsx
+    |
+    +---Components
+    |   +---Article
+    |   |       Content.jsx
+    |   |       FeedContents.jsx
+    |   |       ShowDetailInfo.jsx
+    |   |       ShowDetailTopBar.jsx
+    |   |       TotalCount.jsx
+    |   |
+    |   +---Category
+    |   |       CategoryHeader.jsx
+    |   |       CategoryPeriod.jsx
+    |   |
+    |   +---Common
+    |   |   |   BottomNav.jsx
+    |   |   |   Button.jsx
+    |   |   |   Error.jsx
+    |   |   |   InputBox.jsx
+    |   |   |   Profile.jsx
+    |   |   |   ProfileImageEdit.jsx
+    |   |   |   ProfileInfoEdit.jsx
+    |   |   |   Skeleton.jsx
+    |   |   |   TopBar.jsx
+    |   |   |   TopBarBtn.jsx
+    |   |   |   TopBtn.jsx
+    |   |   |
+    |   |   \---Post
+    |   |           Post.jsx
+    |   |           PostContent.jsx
+    |   |           PostContentButtons.jsx
+    |   |           PostHeader.jsx
+    |   |           PostLayoutButtons.jsx
+    |   |
+    |   +---Login
+    |   |       Login.jsx
+    |   |       SignUp.jsx
+    |   |
+    |   +---Modal
+    |   |       Alert.jsx
+    |   |       Modal.jsx
+    |   |
+    |   +---Post
+    |   |       Comments.jsx
+    |   |       CommentsForm.jsx
+    |   |
+    |   +---Profile
+    |   |       AreaTag.jsx
+    |   |       CategoryTags.jsx
+    |   |       InterestsTag.jsx
+    |   |       ProfileInterests.jsx
+    |   |       ProfileTags.jsx
+    |   |
+    |   \---Search
+    |           SearchContent.jsx
+    |           SearchInput.jsx
+    |
+    +---Hook
+    |       useAtomReset.jsx
+    |       useDataFiltering.jsx
+    |       useScrollToTop.jsx
+    |       useTokenCheck.jsx
+    |
+    +---Pages
+    |       CategoryPage.jsx
+    |       ErrorPage.jsx
+    |       LoginPage.jsx
+    |       MainPage.jsx
+    |       PostDetailPage.jsx
+    |       PostEditPage.jsx
+    |       PostingPage.jsx
+    |       PostPage.jsx
+    |       ProfileDetailPage.jsx
+    |       ProfileEditPage.jsx
+    |       ProfileSettingPage.jsx
+    |       SearchPage.jsx
+    |       ShowDetailPage.jsx
+    |       SignupPage.jsx
+    |       SplashPage.jsx
+    |
+    +---Route
+    |       RequireAuth.jsx
+    |
+    +---Styles
+    |       GlobalStyle.jsx
+    |       LayoutStyle.jsx
+    |
+    \---Utils
+            showDetailFunction.jsx
+```
+</details>
+
+
 - API/ : API 
 - Assets/ : 이미지, 아이콘
 - Atom/ : 상태 관리
@@ -167,6 +299,7 @@
 - Pages/ : 각 페이지 구현
 - Style/ : globalstyle, 공통 스타일
 
+</br>
 
 ## 5. 주요 기능
 ### 🔒 로그인 / 회원가입
@@ -183,7 +316,7 @@
 ### 🔍 검색
 * 행사 검색
 ### 🖼 게시글
-* 게시글 수정
+* 게시글 수정, 삭제
 * 댓글 게시, 삭제
 * 좋아요
 ### 👨🏿‍🤝‍👨🏼프로필
@@ -193,6 +326,9 @@
 
 
 ## 6. UI
+<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/bb8581a6-e2a5-43b0-abc5-ad191a856bb3" alt="UI" >
+
+</br>
 
 ## 7. 페이지 기능
 ### 1) 홈
