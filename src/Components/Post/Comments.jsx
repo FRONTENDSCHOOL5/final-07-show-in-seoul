@@ -13,7 +13,7 @@ const Comments = ({ postsComments, postsId, postsData }) => {
   const getMyToken = useRecoilValue(Token);
   const getMyAccountName = useRecoilValue(MyAccountName);
   const commentAccountName = postsComments.author.accountname;
-
+  const navigate = useNavigate();
   // 댓글 삭제 기능
   const DeleteComment = async () => {
     try {
@@ -29,6 +29,8 @@ const Comments = ({ postsComments, postsId, postsData }) => {
       setIsSModalVisible(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      navigate('/postdetailpage', { state: postsData });
     }
   };
 
