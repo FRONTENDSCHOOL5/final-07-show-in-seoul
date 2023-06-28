@@ -1,6 +1,6 @@
 # 🎆 SHOW in Seoul 🎆
 
-<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/23f27e98-92b7-45dd-b814-2eb14c1ca95e" alt="목업이미지" >
+<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/23f27e98-92b7-45dd-b814-2eb14c1ca95e" width="800px;" alt="목업이미지" >
 
 ## 프로젝트 소개 및 개요
 >**SHOW in Seoul**은 서울시 **문화행사 정보와 그에 대한 후기**를 한눈에 볼 수 있는 모바일 서비스입니다.
@@ -138,7 +138,9 @@
 
 ### [정보 구조도]
 
-<img alt="정보구조도" src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/25a9b51e-c4e3-49bf-8941-d2038ebe4538">
+<img alt="정보구조도" src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/25a9b51e-c4e3-49bf-8941-d2038ebe4538" width="800px;">
+
+</br>
 
 </br>
 
@@ -324,9 +326,14 @@
 * 프로필 수정
 * 프로필 이미지 선택
 
+</br>
 
 ## 6. UI
 <img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/bb8581a6-e2a5-43b0-abc5-ad191a856bb3" alt="UI" >
+
+
+</br>
+
 
 </br>
 
