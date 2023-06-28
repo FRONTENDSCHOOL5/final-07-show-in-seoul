@@ -21,7 +21,7 @@ const LeftEl = ({ leftEl, setKeyword }) => {
   } else if (leftEl === 'search') {
     return <SearchInput setKeyword={setKeyword} />;
   } else {
-    return <TopBarBtn id="showLogo" icon={iconLogo} altTxt={'쇼!인서울 피드'} />;
+    return <TopBarBtn cursor="unset" id="showLogo" icon={iconLogo} altTxt={'쇼!인서울 피드'} />;
   }
 };
 
@@ -73,7 +73,9 @@ const SHeader = styled.header`
   top: 0;
   background-color: #fff;
   #showLogo {
-    width: 103px;
+    padding-top: 3px;
+    width: 115px;
+    height: 28px;
   }
   form {
     width: 100%;

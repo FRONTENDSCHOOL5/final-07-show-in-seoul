@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import ShowDeatailTopBar from '../Components/Article/ShowDeatailTopBar';
+import ShowDeatailTopBar from '../Components/Article/ShowDetailTopBar';
 import ShowDetailInfo from '../Components/Article/ShowDetailInfo';
 import BottomNav from '../Components/Common/BottomNav';
 import { useNavigate } from 'react-router-dom';
