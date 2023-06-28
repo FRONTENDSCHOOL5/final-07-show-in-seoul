@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Content from './Content';
 
 const FeedContents = ({ showInfo }) => {
+  console.log('메인피드 컨텐츠 다운로드 : ', showInfo);
   return (
     <SFeedContents>
       {/* json으로 받아온 데이터 map 함수 활용하여 표시 */}
