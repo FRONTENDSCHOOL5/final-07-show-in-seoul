@@ -48,14 +48,19 @@ function Login() {
         },
       });
 
+      // 로그인 성공 시 실행할 동작
+      const loginSuccess = () => {
+        setIsLoginState(1);
+        navigate('/mainpage');
+      };
+
       if (data.status === 422) {
         setFailedMessage('*이메일 / 비밀번호를 확인해주세요.');
       } else if (data.user) {
         console.log('로그인 성공!');
         setUserToken(data.user.token);
         setMyAccountName(data.user.accountname);
-        setIsLoginState(1);
-        navigate('/mainpage');
+        loginSuccess();
       } else {
         console.log('로그인 예외');
       }

@@ -1,7 +1,15 @@
+// 쿠키 오류 줄이기 위한 코드 추가
+const requestOptions = {
+  method: 'GET', // 요청 방법
+  mode: 'cors', // CORS 설정을 사용합니다.
+  credentials: 'omit', // 해당 옵션은 쿠키, HTTP Basic/Digest authentication 등을 보내지 않게 해줍니다.
+};
+
 const GetShowAPI = async setShow => {
   try {
     const response = await fetch(
       'http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/1/1',
+      requestOptions,
     );
 
     if (!response.ok) throw new Error('ERROR');
@@ -18,6 +26,7 @@ const GetShowAPI = async setShow => {
       loadingList.push(
         fetch(
           `http://openapi.seoul.go.kr:8088/774c79676c79686f31303566616f7871/json/culturalEventInfo/${start}/${end}`,
+          requestOptions,
         ).then(response => {
           if (!response.ok) throw new Error(`ERROR on ${i + 1}`);
           return response.json();
