@@ -338,9 +338,10 @@
 
 ## 7. 페이지 기능
 ### 1) 홈
-|🔗 [splash]|🔗 [로그인 페이지]|🔗 [회원가입 페이지]|
-|:-:|:-:|:-:|
-|![스플래시](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/4f515833-fe7d-403f-b63d-b2ab87261516)|![로그인](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b3a69d63-f15e-4612-8fb4-e86eadf98f9e)|![회원가입](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/dcf02b67-a743-40bb-a6ee-37b65b6186f3)|
+|🔗 [splash]|🔗 [로그인 페이지]|🔗 [회원가입 페이지]|🔗 [프로필 설정]|
+|:-:|:-:|:-:|:-:|
+|![스플래시](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/4f515833-fe7d-403f-b63d-b2ab87261516)|![로그인](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b3a69d63-f15e-4612-8fb4-e86eadf98f9e)|![회원가입](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/dcf02b67-a743-40bb-a6ee-37b65b6186f3)|![프로필 설정](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/677fa9e2-4a7f-4b88-93d3-9357be1a0697)|
+
 
 |🔗 [카테고리 페이지]|🔗 [검색]|🔗 [메인 페이지]|🔗 [행사 상세 페이지]
 |:-:|:-:|:-:|:-:|
