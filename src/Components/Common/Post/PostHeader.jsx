@@ -44,6 +44,8 @@ const PostHeader = ({ postsData }) => {
       closeModal();
     } catch (e) {
       console.error(e);
+    } finally {
+      navigate('/postpage');
     }
   };
 

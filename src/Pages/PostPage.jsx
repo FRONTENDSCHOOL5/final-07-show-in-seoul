@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 // 공통 컴포넌트
 import TopBar from '../Components/Common/TopBar';
