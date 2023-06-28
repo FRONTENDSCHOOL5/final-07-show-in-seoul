@@ -135,7 +135,7 @@ const SContainer = styled.div`
 
 const SCommentsWrapper = styled.div`
   border-top: 2px solid #dbdbdb;
-  padding: 12px 16px;
+  padding: 12px 16px 18px;
   width: 390px;
 `;
 
