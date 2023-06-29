@@ -39,8 +39,7 @@
 </br> 
 
 ## 2. 역할 분담
-<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/103922121/1b4db189-d6c5-4275-a871-374f22cd5308" width=800>
-
+<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/103922121/b44801a7-548e-4f4d-bd6f-44967c36e235" width=800>
 
 </br> 
 
