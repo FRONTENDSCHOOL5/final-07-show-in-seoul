@@ -1,4 +1,5 @@
-<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/23f27e98-92b7-45dd-b814-2eb14c1ca95e" width="800px;" alt="목업이미지" >
+<img src="https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/118108221/953ddb46-348e-4e7a-8c3e-f59042a83f7d" width="800px;" alt="목업이미지" >
+
 
 ## 프로젝트 소개 및 개요
 >**SHOW in Seoul**은 서울시 **문화행사 정보와 그에 대한 후기**를 한눈에 볼 수 있는 모바일 서비스입니다.
@@ -355,18 +356,20 @@
 |![후기 작성](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/bde17ddf-e4a3-43dd-b839-81f0a5a3f0c1)|![후기 피드](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/d9104c51-1a2c-4e1c-80b1-3aea3b6277fd)|![게시글 상세](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/4a83c99f-85e7-452d-924d-513e4f32df12)|
 
 
-|🔗 [마이 프로필 페이지]|🔗 [다른 유저 프로필 페이지]|🔗 [프로필 수정]|🔗 [로그아웃 ]|
-|:-:|:-:|:-:|:-:|
-|![마이 프로필 상세](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b268a25e-9bbe-4088-ba84-6f9fdf3ee602)|![다른 유저 프로필 상세](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/d283ed2f-36b5-4f6a-8761-c5d52db5ead9)|![프로필 수정](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/29c6edaf-e068-436d-9181-def02b4a0741)|![로그아웃](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/4989fc34-727d-4266-9929-096c6c814275)|
+|🔗 [마이 프로필 페이지]|🔗 [다른 유저 프로필 페이지]|🔗 [프로필 수정]|
+|:-:|:-:|:-:|
+|![마이 프로필 상세](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b268a25e-9bbe-4088-ba84-6f9fdf3ee602)|![다른 유저 프로필 상세](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/d283ed2f-36b5-4f6a-8761-c5d52db5ead9)|![프로필 수정](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/29c6edaf-e068-436d-9181-def02b4a0741)|
 
+<br/>
 
+### 3) 후기 수정/삭제 & 좋아요
+|🔗 [후기 수정]|🔗 [후기 삭제]|🔗 [로그아웃 ]|
+|:-:|:-:|:-:|
+|![후기 수정](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/f43ea48a-4f05-49e1-b821-73bab6f773cc)|![게시글 삭제](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/2c419f77-5bb2-4a66-89a8-6ce5423d9863)|![로그아웃](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/4989fc34-727d-4266-9929-096c6c814275)|
 
-|🔗 [후기 수정]|🔗 [후기 삭제]|🔗 [댓글 작성]|🔗 [댓글 삭제]|🔗 [좋아요]|
-|:-:|:-:|:-:|:-:|:-:|
-|![후기 수정](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/f43ea48a-4f05-49e1-b821-73bab6f773cc)|![게시글 삭제](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/2c419f77-5bb2-4a66-89a8-6ce5423d9863)|![댓글 작성](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/72f433d0-111d-4694-9761-bc88bea58d30)|![댓글 삭제](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b3f47296-2b5a-49a8-b270-ae120f9f2501)|![좋아요](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/307406db-e7d5-4f29-b836-76bedd25e896)|
-
-
-
+|🔗 [댓글 작성]|🔗 [댓글 삭제]|🔗 [좋아요]|
+|:-:|:-:|:-:|
+|![댓글 작성](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/72f433d0-111d-4694-9761-bc88bea58d30)|![댓글 삭제](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/b3f47296-2b5a-49a8-b270-ae120f9f2501)|![좋아요](https://github.com/FRONTENDSCHOOL5/final-07-show-in-seoul/assets/126149375/307406db-e7d5-4f29-b836-76bedd25e896)|
 
 
 
